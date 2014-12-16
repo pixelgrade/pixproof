@@ -1,0 +1,166 @@
+@if $use-grids == true{
+
+/*------------------------------------*\
+    $GRIDS
+\*------------------------------------*/
+/**
+ * Fluid and nestable grid system. It is necessary to comment out, or otherwise
+ * remove, the whitespace from between grid items, e.g.:
+ *
+   <div class="grid">
+
+       <div class="grid__item  one-third">
+           <p>One third grid</p>
+       </div><!--
+
+    --><div class="grid__item  two-thirds">
+           <p>Two thirds grid</p>
+       </div><!--
+
+    --><div class="grid__item  one-half">
+           <p>One half grid</p>
+       </div><!--
+
+    --><div class="grid__item  one-quarter">
+           <p>One quarter grid</p>
+       </div><!--
+
+    --><div class="grid__item  one-quarter">
+           <p>One quarter grid</p>
+       </div>
+
+   </div>
+ *
+ * Demo: jsfiddle.net/inuitcss/CLYUC
+ *
+ */
+
+
+/**
+ * Grid wrapper
+ */
+.grid{
+    @include rem(margin-left, -($base-spacing-unit));
+    list-style:none;
+    margin-bottom:0;
+}
+
+
+    /**
+     * Very infrequently occuring grid wrappers as children of grid wrappers.
+     */
+    .grid > .grid{
+        margin-left:0;
+    }
+
+
+    /**
+     * Grid
+     */
+    .grid__item{
+        display:inline-block;
+        width:100%;
+        @include rem(padding-left, $base-spacing-unit);
+        vertical-align:top;
+        @if $global-border-box == false{
+            @include vendor(box-sizing, border-box);
+        }
+    }
+
+
+/**
+ * Reversed grids allow you to structure your source in the opposite order to
+ * how your rendered layout will appear. Extends `.grid`.
+ */
+.grid--rev{
+    direction:rtl;
+    text-align:left;
+
+    > .grid__item{
+        direction:ltr;
+        text-align:left;
+    }
+}
+
+
+/**
+ * Gutterless grids have all the properties of regular grids, minus any spacing.
+ * Extends `.grid`.
+ */
+.grid--full{
+    margin-left:0;
+
+    > .grid__item{
+        padding-left:0;
+    }
+}
+
+
+/**
+ * Align the entire grid to the right. Extends `.grid`.
+ */
+.grid--right{
+    text-align:right;
+
+    > .grid__item{
+        text-align:left;
+    }
+}
+
+
+/**
+ * Centered grids align grid items centrally without needing to use push or pull
+ * classes. Extends `.grid`.
+ */
+.grid--center{
+    text-align:center;
+
+    > .grid__item{
+        text-align:left;
+    }
+}
+
+
+/**
+ * Align grid cells vertically (`.grid--middle` or `.grid--bottom`). Extends
+ * `.grid`.
+ */
+.grid--middle{
+
+    > .grid__item{
+        vertical-align:middle;
+    }
+}
+
+.grid--bottom{
+
+    > .grid__item{
+        vertical-align:bottom;
+    }
+}
+
+
+/**
+ * Create grids with narrower gutters. Extends `.grid`.
+ */
+.grid--narrow{
+    @include rem(margin-left, -($half-spacing-unit));
+
+    > .grid__item{
+        @include rem(padding-left, $half-spacing-unit);
+    }
+}
+
+
+/**
+ * Create grids with wider gutters. Extends `.grid`.
+ */
+.grid--wide{
+    @include rem(margin-left, -(2 * $base-spacing-unit));
+
+    > .grid__item{
+        @include rem(padding-left, 2 * $base-spacing-unit);
+    }
+}
+
+}//endif

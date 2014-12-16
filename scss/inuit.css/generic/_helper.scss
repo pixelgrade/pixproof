@@ -1,0 +1,195 @@
+/*------------------------------------*\
+    $HELPER
+\*------------------------------------*/
+/**
+ * A series of helper classes to use arbitrarily. Only use a helper class if an
+ * element/component doesn’t already have a class to which you could apply this
+ * styling, e.g. if you need to float `.main-nav` left then add `float:left;` to
+ * that ruleset as opposed to adding the `.float--left` class to the markup.
+ *
+ * A lot of these classes carry `!important` as you will always want them to win
+ * out over other selectors.
+ */
+
+
+/**
+ * Add/remove floats
+ */
+.float--right   { float:right!important; }
+.float--left    { float:left !important; }
+.float--none    { float:none !important; }
+
+
+/**
+ * Text alignment
+ */
+.text--left     { text-align:left  !important; }
+.text--center   { text-align:center!important; }
+.text--right    { text-align:right !important; }
+
+
+/**
+ * Font weights
+ */
+.weight--light      { font-weight:300!important; }
+.weight--normal     { font-weight:400!important; }
+.weight--semibold   { font-weight:600!important; }
+
+
+/**
+ * Add/remove margins
+ */
+.push           { @include rem(margin,       $base-spacing-unit!important); }
+.push--top      { @include rem(margin-top,   $base-spacing-unit!important); }
+.push--right    { @include rem(margin-right, $base-spacing-unit!important); }
+.push--bottom   { @include rem(margin-bottom,$base-spacing-unit!important); }
+.push--left     { @include rem(margin-left,  $base-spacing-unit!important); }
+.push--ends     { @include rem(margin-top,   $base-spacing-unit!important); @include rem(margin-bottom,$base-spacing-unit!important); }
+.push--sides    { @include rem(margin-right, $base-spacing-unit!important); @include rem(margin-left,  $base-spacing-unit!important); }
+
+.push-half          { @include rem(margin,       $half-spacing-unit!important); }
+.push-half--top     { @include rem(margin-top,   $half-spacing-unit!important); }
+.push-half--right   { @include rem(margin-right, $half-spacing-unit!important); }
+.push-half--bottom  { @include rem(margin-bottom,$half-spacing-unit!important); }
+.push-half--left    { @include rem(margin-left,  $half-spacing-unit!important); }
+.push-half--ends    { @include rem(margin-top,   $half-spacing-unit!important); @include rem(margin-bottom,$half-spacing-unit!important); }
+.push-half--sides   { @include rem(margin-right, $half-spacing-unit!important); @include rem(margin-left,  $half-spacing-unit!important); }
+
+.flush          { @include rem(margin,       0!important); }
+.flush--top     { @include rem(margin-top,   0!important); }
+.flush--right   { @include rem(margin-right, 0!important); }
+.flush--bottom  { @include rem(margin-bottom,0!important); }
+.flush--left    { @include rem(margin-left,  0!important); }
+.flush--ends    { @include rem(margin-top,   0!important); @include rem(margin-bottom,0!important); }
+.flush--sides   { @include rem(margin-right, 0!important); @include rem(margin-left,  0!important); }
+
+
+/**
+ * Add/remove paddings
+ */
+.soft           { @include rem(padding,       $base-spacing-unit!important); }
+.soft--top      { @include rem(padding-top,   $base-spacing-unit!important); }
+.soft--right    { @include rem(padding-right, $base-spacing-unit!important); }
+.soft--bottom   { @include rem(padding-bottom,$base-spacing-unit!important); }
+.soft--left     { @include rem(padding-left,  $base-spacing-unit!important); }
+.soft--ends     { @include rem(padding-top,   $base-spacing-unit!important); @include rem(padding-bottom,$base-spacing-unit!important); }
+.soft--sides    { @include rem(padding-right, $base-spacing-unit!important); @include rem(padding-left,  $base-spacing-unit!important); }
+
+.soft-half           { @include rem(padding,       $half-spacing-unit!important); }
+.soft-half--top      { @include rem(padding-top,   $half-spacing-unit!important); }
+.soft-half--right    { @include rem(padding-right, $half-spacing-unit!important); }
+.soft-half--bottom   { @include rem(padding-bottom,$half-spacing-unit!important); }
+.soft-half--left     { @include rem(padding-left,  $half-spacing-unit!important); }
+.soft-half--ends     { @include rem(padding-top,   $half-spacing-unit!important); @include rem(padding-bottom,$half-spacing-unit!important); }
+.soft-half--sides    { @include rem(padding-right, $half-spacing-unit!important); @include rem(padding-left,  $half-spacing-unit!important); }
+
+.hard           { @include rem(padding,       0!important); }
+.hard--top      { @include rem(padding-top,   0!important); }
+.hard--right    { @include rem(padding-right, 0!important); }
+.hard--bottom   { @include rem(padding-bottom,0!important); }
+.hard--left     { @include rem(padding-left,  0!important); }
+.hard--ends     { @include rem(padding-top,   0!important); @include rem(padding-bottom,0!important); }
+.hard--sides    { @include rem(padding-right, 0!important); @include rem(padding-left,  0!important); }
+
+
+/**
+ * Pull items full width of `.island` parents.
+ */
+.full-bleed{
+    @include rem(margin-right,-($base-spacing-unit)!important);
+    @include rem(margin-left, -($base-spacing-unit)!important);
+
+    .islet &{
+        @include rem(margin-right,-($half-spacing-unit)!important);
+        @include rem(margin-left, -($half-spacing-unit)!important);
+    }
+}
+
+
+/**
+ * Add a help cursor to any element that gives the user extra information on
+ * `:hover`.
+ */
+.informative{
+    cursor:help!important;
+}
+
+
+/**
+ * Mute an object by reducing its opacity.
+ */
+.muted{
+    opacity:0.5!important;
+    filter:alpha(opacity = 50)!important;
+}
+
+
+/**
+ * Align items to the right where they imply progression/movement forward, e.g.:
+ *
+   <p class=proceed><a href=#>Read more...</a></p>
+ *
+ */
+.proceed{
+    text-align:right!important;
+}
+
+
+/**
+ * Add a right-angled quote to links that imply movement, e.g.:
+ *
+   <a href=# class=go>Read more</a>
+ *
+ */
+.go:after{
+    content:"\00A0" "\00BB"!important;
+}
+
+
+/**
+ * Add a left-angled quote to links that imply backwards movement, e.g.:
+ *
+   <a href=# class=back>Return</a>
+ *
+ */
+.back:before{
+    content:"\00AB" "\00A0"!important;
+}
+
+
+/**
+ * Apply capital case to an element (usually a `strong`).
+ */
+.caps{
+    text-transform:uppercase!important;
+}
+
+
+/**
+ * Hide content off-screen without resorting to `display:none;`, also provide
+ * breakpoint specific hidden elements.
+ */
+@mixin accessibility{
+    border:0!important;
+    clip:rect(0 0 0 0)!important;
+    height:1px!important;
+    margin:-1px!important;
+    overflow:hidden!important;
+    padding:0!important;
+    position: absolute!important;
+    width:1px!important;
+}
+.accessibility,
+.visuallyhidden{
+    @include accessibility;
+}
+@if $responsive{
+    @each $state in palm, lap, lap-and-up, portable, desk, desk-wide{
+        @include media-query(#{$state}){
+            .accessibility--#{$state},
+            .visuallyhidden--#{$state}{
+                @include accessibility;
+            }
+        }
+    }
+}
