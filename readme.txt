@@ -1,5 +1,5 @@
 === PixProof ===
-Contributors: babbardel, vlad.olaru, euthelup, cristianfrumusanu
+Contributors: euthelup, babbardel, pixelgrade, vlad.olaru, cristianfrumusanu
 Tags: gallery, proofing, images, photography, proof, thumbnails, image, photos, picture, media, clients, photo album
 Requires at least: 3.8.0
 Tested up to: 4.0
@@ -7,7 +7,7 @@ Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Pixproof it allows you to have a protected straight forward environment to discuss and proof photos from photo shootings.
+PixProof it allows you to have a protected straight forward environment to discuss and proof photos from photo shootings.
 
 == Description ==
 
@@ -15,7 +15,7 @@ PixProof is a custom WordPress plugin that is meant to **ease the way photograph
 
 **PixProof Gallery [Demo #1](http://bit.ly/1m3LmS0)** (use ‘demo’ as password)
 
-It is a simple to use plugin that uses a Custom Post Type called Proof Galleries to help you manage your "clients" galleries separated from other post types you may have around (like regular galleries or projects). 
+It is a simple to use plugin that uses a Custom Post Type called Proof Galleries to help you manage your "clients" galleries separated from other post types you may have around (like regular galleries or projects).
 
 These can be either public galleries (you will use the fact that the URL is not public and provide it only to your client) or password protected galleries (this is the recommended way) and you will provide the URL and the password to your individual clients (you can even make them private galleries - it is up to you).
 
@@ -38,8 +38,12 @@ You can choose from two options:
 
 == Changelog ==
 
+= 1.1.1 =
+* Fixed ZIP archive download on Windows
+* Fixed Small bugs
+
 = 1.1.0 =
-* Added "Download Selected Images" (ZIP) option 
+* Added "Download Selected Images" (ZIP) option
 
 = 1.0.7 =
 * General style fixes
