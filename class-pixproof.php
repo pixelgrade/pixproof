@@ -454,9 +454,7 @@ class PixProofPlugin {
 		if ( 'proof_gallery' !== $post->post_type ) {
 			return $comment;
 		}
-
-		//		$comment = preg_replace_callback('/(^| )#*(\d+)( |$)/ism', 'match_callback', $comment);
-		$comment = preg_replace_callback( "=(^| )+#[\w\-]+=", 'match_callback', $comment );
+		$comment = preg_replace_callback( "=(^| )+#[\w\-]+=", 'pixproof_comments_match_callback', $comment );
 
 		return $comment;
 	}
@@ -547,7 +545,7 @@ class PixProofPlugin {
 		// create the output of the archive
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: application/zip' );
-		header( 'Content-Disposition: attachment; filename=gallery_' . get_the_title( $gallery_id ) . "_" . date( 'd_m_Y' ) );
+		header( 'Content-Disposition: attachment; filename=gallery_' . get_the_title( $gallery_id ) . "_" . date( 'd_m_Y' ) . '.zip' );
 		header( 'Content-Transfer-Encoding: binary' );
 		header( 'Expires: 0' );
 		header( 'Cache-Control: must-revalidate' );
@@ -575,7 +573,7 @@ class PixProofPlugin {
 
 }
 
-function match_callback( $matches ) {
+function pixproof_comments_match_callback( $matches ) {
 	$the_id = substr( trim( $matches[ 0 ] ), 1 );
 
 	$matches[ 0 ] = '<span class="pixproof_photo_ref" data-href="#item-' . $the_id . '">#' . $the_id . '</span>';
