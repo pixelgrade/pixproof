@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/pixelgrade/pixproof.svg?branch=wporg)](https://travis-ci.org/pixelgrade/pixproof)
+
 PixProof
 ========
 
