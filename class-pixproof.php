@@ -304,9 +304,9 @@ class PixProofPlugin {
 			return false;
 		}
 
-		$order = 'menu_order ID';
+		$order = 'post__in';
 		if ( isset( $gallery_data[ 'random' ] ) && ! empty( $gallery_data[ 'random' ] ) ) {
-			$order = $gallery_data[ 'random' ];
+			$order = 'rand';
 		}
 
 		$columns = 3;
@@ -314,12 +314,22 @@ class PixProofPlugin {
 			$columns = $gallery_data[ 'columns' ];
 		}
 
+		if ( isset( $gallery_data[ 'size' ] ) && ! empty( $gallery_data[ 'size' ] ) ) {
+			$thumbnails_size = $gallery_data[ 'size' ];
+		}
+
+
+		if ( self::has_global_style() ) {
+			$thumbnails_size = self::get_thumbnails_size();
+			$columns = self::get_gallery_grid_size();
+		}
+
 		// get attachments
 		$attachments = get_posts( array(
 			'post_status'    => 'any',
 			'post_type'      => 'attachment',
 			'post__in'       => $gallery_ids,
-			'orderby'        => 'post__in',
+			'orderby'        => $order, //'post__in',
 			'posts_per_page' => '-1'
 		) );
 		if ( is_wp_error( $attachments ) || empty( $attachments ) ) {
@@ -429,6 +439,29 @@ class PixProofPlugin {
 		return self::$number_of_images;
 	}
 
+	static function get_thumbnails_size() {
+		if ( isset( self::$plugin_settings['gallery_thumbnail_sizes'] ) ) {
+			return self::$plugin_settings['gallery_thumbnail_sizes'];
+		}
+		// 'thumbnail' is the default
+		return 'thumbnail';
+	}
+
+	static function get_gallery_grid_size() {
+		if ( isset( self::$plugin_settings['gallery_grid_sizes'] ) ) {
+			return self::$plugin_settings['gallery_grid_sizes'];
+		}
+		// '3' is the default
+		return 3;
+	}
+
+	static function has_global_style() {
+		if ( isset( self::$plugin_settings['enable_pixproof_gallery_global_style'] ) ) {
+			return self::$plugin_settings['enable_pixproof_gallery_global_style'];
+		}
+
+		return false;
+	}
 	function ajax_click_on_photo() {
 
 		ob_start();

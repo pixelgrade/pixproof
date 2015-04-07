@@ -1,4 +1,31 @@
 <?php
+
+global $_wp_additional_image_sizes;
+
+$sizes = get_intermediate_image_sizes();
+$size_options = array(
+	'thumbnail' => 'Thumbnail ( ' .get_option('thumbnail_size_w') . ' x ' .get_option('thumbnail_size_h') . ' cropped )',
+	'medium' => 'Medium ( ' .get_option('medium_size_w') . ' x ' .get_option('medium_size_h') . ' )',
+	'large' => 'Large ( ' .get_option('large_size_w') . ' x ' .get_option('large_size_h') . ' )',
+	'full' => 'Full size'
+
+);
+
+if ( is_array( $_wp_additional_image_sizes ) ) {
+	foreach ( $_wp_additional_image_sizes as $key => $size ) {
+		$size_options[ $key ] = ucfirst( $key );
+		if ( isset( $size['width'] ) && isset( $size['height'] ) ) {
+			$size_options[ $key ] .= ' ( ' .$size['width']. ' x ' . $size['height'];
+
+			if ( isset( $size['crop'] ) && $size['crop']) {
+				$size_options[ $key ] .= ' cropped';
+			}
+
+			$size_options[ $key ] .= ' )';
+		}
+	}
+}
+
 return array(
 	'type'    => 'postbox',
 	'label'   => __( 'Proof Galleries Settings', 'pixproof_txtd' ),
@@ -71,5 +98,43 @@ return array(
 				//				),
 			),
 		),
+
+		'enable_pixproof_gallery_global_style'       => array(
+			'label'      => __( 'Change Gallery Global Style', 'pixproof_txtd' ),
+			'desc'       => __( 'Do you want to rewrite the style of each proof gallery?', 'pixproof_txtd' ),
+			'default'    => false,
+			'type'       => 'switch',
+			'show_group' => 'enable_pixproof_gallery_global_style_group',
+		),
+
+		'enable_pixproof_gallery_global_style_group' => array(
+			'type'    => 'group',
+			'options' => array(
+
+				'gallery_thumbnail_sizes' => array(
+					'name'    => 'gallery_thumbnail_sizes',
+					'label'   => __( 'How big the image thumbnails should be?', 'pixproof_txtd' ),
+					'default' => 'medium',
+					'type'    => 'select',
+					'options' => $size_options,
+				),
+				'gallery_grid_sizes' => array(
+					'name'    => 'gallery_grid_sizes',
+					'label'   => __( 'How big should be the grid?', 'pixproof_txtd' ),
+					'default' => '3',
+					'type'    => 'select',
+					'options' => array(
+						'99999999' => 'Auto',
+						'1' => 'One Column',
+						'2' => 'Two Columns',
+						'3' => 'Three Columns',
+						'4' => 'Four Columns',
+						'5' => 'Five Columns',
+						'6' => 'Six Columns',
+					),
+				)
+
+			)
+		)
 	)
 ); # config

@@ -6,16 +6,8 @@
  * object       $attachments        An object with all the attachments
  * string       $number_of_images   Count attachments
  * string       $columns            Number of columns
+ * string       $thumbnails_size    The size of the thumbnail
  */
-
-//$specific = array();
-//$i = 1;
-
-//foreach ( $attachments as $attachment ) {
-//	$specific[$attachment->ID] = $i;
-//	++$i;
-//}
-// <span><?php echo "Image {$specific[$attachment->ID]} of {$number_of_images}"; </span>
 ?>
 <div id="pixproof_gallery" class="gallery  gallery-columns-<?php echo $columns; ?>  cf  js-pixproof-gallery">
 	<?php
@@ -27,7 +19,7 @@
 			$select_label = __( 'Select', 'pixproof_l10n' );
 		}
 
-		$thumb_img  = wp_get_attachment_image_src( $attachment->ID );
+		$thumb_img  = wp_get_attachment_image_src( $attachment->ID, $thumbnails_size );
 		$image_full = wp_get_attachment_image_src( $attachment->ID, 'full-size' );
 
 		//lets determine what should we display under each image according to settings
@@ -61,9 +53,7 @@
 			//default to unique ids aka attachment id
 			$image_name   = '#' . $attachment->ID;
 			$image_id_tag = 'item-' . $attachment->ID;
-		}
-		?>
-
+		} ?>
 		<div class="proof-photo  js-proof-photo  gallery-item <?php self::attachment_class( $attachment ); ?>" <?php self::attachment_data( $attachment ); ?>  id="<?php echo $image_id_tag; ?>">
 			<div class="proof-photo__bg">
 			<div class="proof-photo__container">
@@ -99,11 +89,9 @@
 			</div>
 		</div>
 		<?php
-
 		if ( $idx % $columns == 0 ) {
 			echo '<br style="clear: both">';
 		}
-
 		$idx ++;
 	} ?>
 </div>

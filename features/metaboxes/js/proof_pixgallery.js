@@ -40,6 +40,10 @@
 							$('#pixgalleries_columns').val(gallery.attributes.columns);
 						}
 
+						if ( gallery.attributes.size ) {
+							$('#pixgalleries_size').val(gallery.attributes.size);
+						}
+
 						// update the galllery_preview
 						proof_pixgallery_ajax_preview();
 
@@ -61,6 +65,7 @@
 				var galleries_ids = $('#pixgalleries').val(),
 					random_order =  $('#pixgalleries_random').val(),
 					columns =  $('#pixgalleries_columns').val(),
+					size =  $('#pixgalleries_size').val(),
 					defaultPostId = wp.media.gallery.defaults.id,
 					attachments, selection;
 
@@ -71,8 +76,11 @@
 				if (columns) {
 					columns = ' columns="'+columns+'"';
 				}
+				if (size) {
+					size = ' size="'+size+'"';
+				}
 
-				var shortcode = wp.shortcode.next( 'gallery', '[gallery'+columns+' ids="'+ galleries_ids +'"'+ random_order +']' );
+				var shortcode = wp.shortcode.next( 'gallery', '[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']' );
 				// Bail if we didn't match the shortcode or all of the content.
 				if ( ! shortcode )
 					return;
@@ -132,13 +140,13 @@
 			}
 		});
 	};
-	
+
 	//init
 	if ($("[id$='_post_slider_visiblenearby']").val() == 1) {
 		//we need to hide the transition because it will not be used
 		$("[id$='_post_slider_transition']").closest('tr').hide();
 	}
-	
+
 	$("[id$='_post_slider_visiblenearby']").on('change', function() {
 		if ($(this).val() == 1) {
 			//we need to hide the transition because it will not be used
@@ -147,14 +155,14 @@
 			$("[id$='_post_slider_transition']").closest('tr').fadeIn();
 		}
 	});
-	
+
 	//for the autoplay
 	//init
 	if ($("[id$='_post_slider_autoplay']").val() != 1) {
 		//we need to hide the delay because it will not be used
 		$("[id$='_post_slider_delay']").closest('tr').hide();
 	}
-	
+
 	$("[id$='_post_slider_autoplay']").on('change', function() {
 		if ($(this).val() == 1) {
 			//we need to hide the delay because it will not be used
@@ -163,5 +171,5 @@
 			$("[id$='_post_slider_delay']").closest('tr').fadeOut();
 		}
 	});
-	
+
 })(jQuery);

@@ -630,6 +630,7 @@ class pixproof_Meta_Box_types {
 			'<input type="hidden" name="', $field['id'], '[gallery]" id="pixgalleries" value="', isset($meta['gallery']) ? $meta['gallery'] : '', '" />'.
 			'<input type="hidden" name="', $field['id'], '[random]" id="pixgalleries_random" value="', isset($meta['random']) ? $meta['random'] : '', '" />'.
 			'<input type="hidden" name="', $field['id'], '[columns]" id="pixgalleries_columns" value="', isset($meta['columns']) ? $meta['columns'] : '', '" />'.
+			'<input type="hidden" name="', $field['id'], '[size]" id="pixgalleries_size" value="', isset($meta['size']) ? $meta['size'] : '', '" />'.
 			'<i class="icon dashicons dashicons-images-alt"></i>'.
 			'</a>'.
 			'</div>';
