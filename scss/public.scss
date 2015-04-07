@@ -6,7 +6,9 @@
 \*------------------------------------*/
 @import "vars";
 
-.pixproof-data{
+.proof_gallery {
+
+.pixproof-data {
 	position: relative;
 
 	margin-bottom: $_u;
@@ -224,126 +226,6 @@
 	cursor: pointer;
 }
 
-
-
-
-
-// Magnific Popup
-
-.mfp-arrow{
-	position: absolute;
-	top: 50%;
-
-	display: block;
-
-	outline: none;
-	@include transform(translateY(-50%));
-
-	&:hover, &:active, &:focus{
-		background-color: transparent;
-	}
-
-	&:before, &:after{
-		font-size: 7em;
-	}
-}
-
-.mfp-close{
-	outline: none;
-	padding: 0 $_u;
-
-	&:hover, &:active, &:focus{
-		background-color: transparent;
-	}	
-}
-
-.mfp-arrow-left{
-	left: 2%;
-
-	width: 0; 
-	height: 0; 
-	border-top: 30px solid transparent;
-	border-bottom: 30px solid transparent;
-	border-left: 30px solid transparent;
-
-	border-right: 30px solid white;
-}
-
-
-.mfp-arrow-right{
-	right: 2%;
-
-	width: 0; 
-	height: 0; 
-	border-top: 30px solid transparent;
-	border-bottom: 30px solid transparent;
-	border-right: 30px solid transparent;
-
-	border-left: 30px solid white;
-}
-
-.mfp-counter{
-	font-size: 1em;
-	color: white;
-}
-
-div.mfp-bottom-bar{
-
-	margin-top: -50px;
-
-	.mfp-title{
-		margin-top: 10px;
-	}
-}
-
-img.mfp-img{
-	padding: 80px 0;
-}
-
-div.mfp-figure:after{
-	content: none;
-}
-
-/*
- * Spinner
- */
-%spinner {
-	height:20px;
-	width:20px;
-	margin:0 6px 6px 0;
-
-	border-left:3px solid rgba(255,255,255,.15);
-	border-right:3px solid rgba(255,255,255,.15);
-	border-bottom:3px solid rgba(255,255,255,.15);
-	border-top:3px solid rgba(255,255,255,.8);
-	border-radius:100%;
-
-	-webkit-animation: rotation .6s infinite linear;
-	-moz-animation: rotation .6s infinite linear;
-	-o-animation: rotation .6s infinite linear;
-	animation: rotation .6s infinite linear;
-}
-
-@-webkit-keyframes rotation {
-	from {-webkit-transform: rotate(0deg);}
-	to {-webkit-transform: rotate(359deg);}
-}
-
-@-moz-keyframes rotation {
-	from {-moz-transform: rotate(0deg);}
-	to {-moz-transform: rotate(359deg);}
-}
-
-@-o-keyframes rotation {
-	from {-o-transform: rotate(0deg);}
-	to {-o-transform: rotate(359deg);}
-}
-
-@keyframes rotation {
-from {transform: rotate(0deg);}
-to {transform: rotate(359deg);}
-}
-
 /**
 * 6.5 Gallery
 * -----------------------------------------------------------------------------
@@ -494,4 +376,122 @@ button[disabled], btn.disabled {
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	opacity: .30;
+}
+
+}
+
+// Magnific Popup
+
+.mfp-arrow{
+	position: absolute;
+	top: 50%;
+
+	display: block;
+
+	outline: none;
+	@include transform(translateY(-50%));
+
+	&:hover, &:active, &:focus{
+		background-color: transparent;
+	}
+
+	&:before, &:after{
+		font-size: 7em;
+	}
+}
+
+.mfp-close{
+	outline: none;
+	padding: 0 $_u;
+
+	&:hover, &:active, &:focus{
+		background-color: transparent;
+	}	
+}
+
+.mfp-arrow-left{
+	left: 2%;
+
+	width: 0; 
+	height: 0; 
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	border-left: 30px solid transparent;
+
+	border-right: 30px solid white;
+}
+
+
+.mfp-arrow-right{
+	right: 2%;
+
+	width: 0; 
+	height: 0; 
+	border-top: 30px solid transparent;
+	border-bottom: 30px solid transparent;
+	border-right: 30px solid transparent;
+
+	border-left: 30px solid white;
+}
+
+.mfp-counter{
+	font-size: 1em;
+	color: white;
+}
+
+div.mfp-bottom-bar{
+
+	margin-top: -50px;
+
+	.mfp-title{
+		margin-top: 10px;
+	}
+}
+
+img.mfp-img{
+	padding: 80px 0;
+}
+
+div.mfp-figure:after{
+	content: none;
+}
+
+/*
+ * Spinner
+ */
+%spinner {
+	height:20px;
+	width:20px;
+	margin:0 6px 6px 0;
+
+	border-left:3px solid rgba(255,255,255,.15);
+	border-right:3px solid rgba(255,255,255,.15);
+	border-bottom:3px solid rgba(255,255,255,.15);
+	border-top:3px solid rgba(255,255,255,.8);
+	border-radius:100%;
+
+	-webkit-animation: rotation .6s infinite linear;
+	-moz-animation: rotation .6s infinite linear;
+	-o-animation: rotation .6s infinite linear;
+	animation: rotation .6s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+	from {-webkit-transform: rotate(0deg);}
+	to {-webkit-transform: rotate(359deg);}
+}
+
+@-moz-keyframes rotation {
+	from {-moz-transform: rotate(0deg);}
+	to {-moz-transform: rotate(359deg);}
+}
+
+@-o-keyframes rotation {
+	from {-o-transform: rotate(0deg);}
+	to {-o-transform: rotate(359deg);}
+}
+
+@keyframes rotation {
+	from {transform: rotate(0deg);}
+	to {transform: rotate(359deg);}
 }
