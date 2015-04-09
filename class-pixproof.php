@@ -380,8 +380,9 @@ class PixProofPlugin {
 			'orderby'        => 'menu_order ID'
 		) );
 		$event_date  = get_post_meta( get_the_ID(), '_pixproof_event_date', true );
+		$download_is_disabled  = get_post_meta( get_the_ID(), '_pixproof_disable_archive_download', true );
 
-		if ( self::$plugin_settings[ 'enable_archive_zip_download' ] ) {
+		if ( self::$plugin_settings[ 'enable_archive_zip_download' ] && $download_is_disabled !== 'on' ) {
 
 			// this must be here
 			if (!class_exists('PclZip')) {

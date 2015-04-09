@@ -77,6 +77,12 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 				),
 				'std'     => 'fullwidth',
 			),
+			array(
+				'name' => __( 'Disable Archive Download', 'pixproof_l10n' ),
+				'desc' => __( 'You can remove the ability to download the zip archive for this gallery', 'pixproof_l10n' ),
+				'id'   => $prefix . 'disable_archive_download',
+				'type' => 'checkbox',
+			),
 		),
 	);
 

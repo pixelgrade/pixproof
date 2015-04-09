@@ -101,7 +101,7 @@ return array(
 
 		'enable_pixproof_gallery_global_style'       => array(
 			'label'      => __( 'Change Gallery Global Style', 'pixproof_txtd' ),
-			'desc'       => __( 'Do you want to rewrite the style of each proof gallery?', 'pixproof_txtd' ),
+			'desc'       => __( 'Do you want to overwrite the style of all proof galleries?', 'pixproof_txtd' ),
 			'default'    => false,
 			'type'       => 'switch',
 			'show_group' => 'enable_pixproof_gallery_global_style_group',

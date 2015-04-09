@@ -38,6 +38,13 @@ You can choose from two options:
 
 == Changelog ==
 
+= 1.2.0 =
+* Added the ability to disable the download zip archives.
+* Added the option to select the thumbnail size for individual gallery but also for all of them.
+* Added the option to select the grid size
+* Fixed an issue where images where messed up after the plugin activation
+* Small style improvements
+
 = 1.1.1 =
 * Fixed ZIP archive download on Windows
 * Fixed Small bugs
