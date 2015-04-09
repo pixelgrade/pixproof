@@ -77,12 +77,7 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 				),
 				'std'     => 'fullwidth',
 			),
-			array(
-				'name' => __( 'Disable Archive Download', 'pixproof_l10n' ),
-				'desc' => __( 'You can remove the ability to download the zip archive for this gallery', 'pixproof_l10n' ),
-				'id'   => $prefix . 'disable_archive_download',
-				'type' => 'checkbox',
-			),
+
 		),
 	);
 
@@ -92,6 +87,15 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 			'desc' => __( 'Upload a .zip archive so the client can download it via the Download link. Leave it empty to hide the link.', 'pixproof_l10n' ),
 			'id'   => $prefix . 'file',
 			'type' => 'file',
+		) );
+	}
+
+	if ( ( $plugin_config[ 'enable_archive_zip_download' ] ) && ( ! isset( $plugin_config[ 'zip_archive_generation' ] ) || $plugin_config[ 'zip_archive_generation' ] !== 'manual' ) ) {
+		array_push( $meta_boxes[ 'test_metabox' ][ 'fields' ], 	array(
+			'name' => __( 'Disable Archive Download', 'pixproof_l10n' ),
+			'desc' => __( 'You can remove the ability to download the zip archive for this gallery', 'pixproof_l10n' ),
+			'id'   => $prefix . 'disable_archive_download',
+			'type' => 'checkbox',
 		) );
 	}
 
