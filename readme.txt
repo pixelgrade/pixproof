@@ -3,7 +3,7 @@ Contributors: euthelup, babbardel, pixelgrade, vlad.olaru, cristianfrumusanu
 Tags: gallery, proofing, images, photography, proof, thumbnails, image, photos, picture, media, clients, photo album
 Requires at least: 3.8.0
 Tested up to: 4.1.1
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
