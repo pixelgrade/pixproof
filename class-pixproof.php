@@ -20,7 +20,7 @@ class PixProofPlugin {
 	 * @since   1.0.0
 	 * @const   string
 	 */
-	protected $version = '1.1.1';
+	protected $version = '1.2.1';
 	/**
 	 * Unique identifier for your plugin.
 	 * Use this value (not the variable name) as the text domain when internationalizing strings of text. It should
