@@ -4,6 +4,16 @@ return array(
 	'type'    => 'postbox',
 	'label'   => 'General Settings',
 	'options' => array(
+		'gallery_position_in_content' => array (
+			'default'        => 'before',
+			'type'           => 'select',
+			'desc'	  => __( 'Select the PixProof gallery position in content: ', 'pixproof_txtd'),
+			'options' => array(
+						'before'    => __( 'Before the content', 'pixproof_txtd' ),
+						'after' => __( 'After the content', 'pixproof_txtd' ),
+					),
+		), 
+
 		'enable_archive_zip_download'   => array(
 			'label'          => __( 'Enable Images Download', 'pixproof_txtd' ),
 			'default'        => true,

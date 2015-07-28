@@ -278,9 +278,18 @@ class PixProofPlugin {
 		$gallery  = self::get_gallery();
 		$metadata = self::get_metadata();
 
-		// == This order is important ==
+		if ( isset( self::$plugin_settings['gallery_position_in_content'] ) && ! empty( self::$plugin_settings['gallery_position_in_content'] ) ) {
+			// == This order is important ==
+			$pixproof_output = $style . $metadata . $gallery;
+			$gallery_position = self::$plugin_settings['gallery_position_in_content'];
+			if ( $gallery_position === 'before' ) {
+				return $pixproof_output . $content;
+			} else {
+				return $content . $pixproof_output;
+			}
+		}
 
-		return $style . $metadata . $gallery . $content;
+		return $content;
 	}
 
 	static function get_gallery( $post_id = null ) {
