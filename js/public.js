@@ -11,8 +11,8 @@
 			ev.preventDefault();
 			ev.stopPropagation();
 
-			var photo = $('#' + $(this).data('photoid'));
-
+			//var photo = $('#' + $(this).data('photoid'));
+			var photo = $('[id=' + $(this).data('photoid') + ']');
 			$(photo).toggleClass('selected');
 			$(photo).addClass('selecting');
 
