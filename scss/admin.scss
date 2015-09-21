@@ -1,5 +1,4 @@
 /* This stylesheet is used to style the admin option form of the plugin. */
-
 .extendable_options {
 	height: 0;
 	overflow: hidden;
@@ -36,5 +35,15 @@ fieldset.group {
 	}
 	.uninstall_area {
 		margin-top: 15px;
+	}
+}
+
+#pixproof_form {
+	label {
+		vertical-align: top;
+	}
+
+	.field-desc {
+		padding-bottom: 10px;
 	}
 }

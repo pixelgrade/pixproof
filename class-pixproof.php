@@ -202,7 +202,7 @@ class PixProofPlugin {
 	 */
 	function enqueue_styles() {
 
-		if ( ! wp_style_is( 'wpgrade-main-style' ) ) {
+		if ( ! wp_style_is( 'wpgrade-main-style' ) && self::$plugin_settings['disable_pixproof_style'] !== '1' ) {
 			wp_enqueue_style( 'pixproof_inuit', plugins_url( 'css/inuit.css', __FILE__ ), array(), $this->version );
 			wp_enqueue_style( 'pixproof_magnific-popup', plugins_url( 'css/mangnific-popup.css', __FILE__ ), array(), $this->version );
 		}
@@ -267,7 +267,8 @@ class PixProofPlugin {
 		$style = '';
 		// == This order is important ==
 		$pixproof_path = self::get_base_path();
-		if ( file_exists( $pixproof_path . 'css/public.css' ) ) {
+
+		if ( self::$plugin_settings['disable_pixproof_style'] !== '1' && file_exists( $pixproof_path . 'css/public.css' ) ) {
 			ob_start();
 			echo '<style>';
 			include( $pixproof_path . 'css/public.css' );

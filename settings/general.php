@@ -12,7 +12,7 @@ return array(
 						'before'    => __( 'Before the content', 'pixproof_txtd' ),
 						'after' => __( 'After the content', 'pixproof_txtd' ),
 					),
-		), 
+		),
 
 		'enable_archive_zip_download'   => array(
 			'label'          => __( 'Enable Images Download', 'pixproof_txtd' ),
@@ -37,6 +37,15 @@ return array(
 					),
 				),
 			)
-		)
+		),
+
+
+		'disable_pixproof_style'   => array(
+			'label'          => __( 'Disable Plugin Style', 'pixproof_txtd' ),
+			'desc'           => __( 'If you want to style the PixProof galleries yourself you can remove the plugin style here ', 'pixproof_txtd'),
+			'default'        => false,
+			'type'           => 'switch',
+			'display_option' => true
+		),
 	)
 ); # config

@@ -3,6 +3,8 @@
 	# Hidden fields
 	'settings_saved_once'                   => '0',
 	# General
+
+	'disable_pixproof_style'                => false,
 	'enable_archive_zip_download'           => true,
 	'zip_archive_generation'                => 'manual',
 	# "Post Types" fields
