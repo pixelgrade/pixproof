@@ -883,28 +883,12 @@ class pixproof_Meta_Box {
 
 	/**
 	 * Defines the url which is used to load local resources.
-	 * This may need to be filtered for local Window installations.
 	 * If resources do not load, please check the wiki for details.
 	 * @since  1.0.1
 	 * @return string URL to CMB resources
 	 */
 	public static function get_meta_box_url() {
-
-		if ( strtoupper( substr( PHP_OS, 0, 3 ) ) === 'WIN' ) {
-			// Windows
-			$content_dir = str_replace( '/', DIRECTORY_SEPARATOR, WP_CONTENT_DIR );
-			$content_url = str_replace( $content_dir, WP_CONTENT_URL, dirname(__FILE__) );
-			$pixproof_url = str_replace( DIRECTORY_SEPARATOR, '/', $content_url );
-
-		} else {
-		  $pixproof_url = str_replace(
-				array(WP_CONTENT_DIR, WP_PLUGIN_DIR),
-				array(WP_CONTENT_URL, WP_PLUGIN_URL),
-				dirname( __FILE__ )
-			);
-		}
-
-		return trailingslashit( apply_filters('pixproof_meta_box_url', $pixproof_url ) );
+			return plugin_dir_url(__FILE__);
 	}
 
 	/**
