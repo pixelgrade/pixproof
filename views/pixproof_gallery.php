@@ -14,9 +14,9 @@
 	$idx = 1;
 	foreach ( $attachments as $attachment ) {
 		if ( 'selected' == self::get_attachment_class( $attachment ) ) {
-			$select_label = __( 'Deselect', 'pixproof_l10n' );
+			$select_label = __( 'Deselect', 'proof' );
 		} else {
-			$select_label = __( 'Select', 'pixproof_l10n' );
+			$select_label = __( 'Select', 'proof' );
 		}
 
 		$thumb_img  = wp_get_attachment_image_src( $attachment->ID, $thumbnails_size );
@@ -65,7 +65,7 @@
 							<ul class="actions-nav  nav  nav--stacked">
 								<li>
 									<a class="meta__action  zoom-action" href="<?php echo $image_full[0]; ?>" data-photoid="<?php echo $image_id_tag; ?>">
-										<span class="button-text"><?php _e( 'Zoom', 'pixproof_l10n' ); ?></span>
+										<span class="button-text"><?php _e( 'Zoom', 'proof' ); ?></span>
 									</a>
 								</li>
 								<li>
