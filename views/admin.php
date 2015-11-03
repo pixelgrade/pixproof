@@ -23,22 +23,22 @@
 
 	<div id="icon-options-general" class="icon32"><br></div>
 
-	<h2><?php _e('Pixproof', 'pixproof_txtd'); ?></h2>
+	<h2><?php _e('Pixproof', 'pixproof'); ?></h2>
 
 	<?php if ($processor->ok()): ?>
 
 		<?php if ( ! empty($errors)): ?>
 			<br/>
 			<p class="update-nag">
-				<strong><?php _e('Unable to save settings.', 'pixproof_txtd'); ?></strong>
-				<?php _e('Please check the fields for errors and typos.', 'pixproof_txtd'); ?>
+				<strong><?php _e('Unable to save settings.', 'pixproof'); ?></strong>
+				<?php _e('Please check the fields for errors and typos.', 'pixproof'); ?>
 			</p>
 		<?php endif; ?>
 
 		<?php if ($processor->performed_update()): ?>
 			<br/>
 			<p class="update-nag">
-				<?php _e('Settings have been updated.', 'pixproof_txtd');?>
+				<?php _e('Settings have been updated.', 'pixproof');?>
 			</p>
 		<?php endif; ?>
 
@@ -51,7 +51,7 @@
 <!--			--><?php //echo $f->field('taxonomies')->render(); ?>
 
 			<button type="submit" class="button button-primary">
-				<?php _e('Save Changes', 'pixproof_txtd'); ?>
+				<?php _e('Save Changes', 'pixproof'); ?>
 			</button>
 
 		<?php echo $f->endform() ?>

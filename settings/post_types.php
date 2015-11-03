@@ -28,13 +28,13 @@ if ( is_array( $_wp_additional_image_sizes ) ) {
 
 return array(
 	'type'    => 'postbox',
-	'label'   => __( 'Proof Galleries Settings', 'pixproof_txtd' ),
+	'label'   => __( 'Proof Galleries Settings', 'pixproof' ),
 	// Custom field settings
 	// ---------------------
 
 	'options' => array(
 		'enable_pixproof_gallery'       => array(
-			'label'          => __( 'Enable Pixproof Galleries', 'pixproof_txtd' ),
+			'label'          => __( 'Enable Pixproof Galleries', 'pixproof' ),
 			'default'        => true,
 			'type'           => 'switch',
 			'show_group'     => 'enable_pixproof_gallery_group',
@@ -45,20 +45,20 @@ return array(
 			'type'    => 'group',
 			'options' => array(
 				'pixproof_single_item_label'             => array(
-					'label'   => __( 'Single Item Label', 'pixproof_txtd' ),
-					'desc'    => __( 'Here you can change the singular label.The default is "Proof Gallery"', 'pixproof_txtd' ),
-					'default' => __( 'Proof Gallery', 'pixproof_txtd' ),
+					'label'   => __( 'Single Item Label', 'pixproof' ),
+					'desc'    => __( 'Here you can change the singular label.The default is "Proof Gallery"', 'pixproof' ),
+					'default' => __( 'Proof Gallery', 'pixproof' ),
 					'type'    => 'text',
 				),
 				'pixproof_multiple_items_label'          => array(
-					'label'   => __( 'Multiple Items Label (plural)', 'pixproof_txtd' ),
-					'desc'    => __( 'Here you can change the plural label.The default is "Proof Galleries"', 'pixproof_txtd' ),
-					'default' => __( 'Proof Galleries', 'pixproof_txtd' ),
+					'label'   => __( 'Multiple Items Label (plural)', 'pixproof' ),
+					'desc'    => __( 'Here you can change the plural label.The default is "Proof Galleries"', 'pixproof' ),
+					'default' => __( 'Proof Galleries', 'pixproof' ),
 					'type'    => 'text',
 				),
 				'pixproof_change_single_item_slug'       => array(
-					'label'      => __( 'Change Gallery Slug', 'pixproof_txtd' ),
-					'desc'       => __( 'Do you want to rewrite the single gallery item slug?', 'pixproof_txtd' ),
+					'label'      => __( 'Change Gallery Slug', 'pixproof' ),
+					'desc'       => __( 'Do you want to rewrite the single gallery item slug?', 'pixproof' ),
 					'default'    => false,
 					'type'       => 'switch',
 					'show_group' => 'pixproof_change_single_item_slug_group',
@@ -67,8 +67,8 @@ return array(
 					'type'    => 'group',
 					'options' => array(
 						'pixproof_gallery_new_single_item_slug' => array(
-							'label'   => __( 'New Single Item Slug', 'pixproof_txtd' ),
-							'desc'    => __( 'Change the single gallery slug as you need it.', 'pixproof_txtd' ),
+							'label'   => __( 'New Single Item Slug', 'pixproof' ),
+							'desc'    => __( 'Change the single gallery slug as you need it.', 'pixproof' ),
 							'default' => 'pixproof_gallery',
 							'type'    => 'text',
 						),
@@ -76,8 +76,8 @@ return array(
 				),
 				//				'pixproof_change_archive_slug' => array
 				//				(
-				//					'label' => __('Change Archive Slug', 'pixproof_txtd'),
-				//					'desc' => __('Do you want to rewrite the proof gallery archive slug? This will only be used if you don\'t have a page with the Portfolio template.', 'pixproof_txtd'),
+				//					'label' => __('Change Archive Slug', 'pixproof'),
+				//					'desc' => __('Do you want to rewrite the proof gallery archive slug? This will only be used if you don\'t have a page with the Portfolio template.', 'pixproof'),
 				//					'default' => false,
 				//					'type' => 'switch',
 				//					'show_group' => 'pixproof_change_archive_slug_group',
@@ -89,8 +89,8 @@ return array(
 				//					(
 				//						'pixproof_new_archive_slug' => array
 				//						(
-				//							'label' => __('New Category Slug', 'pixproof_txtd'),
-				//							'desc' => __('Change the pixproof category slug as you need it.', 'pixproof_txtd'),
+				//							'label' => __('New Category Slug', 'pixproof'),
+				//							'desc' => __('Change the pixproof category slug as you need it.', 'pixproof'),
 				//							'default' => 'pixproof',
 				//							'type' => 'text',
 				//						),
@@ -100,8 +100,8 @@ return array(
 		),
 
 		'enable_pixproof_gallery_global_style'       => array(
-			'label'      => __( 'Change Gallery Global Style', 'pixproof_txtd' ),
-			'desc'       => __( 'Do you want to overwrite the style of all proof galleries?', 'pixproof_txtd' ),
+			'label'      => __( 'Change Gallery Global Style', 'pixproof' ),
+			'desc'       => __( 'Do you want to overwrite the style of all proof galleries?', 'pixproof' ),
 			'default'    => false,
 			'type'       => 'switch',
 			'show_group' => 'enable_pixproof_gallery_global_style_group',
@@ -113,14 +113,14 @@ return array(
 
 				'gallery_thumbnail_sizes' => array(
 					'name'    => 'gallery_thumbnail_sizes',
-					'label'   => __( 'How big the image thumbnails should be?', 'pixproof_txtd' ),
+					'label'   => __( 'How big the image thumbnails should be?', 'pixproof' ),
 					'default' => 'medium',
 					'type'    => 'select',
 					'options' => $size_options,
 				),
 				'gallery_grid_sizes' => array(
 					'name'    => 'gallery_grid_sizes',
-					'label'   => __( 'How big should be the grid?', 'pixproof_txtd' ),
+					'label'   => __( 'How big should be the grid?', 'pixproof' ),
 					'default' => '3',
 					'type'    => 'select',
 					'options' => array(
