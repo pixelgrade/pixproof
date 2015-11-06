@@ -4,13 +4,13 @@ $settings = get_option('pixproof_settings');
 
 if ( !isset($settings['enable_pixproof_gallery'] ) || $settings['enable_pixproof_gallery'] != true  ) return;
 
-$single_label =  _x( 'Proof Gallery', 'Post Type Singular Name', 'pixproof_txtd' );
+$single_label =  esc_html_x( 'Proof Gallery', 'Post Type Singular Name', 'pixproof' );
 if ( isset($settings['pixproof_single_item_label']) && !empty( $settings['pixproof_single_item_label'] ) ) {
 	$single_label = $settings['pixproof_single_item_label'];
 }
 
-$name = _x( 'Proof Galleries', 'Post Type General Name', 'pixproof_txtd' );
-$menu_name = __( 'Proof Galleries', 'pixproof_txtd' );
+$name = esc_html_x( 'Proof Galleries', 'Post Type General Name', 'pixproof' );
+$menu_name = esc_html__( 'Proof Galleries', 'pixproof' );
 if ( isset($settings['pixproof_multiple_items_label']) && !empty( $settings['pixproof_multiple_items_label'] ) ) {
 	$name = $menu_name = $settings['pixproof_multiple_items_label'];
 }
@@ -26,16 +26,16 @@ $labels = array(
 	'name'                => $name,
 	'singular_name'       => $single_label,
 	'menu_name'           => $menu_name,
-	'parent_item_colon'   => __( 'Parent Item:', 'pixproof_txtd' ),
-	'all_items'           => __( 'All Items', 'pixproof_txtd' ),
-	'view_item'           => __( 'View Item', 'pixproof_txtd' ),
-	'add_new_item'        => __( 'Add New Proof Gallery', 'pixproof_txtd' ),
-	'add_new'             => __( 'Add New', 'pixproof_txtd' ),
-	'edit_item'           => __( 'Edit Proof Gallery', 'pixproof_txtd' ),
-	'update_item'         => __( 'Update Proof Gallery', 'pixproof_txtd' ),
-	'search_items'        => __( 'Search Proof Galelry', 'pixproof_txtd' ),
-	'not_found'           => __( 'Not found', 'pixproof_txtd' ),
-	'not_found_in_trash'  => __( 'Not found in Trash', 'pixproof_txtd' ),
+	'parent_item_colon'   => esc_html__( 'Parent Item:', 'pixproof' ),
+	'all_items'           => esc_html__( 'All Items', 'pixproof' ),
+	'view_item'           => esc_html__( 'View Item', 'pixproof' ),
+	'add_new_item'        => esc_html__( 'Add New Proof Gallery', 'pixproof' ),
+	'add_new'             => esc_html__( 'Add New', 'pixproof' ),
+	'edit_item'           => esc_html__( 'Edit Proof Gallery', 'pixproof' ),
+	'update_item'         => esc_html__( 'Update Proof Gallery', 'pixproof' ),
+	'search_items'        => esc_html__( 'Search Proof Galelry', 'pixproof' ),
+	'not_found'           => esc_html__( 'Not found', 'pixproof' ),
+	'not_found_in_trash'  => esc_html__( 'Not found in Trash', 'pixproof' ),
 );
 
 $args = array(

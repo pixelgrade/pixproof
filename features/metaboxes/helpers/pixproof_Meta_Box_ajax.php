@@ -44,7 +44,7 @@ class pixproof_Meta_Box_ajax {
 
 		// send back error if empty
 		if ( empty( $oembed_string ) )
-			self::send_result( '<p class="ui-state-error-text">'. __( 'Please Try Again', 'pixproof_l10n' ) .'</p>', false );
+			self::send_result( '<p class="ui-state-error-text">'. esc_html__( 'Please Try Again', 'pixproof' ) .'</p>', false );
 
 		// Set width of embed
 		$embed_width = isset( $_REQUEST['oembed_width'] ) && intval( $_REQUEST['oembed_width'] ) < 640 ? intval( $_REQUEST['oembed_width'] ) : '640';
@@ -128,10 +128,10 @@ class pixproof_Meta_Box_ajax {
 
 		// Send back our embed
 		if ( $check_embed && $check_embed != $fallback )
-			return '<div class="embed_status">'. $check_embed .'<p><a href="#" class="pixproof_remove_file_button" rel="'. $args['field_id'] .'">'. __( 'Remove Embed', 'pixproof_l10n' ) .'</a></p></div>';
+			return '<div class="embed_status">'. $check_embed .'<p><a href="#" class="pixproof_remove_file_button" rel="'. $args['field_id'] .'">'. esc_html__( 'Remove Embed', 'pixproof' ) .'</a></p></div>';
 
 		// Otherwise, send back error info that no oEmbeds were found
-		return '<p class="ui-state-error-text">'. sprintf( __( 'No oEmbed Results Found for %s. View more info at', 'pixproof_l10n' ), $fallback ) .' <a href="http://codex.wordpress.org/Embeds" target="_blank">codex.wordpress.org/Embeds</a>.</p>';
+		return '<p class="ui-state-error-text">'. sprintf( esc_html__( 'No oEmbed Results Found for %s. View more info at', 'pixproof' ), $fallback ) .' <a href="http://codex.wordpress.org/Embeds" target="_blank">codex.wordpress.org/Embeds</a>.</p>';
 
 	}
 

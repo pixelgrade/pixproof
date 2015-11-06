@@ -231,7 +231,7 @@ class PixProofPlugin {
 	 */
 	function add_plugin_admin_menu() {
 
-		$this->plugin_screen_hook_suffix = add_options_page( __( 'PixProof', $this->plugin_slug ), __( 'PixProof', $this->plugin_slug ), 'edit_plugins', $this->plugin_slug, array(
+		$this->plugin_screen_hook_suffix = add_options_page( esc_html__( 'PixProof', 'pixproof' ), esc_html__( 'PixProof', 'pixproof' ), 'edit_plugins', $this->plugin_slug, array(
 			$this,
 			'display_plugin_admin_page'
 		) );
@@ -249,7 +249,7 @@ class PixProofPlugin {
 	 * Add settings action link to the plugins page.
 	 */
 	function add_action_links( $links ) {
-		return array_merge( array( 'settings' => '<a href="' . admin_url( 'options-general.php?page=pixproof' ) . '">' . __( 'Settings', $this->plugin_slug ) . '</a>' ), $links );
+		return array_merge( array( 'settings' => '<a href="' . admin_url( 'options-general.php?page=pixproof' ) . '">' . esc_html__( 'Settings', 'pixproof' ) . '</a>' ), $links );
 	}
 
 	function register_entities() {

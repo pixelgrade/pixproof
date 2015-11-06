@@ -24,7 +24,7 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 
 	$meta_boxes[ 'test_metabox' ] = array(
 		'id'         => 'pixroof_gallery',
-		'title'      => __( 'Pixproof Gallery', 'pixproof_l10n' ),
+		'title'      => esc_html__( 'Pixproof Gallery', 'pixproof' ),
 		'pages'      => array( 'proof_gallery', ), // Post type
 		'context'    => 'normal',
 		'priority'   => 'high',
@@ -32,46 +32,46 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 		// 'pixproof_styles' => true, // Enqueue the CMB stylesheet on the frontend
 		'fields'     => array(
 			array(
-				'name'       => __( 'Gallery', 'pixproof_l10n' ),
+				'name'       => esc_html__( 'Gallery', 'pixproof' ),
 				'id'         => $prefix . 'main_gallery',
 				'type'       => 'gallery',
 				'show_names' => false,
 			),
 			array(
-				'name' => __( 'Client Name', 'pixproof_l10n' ),
-				//				'desc' => __( 'field description (optional)', 'pixproof_l10n' ),
+				'name' => esc_html__( 'Client Name', 'pixproof' ),
+				//				'desc' => esc_html__( 'field description (optional)', 'pixproof' ),
 				'id'   => $prefix . 'client_name',
 				'type' => 'text',
 			),
 			array(
-				'name' => __( 'Date', 'pixproof_l10n' ),
+				'name' => esc_html__( 'Date', 'pixproof' ),
 				'id'   => $prefix . 'event_date',
 				'type' => 'text_date',
 			),
 			array(
-				'name'    => __( 'Photos Display Name', 'pixproof_l10n' ),
-				'desc'    => __( 'How would you like to identify each photo?', 'pixproof_l10n' ),
+				'name'    => esc_html__( 'Photos Display Name', 'pixproof' ),
+				'desc'    => esc_html__( 'How would you like to identify each photo?', 'pixproof' ),
 				'id'      => $prefix . 'photo_display_name',
 				'type'    => 'select',
 				'options' => array(
 					array(
-						'name'  => __( 'Unique IDs', 'pixproof_l10n' ),
+						'name'  => esc_html__( 'Unique IDs', 'pixproof' ),
 						'value' => 'unique_ids'
 					),
 					array(
-						'name'  => __( 'Consecutive IDs', 'pixproof_l10n' ),
+						'name'  => esc_html__( 'Consecutive IDs', 'pixproof' ),
 						'value' => 'consecutive_ids'
 					),
 					array(
-						'name'  => __( 'File Name', 'pixproof_l10n' ),
+						'name'  => esc_html__( 'File Name', 'pixproof' ),
 						'value' => 'file_name'
 					),
 					array(
-						'name'  => __( 'Unique IDs and Photo Title', 'pixproof_l10n' ),
+						'name'  => esc_html__( 'Unique IDs and Photo Title', 'pixproof' ),
 						'value' => 'unique_ids_photo_title'
 					),
 					array(
-						'name'  => __( 'Consecutive IDs and Photo Title', 'pixproof_l10n' ),
+						'name'  => esc_html__( 'Consecutive IDs and Photo Title', 'pixproof' ),
 						'value' => 'consecutive_ids_photo_title'
 					),
 				),
@@ -83,8 +83,8 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 
 	if ( ( $plugin_config[ 'enable_archive_zip_download' ] ) && ( ! isset( $plugin_config[ 'zip_archive_generation' ] ) || $plugin_config[ 'zip_archive_generation' ] == 'manual' ) ) {
 		array_push( $meta_boxes[ 'test_metabox' ][ 'fields' ], array(
-			'name' => __( 'Client .zip archive', 'pixproof_l10n' ),
-			'desc' => __( 'Upload a .zip archive so the client can download it via the Download link. Leave it empty to hide the link.', 'pixproof_l10n' ),
+			'name' => esc_html__( 'Client .zip archive', 'pixproof' ),
+			'desc' => esc_html__( 'Upload a .zip archive so the client can download it via the Download link. Leave it empty to hide the link.', 'pixproof' ),
 			'id'   => $prefix . 'file',
 			'type' => 'file',
 		) );
@@ -92,8 +92,8 @@ function pixproof_sample_metaboxes( array $meta_boxes ) {
 
 	if ( ( $plugin_config[ 'enable_archive_zip_download' ] ) && ( ! isset( $plugin_config[ 'zip_archive_generation' ] ) || $plugin_config[ 'zip_archive_generation' ] !== 'manual' ) ) {
 		array_push( $meta_boxes[ 'test_metabox' ][ 'fields' ], 	array(
-			'name' => __( 'Disable Archive Download', 'pixproof_l10n' ),
-			'desc' => __( 'You can remove the ability to download the zip archive for this gallery', 'pixproof_l10n' ),
+			'name' => esc_html__( 'Disable Archive Download', 'pixproof' ),
+			'desc' => esc_html__( 'You can remove the ability to download the zip archive for this gallery', 'pixproof' ),
 			'id'   => $prefix . 'disable_archive_download',
 			'type' => 'checkbox',
 		) );

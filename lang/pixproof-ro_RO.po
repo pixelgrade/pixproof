@@ -1,24 +1,20 @@
+# Copyright (C) 2015 PixProof
+# This file is distributed under the same license as the PixProof package.
 msgid ""
 msgstr ""
-"Project-Id-Version: PixProof\n"
-"POT-Creation-Date: 2015-11-02 23:40+0100\n"
-"PO-Revision-Date: 2015-11-02 23:41+0100\n"
-"Last-Translator: David <david@closemarketing.es>\n"
-"Language-Team: David <david@closemarketing.es>\n"
-"Language: es\n"
+"Project-Id-Version: PixProof 1.2.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pixproof\n"
+"POT-Creation-Date: 2015-11-06 14:46:36+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.6\n"
-"X-Poedit-Basepath: ..\n"
-"X-Poedit-WPHeader: pixproof.php\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: *.js\n"
+"PO-Revision-Date: 2015-11-06 17:00+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.7.6\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+"Language: ro\n"
 
 #. Plugin Name of the plugin/theme
 #: class-pixproof.php:234
@@ -27,306 +23,304 @@ msgstr "PixProof"
 
 #: class-pixproof.php:252
 msgid "Settings"
-msgstr "Ajustes"
+msgstr "Setari"
 
 #: core/defaults.php:30
 msgid "Numberic value required."
-msgstr ""
+msgstr "Valoare numerica necesara"
 
 #: core/defaults.php:31
 msgid "Field is required."
-msgstr "Es un campo obligatorio."
+msgstr "Camp obligatoriu"
 
 #: features/custom_post_types.php:7
 msgctxt "Post Type Singular Name"
 msgid "Proof Gallery"
-msgstr ""
+msgstr "Galerie Proof"
 
 #: features/custom_post_types.php:12
-#, fuzzy
 msgctxt "Post Type General Name"
 msgid "Proof Galleries"
-msgstr "Galerías Proof"
+msgstr "Galerii Proof"
 
 #: features/custom_post_types.php:13 plugin-defaults.php:14
 #: settings/post_types.php:56
 msgid "Proof Galleries"
-msgstr "Galerías Proof"
+msgstr "Galerii Proof"
 
 #: features/custom_post_types.php:29
 msgid "Parent Item:"
-msgstr "Elemento Superior:"
+msgstr "Parinte:"
 
 #: features/custom_post_types.php:30
 msgid "All Items"
-msgstr "Todos los elementos"
+msgstr "Toate articolele"
 
 #: features/custom_post_types.php:31
 msgid "View Item"
-msgstr "Ver Elemento"
+msgstr "Vizualizeaza articol"
 
 #: features/custom_post_types.php:32
 msgid "Add New Proof Gallery"
-msgstr ""
+msgstr "Adauga o noua galerie Proof"
 
 #: features/custom_post_types.php:33
 msgid "Add New"
-msgstr "Añadir nueva"
+msgstr "Adauga"
 
 #: features/custom_post_types.php:34
 msgid "Edit Proof Gallery"
-msgstr ""
+msgstr "Editeaza galerie Proof"
 
 #: features/custom_post_types.php:35
 msgid "Update Proof Gallery"
-msgstr ""
+msgstr "Actualizeaza galerie Proof"
 
 #: features/custom_post_types.php:36
 msgid "Search Proof Galelry"
-msgstr ""
+msgstr "Cauta in galerie Proof"
 
 #: features/custom_post_types.php:37
 msgid "Not found"
-msgstr "No encontrada"
+msgstr "Negasit"
 
 #: features/custom_post_types.php:38
 msgid "Not found in Trash"
-msgstr "No se encontró en la papelera"
+msgstr "Nu a fost gasit in gunoi"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_ajax.php:47
-#, fuzzy
 msgid "Please Try Again"
-msgstr ""
-"Hay un problema conectando a la base de datos. Por favor intente nuevamente "
-"más tarde."
+msgstr "Mai incearca"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_ajax.php:131
 msgid "Remove Embed"
-msgstr ""
+msgstr "Sterge Embed"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_ajax.php:134
-#, php-format
 msgid "No oEmbed Results Found for %s. View more info at"
-msgstr ""
+msgstr "Nici un resultat pentru %s. Vezi mai multe la"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:150
 msgid "Add Row"
-msgstr "Añadir Fila"
+msgstr "Adauga rand"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:178
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:553
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:596
 msgid "Remove"
-msgstr "Quitar"
+msgstr "Sterge"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:529
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:569
 msgid "Add or Upload File"
-msgstr "Agregar o Subir archivo"
+msgstr "Incarca sau adauga fisier"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:542
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:588
 msgid "Remove Image"
-msgstr "Eliminar imagen"
+msgstr "Sterge imaginea"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:553
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:596
 msgid "File:"
-msgstr "Archivo:"
+msgstr "Fisier:"
 
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:553
 #: features/metaboxes/helpers/pixproof_Meta_Box_types.php:596
 #: views/pixproof_metadata.php:52
 msgid "Download"
-msgstr "Descargar"
+msgstr "Descarca"
 
 #: features/metaboxes/init.php:243
 msgid "Clear"
-msgstr "Limpiar"
+msgstr "Curata"
 
 #: features/metaboxes/init.php:244
 msgid "Default"
-msgstr "Predeterminado"
+msgstr "Implicit"
 
 #: features/metaboxes/init.php:245
 msgid "Select Color"
-msgstr "Seleccionar el color"
+msgstr "Selecteaza culoarea"
 
 #: features/metaboxes/init.php:246
 msgid "Current Color"
-msgstr "Color actual"
+msgstr "Culoarea curenta"
 
 #: features/metaboxes/init.php:1189
 msgid "Save"
-msgstr "Guardar"
+msgstr "Salveaza"
 
 #: features/metaboxes/metaboxes.php:27
 msgid "Pixproof Gallery"
-msgstr ""
+msgstr "Galerie PixProof"
 
 #: features/metaboxes/metaboxes.php:35
 msgid "Gallery"
-msgstr "Galería"
+msgstr "Galerie"
 
 #: features/metaboxes/metaboxes.php:41
 msgid "Client Name"
-msgstr "Nombre del Cliente"
+msgstr "Numele clientului"
 
 #: features/metaboxes/metaboxes.php:47
 msgid "Date"
-msgstr "Fecha"
+msgstr "Data"
 
 #: features/metaboxes/metaboxes.php:52
 msgid "Photos Display Name"
-msgstr ""
+msgstr "Numele imaginilor"
 
 #: features/metaboxes/metaboxes.php:53
 msgid "How would you like to identify each photo?"
-msgstr ""
+msgstr "Cum doresti sa identifici fiecare imagine?"
 
 #: features/metaboxes/metaboxes.php:58
 msgid "Unique IDs"
-msgstr ""
+msgstr "ID-uri unice"
 
 #: features/metaboxes/metaboxes.php:62
 msgid "Consecutive IDs"
-msgstr ""
+msgstr "ID-uri consecutive"
 
 #: features/metaboxes/metaboxes.php:66
 msgid "File Name"
-msgstr "Nombre de archivo"
+msgstr "Numele fisierului"
 
 #: features/metaboxes/metaboxes.php:70
 msgid "Unique IDs and Photo Title"
-msgstr ""
+msgstr "ID-uri unice si titlul imaginii"
 
 #: features/metaboxes/metaboxes.php:74
 msgid "Consecutive IDs and Photo Title"
-msgstr ""
+msgstr "ID-uri consecutive si numele imaginii"
 
 #: features/metaboxes/metaboxes.php:86
 msgid "Client .zip archive"
-msgstr "Archivo .zip de cliente"
+msgstr "Arhiva clientului"
 
 #: features/metaboxes/metaboxes.php:87
 msgid ""
 "Upload a .zip archive so the client can download it via the Download link. "
 "Leave it empty to hide the link."
 msgstr ""
+"Incarca o arhiva iar clientul o va putea descarca cu ajutorul linkului. Lasa "
+"gol pentru a ascunde link-ul."
 
 #: features/metaboxes/metaboxes.php:95
 msgid "Disable Archive Download"
-msgstr "Desactivar la descarga de archivo"
+msgstr "Dezactiveaza descarcarea arhivei"
 
 #: features/metaboxes/metaboxes.php:96
 msgid "You can remove the ability to download the zip archive for this gallery"
-msgstr ""
+msgstr "Poti opri optiunea pentru descarcarea arhivei pentru aceasta galerie."
 
 #: plugin-config.php:71
 msgid "Invalid Value."
-msgstr "Valor inválido."
+msgstr "Valoare invalida"
 
 #: plugin-defaults.php:13 settings/post_types.php:50
 msgid "Proof Gallery"
-msgstr ""
+msgstr "Galerie Proof"
 
 #: settings/general.php:10
 msgid "Select the PixProof gallery position in content: "
-msgstr ""
+msgstr "Selecteaza pozitia galeriei PixProof"
 
 #: settings/general.php:12
 msgid "Before the content"
-msgstr "Antes del contenido"
+msgstr "Inainte de continut"
 
 #: settings/general.php:13
 msgid "After the content"
-msgstr "Después del contenido"
+msgstr "Dupa continut"
 
 #: settings/general.php:18
 msgid "Enable Images Download"
-msgstr ""
+msgstr "Activeaza descarcarea imaginilor"
 
 #: settings/general.php:30
 msgid "The ZIP archive should be generated:"
-msgstr ""
+msgstr "Arhiva ar trebui generata:"
 
 #: settings/general.php:31
 msgid "How the archive file should be generated?"
-msgstr ""
+msgstr "Cum sa fie generata arhiva?"
 
 #: settings/general.php:35
 msgid "Manually (uploaded by the gallery owner)"
-msgstr ""
+msgstr "Manual (incarcata de catre detinatorul galeriei)"
 
 #: settings/general.php:36
 msgid "Automatically (from the selected images)"
-msgstr ""
+msgstr "Automat (din imaginile selectate)"
 
 #: settings/general.php:44
 msgid "Disable Plugin Style"
-msgstr ""
+msgstr "Dezactiveaza stilul pluginului"
 
 #: settings/general.php:45
 msgid ""
 "If you want to style the PixProof galleries yourself you can remove the "
 "plugin style here "
 msgstr ""
+"Daca doresti sa stilizezi galeria, poati dezactiva stilul pluginului de aici"
 
 #: settings/post_types.php:31
 msgid "Proof Galleries Settings"
-msgstr ""
+msgstr "Setarile galeriei Proof"
 
 #: settings/post_types.php:37
 msgid "Enable Pixproof Galleries"
-msgstr ""
+msgstr "Activeaza galeriile PixProof"
 
 #: settings/post_types.php:48
 msgid "Single Item Label"
-msgstr ""
+msgstr "Label pentru un singur element"
 
 #: settings/post_types.php:49
 msgid "Here you can change the singular label.The default is \"Proof Gallery\""
-msgstr ""
+msgstr "Poti schimba label pentru un singur element."
 
 #: settings/post_types.php:54
 msgid "Multiple Items Label (plural)"
-msgstr ""
+msgstr "Label pentru plural"
 
 #: settings/post_types.php:55
 msgid "Here you can change the plural label.The default is \"Proof Galleries\""
-msgstr ""
+msgstr "Poti schimba label pentru multiple elemente."
 
 #: settings/post_types.php:60
 msgid "Change Gallery Slug"
-msgstr ""
+msgstr "Schimba slug pentru galerie"
 
 #: settings/post_types.php:61
 msgid "Do you want to rewrite the single gallery item slug?"
-msgstr ""
+msgstr "Doresti sa rescrii slug pentru o singura galerie?"
 
 #: settings/post_types.php:70
 msgid "New Single Item Slug"
-msgstr ""
+msgstr "Slug pentru un nou element"
 
 #: settings/post_types.php:71
 msgid "Change the single gallery slug as you need it."
-msgstr ""
+msgstr "Schimba slug pentru o galerie "
 
 #: settings/post_types.php:103
 msgid "Change Gallery Global Style"
-msgstr ""
+msgstr "Schimba global stilul galeriei"
 
 #: settings/post_types.php:104
 msgid "Do you want to overwrite the style of all proof galleries?"
-msgstr ""
+msgstr "Doresti sa suprascrii stilul pentru toate galeriile Proof?"
 
 #: settings/post_types.php:116
 msgid "How big the image thumbnails should be?"
-msgstr ""
+msgstr "Cat de mare trebuie sa fie thumbnail-ul?"
 
 #: settings/post_types.php:123
 msgid "How big should be the grid?"
-msgstr ""
+msgstr "Cat de mare trebuie sa fie grid-ul?"
 
 #: views/admin.php:26
 msgid "Pixproof"
@@ -334,43 +328,43 @@ msgstr "PixProof"
 
 #: views/admin.php:33
 msgid "Unable to save settings."
-msgstr ""
+msgstr "Imposibil de salvat setarile"
 
 #: views/admin.php:34
 msgid "Please check the fields for errors and typos."
-msgstr ""
+msgstr "Te rog verifica campurile din nou"
 
 #: views/admin.php:41
 msgid "Settings have been updated."
-msgstr "Tus ajustes han sido guardados."
+msgstr "Setari actualizate"
 
 #: views/admin.php:54
 msgid "Save Changes"
-msgstr "Guardar cambios"
+msgstr "Salveaza modificarile"
 
 #: views/pixproof_gallery.php:17
 msgid "Deselect"
-msgstr "Deseleccionar"
+msgstr "Deselecteaza"
 
 #: views/pixproof_gallery.php:19
 msgid "Select"
-msgstr "Seleccionar"
+msgstr "Selecteaza"
 
 #: views/pixproof_gallery.php:68
 msgid "Zoom"
-msgstr "Zoom"
+msgstr "Mareste"
 
 #: views/pixproof_metadata.php:17
 msgid "Client"
-msgstr "Cliente"
+msgstr "Client"
 
 #: views/pixproof_metadata.php:29
 msgid "Event date"
-msgstr "Fecha del evento"
+msgstr "Data evenimentului"
 
 #: views/pixproof_metadata.php:41
 msgid "Images"
-msgstr "Imágenes"
+msgstr "Imagini"
 
 #. Plugin URI of the plugin/theme
 #. Author URI of the plugin/theme
@@ -379,7 +373,7 @@ msgstr "http://pixelgrade.com"
 
 #. Description of the plugin/theme
 msgid "WordPress photo gallery proofing plugin."
-msgstr ""
+msgstr "Plugin WordPress pentru galerii Proof"
 
 #. Author of the plugin/theme
 msgid "PixelGrade"

@@ -7,15 +7,15 @@ return array(
 		'gallery_position_in_content' => array (
 			'default'        => 'before',
 			'type'           => 'select',
-			'desc'	  => __( 'Select the PixProof gallery position in content: ', 'pixproof'),
+			'desc'	  => esc_html__( 'Select the PixProof gallery position in content: ', 'pixproof'),
 			'options' => array(
-						'before'    => __( 'Before the content', 'pixproof' ),
-						'after' => __( 'After the content', 'pixproof' ),
+						'before'    => esc_html__( 'Before the content', 'pixproof' ),
+						'after' => esc_html__( 'After the content', 'pixproof' ),
 					),
 		),
 
 		'enable_archive_zip_download'   => array(
-			'label'          => __( 'Enable Images Download', 'pixproof' ),
+			'label'          => esc_html__( 'Enable Images Download', 'pixproof' ),
 			'default'        => true,
 			'type'           => 'switch',
 			'show_group'     => 'enable_pixproof_gallery_group',
@@ -27,13 +27,13 @@ return array(
 			'options' => array(
 				'zip_archive_generation' => array(
 					'name'    => 'zip_archive_generation',
-					'label'   => __( 'The ZIP archive should be generated:', 'pixproof' ),
-					'desc'    => __( 'How the archive file should be generated?', 'pixproof' ),
+					'label'   => esc_html__( 'The ZIP archive should be generated:', 'pixproof' ),
+					'desc'    => esc_html__( 'How the archive file should be generated?', 'pixproof' ),
 					'default' => 'manual',
 					'type'    => 'select',
 					'options' => array(
-						'manual'    => __( 'Manually (uploaded by the gallery owner)', 'pixproof' ),
-						'automatic' => __( 'Automatically (from the selected images)', 'pixproof' ),
+						'manual'    => esc_html__( 'Manually (uploaded by the gallery owner)', 'pixproof' ),
+						'automatic' => esc_html__( 'Automatically (from the selected images)', 'pixproof' ),
 					),
 				),
 			)
@@ -41,8 +41,8 @@ return array(
 
 
 		'disable_pixproof_style'   => array(
-			'label'          => __( 'Disable Plugin Style', 'pixproof' ),
-			'desc'           => __( 'If you want to style the PixProof galleries yourself you can remove the plugin style here ', 'pixproof'),
+			'label'          => esc_html__( 'Disable Plugin Style', 'pixproof' ),
+			'desc'           => esc_html__( 'If you want to style the PixProof galleries yourself you can remove the plugin style here ', 'pixproof'),
 			'default'        => false,
 			'type'           => 'switch',
 			'display_option' => true

@@ -240,10 +240,10 @@ class pixproof_Meta_Box {
 			   wp_register_script( 'iris', admin_url( 'js/iris.min.js' ), array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ), self::CMB_VERSION );
 		   	wp_register_script( 'wp-color-picker', admin_url( 'js/color-picker.min.js' ), array( 'iris' ), self::CMB_VERSION );
 				wp_localize_script( 'wp-color-picker', 'wpColorPickerL10n', array(
-					'clear' => __( 'Clear' ),
-					'defaultString' => __( 'Default' ),
-					'pick' => __( 'Select Color' ),
-					'current' => __( 'Current Color' ),
+					'clear' => esc_html__( 'Clear', 'pixproof' ),
+					'defaultString' => esc_html__( 'Default', 'pixproof' ),
+					'pick' => esc_html__( 'Select Color', 'pixproof' ),
+					'current' => esc_html__( 'Current Color', 'pixproof' ),
 				) );
 			}
 		} else {
@@ -1186,7 +1186,7 @@ function pixproof_metabox_form( $meta_box, $object_id, $echo = true ) {
 
 	$form_format = apply_filters( 'pixproof_frontend_form_format', '<form class="cmb-form" method="post" id="%s" enctype="multipart/form-data" encoding="multipart/form-data"><input type="hidden" name="object_id" value="%s">%s<input type="submit" name="submit-cmb" value="%s" class="button-primary"></form>', $object_id, $meta_box, $form );
 
-	$form = sprintf( $form_format, $meta_box['id'], $object_id, $form, __( 'Save', 'pixproof_l10n' ) );
+	$form = sprintf( $form_format, $meta_box['id'], $object_id, $form, esc_html__( 'Save', 'pixproof' ) );
 
 	if ( $echo )
 		echo $form;

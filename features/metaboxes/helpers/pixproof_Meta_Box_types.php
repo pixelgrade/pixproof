@@ -147,7 +147,7 @@ class pixproof_Meta_Box_types {
 	 * @since 1.0.0
 	 */
 	private static function repeat_table_close() {
-		echo '</tbody></table><p class="add-row"><a data-selector="', pixproof_Meta_Box::$field['id'] ,'_repeat" class="add-row-button button" href="#">'. __( 'Add Row', 'pixproof_l10n' ) .'</a></p>';
+		echo '</tbody></table><p class="add-row"><a data-selector="', pixproof_Meta_Box::$field['id'] ,'_repeat" class="add-row-button button" href="#">'. esc_html__( 'Add Row', 'pixproof' ) .'</a></p>';
 	}
 
 	/**
@@ -175,7 +175,7 @@ class pixproof_Meta_Box_types {
 	 * @return string        HTML table cell markup
 	 */
 	private static function repeat_cell( $input ) {
-		return '<td>'. $input .'</td><td class="remove-row"><a class="button remove-row-button" href="#">'. __( 'Remove', 'pixproof_l10n' ) .'</a></td>';
+		return '<td>'. $input .'</td><td class="remove-row"><a class="button remove-row-button" href="#">'. esc_html__( 'Remove', 'pixproof' ) .'</a></td>';
 	}
 
 	/**
@@ -526,7 +526,7 @@ class pixproof_Meta_Box_types {
 	public static function file_list( $field, $meta, $object_id ) {
 
 		echo '<input class="pixproof_upload_file pixproof_upload_list" type="hidden" size="45" id="', $field['id'], '" name="', $field['id'], '" value="" />';
-		echo '<input class="pixproof_upload_button button pixproof_upload_list" type="button" value="'. __( 'Add or Upload File', 'pixproof_l10n' ) .'" />', self::desc( true );
+		echo '<input class="pixproof_upload_button button pixproof_upload_list" type="button" value="'. esc_html__( 'Add or Upload File', 'pixproof' ) .'" />', self::desc( true );
 
 		echo '<ul id="', $field['id'], '_status" class="pixproof_media_status attach_list">';
 
@@ -539,7 +539,7 @@ class pixproof_Meta_Box_types {
 					echo
 					'<li class="img_status">',
 						wp_get_attachment_image( $id, $preview_size ),
-						'<p><a href="#" class="pixproof_remove_file_button">'. __( 'Remove Image', 'pixproof_l10n' ) .'</a></p>
+						'<p><a href="#" class="pixproof_remove_file_button">'. esc_html__( 'Remove Image', 'pixproof' ) .'</a></p>
 						<input type="hidden" id="filelist-', $id ,'" name="', $field['id'] ,'[', $id ,']" value="', $fullurl ,'" />
 					</li>';
 
@@ -550,7 +550,7 @@ class pixproof_Meta_Box_types {
 					}
 					echo
 					'<li>',
-						__( 'File:', 'pixproof_l10n' ), ' <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $fullurl, '" target="_blank" rel="external">'. __( 'Download', 'pixproof_l10n' ) .'</a> / <a href="#" class="pixproof_remove_file_button">'. __( 'Remove', 'pixproof_l10n' ) .'</a>)
+					esc_html__( 'File:', 'pixproof' ), ' <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $fullurl, '" target="_blank" rel="external">'. esc_html__( 'Download', 'pixproof' ) .'</a> / <a href="#" class="pixproof_remove_file_button">'. esc_html__( 'Remove', 'pixproof' ) .'</a>)
 						<input type="hidden" id="filelist-', $id ,'" name="', $field['id'] ,'[', $id ,']" value="', $fullurl ,'" />
 					</li>';
 				}
@@ -566,7 +566,7 @@ class pixproof_Meta_Box_types {
 		if ( 'url' == $field['allow'] || ( is_array( $field['allow'] ) && in_array( 'url', $field['allow'] ) ) )
 			$input_type_url = 'text';
 		echo '<input class="pixproof_upload_file" type="' . $input_type_url . '" size="45" id="', $field['id'], '" name="', $field['id'], '" value="', $meta, '" />';
-		echo '<input class="pixproof_upload_button button" type="button" value="'. __( 'Add or Upload File', 'pixproof_l10n' ) .'" />';
+		echo '<input class="pixproof_upload_button button" type="button" value="'. esc_html__( 'Add or Upload File', 'pixproof' ) .'" />';
 
 		$_id_name = $field['id'] .'_id';
 
@@ -585,7 +585,7 @@ class pixproof_Meta_Box_types {
 				if ( self::is_valid_img_ext( $meta ) ) {
 					echo '<div class="img_status">';
 					echo '<img style="max-width: 350px; width: 100%; height: auto;" src="', $meta, '" alt="" />';
-					echo '<p><a href="#" class="pixproof_remove_file_button" rel="', $field['id'], '">'. __( 'Remove Image', 'pixproof_l10n' ) .'</a></p>';
+					echo '<p><a href="#" class="pixproof_remove_file_button" rel="', $field['id'], '">'. esc_html__( 'Remove Image', 'pixproof' ) .'</a></p>';
 					echo '</div>';
 				} else {
 					// $file_ext = self::get_file_ext( $meta );
@@ -593,7 +593,7 @@ class pixproof_Meta_Box_types {
 					for ( $i = 0; $i < count( $parts ); ++$i ) {
 						$title = $parts[$i];
 					}
-					echo __( 'File:', 'pixproof_l10n' ), ' <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $meta, '" target="_blank" rel="external">'. __( 'Download', 'pixproof_l10n' ) .'</a> / <a href="#" class="pixproof_remove_file_button" rel="', $field['id'], '">'. __( 'Remove', 'pixproof_l10n' ) .'</a>)';
+					echo esc_html__( 'File:', 'pixproof' ), ' <strong>', $title, '</strong>&nbsp;&nbsp;&nbsp; (<a href="', $meta, '" target="_blank" rel="external">'. esc_html__( 'Download', 'pixproof' ) .'</a> / <a href="#" class="pixproof_remove_file_button" rel="', $field['id'], '">'. esc_html__( 'Remove', 'pixproof' ) .'</a>)';
 				}
 			}
 		echo '</div>';

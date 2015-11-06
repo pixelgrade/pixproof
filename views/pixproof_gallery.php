@@ -14,9 +14,9 @@
 	$idx = 1;
 	foreach ( $attachments as $attachment ) {
 		if ( 'selected' == self::get_attachment_class( $attachment ) ) {
-			$select_label = __( 'Deselect', 'proof' );
+			$select_label = esc_html__( 'Deselect', 'pixproof' );
 		} else {
-			$select_label = __( 'Select', 'proof' );
+			$select_label = esc_html__( 'Select', 'pixproof' );
 		}
 
 		$thumb_img  = wp_get_attachment_image_src( $attachment->ID, $thumbnails_size );
