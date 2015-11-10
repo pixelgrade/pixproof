@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PixProof\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pixproof\n"
 "POT-Creation-Date: 2015-11-10 22:38+0100\n"
-"PO-Revision-Date: 2015-11-10 22:44+0100\n"
+"PO-Revision-Date: 2015-11-10 22:45+0100\n"
 "Last-Translator: David <david@closemarketing.es>\n"
 "Language-Team: David <david@closemarketing.es>\n"
 "Language: es\n"
@@ -159,7 +159,7 @@ msgstr "Guardar"
 
 #: features/metaboxes/metaboxes.php:27
 msgid "Pixproof Gallery"
-msgstr "Galería de Pixproof"
+msgstr "Galería Pixproof"
 
 #: features/metaboxes/metaboxes.php:35
 msgid "Gallery"
