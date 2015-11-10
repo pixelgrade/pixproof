@@ -118,7 +118,6 @@
 	});
 
 	var proof_pixgallery_ajax_preview = function(){
-
 		var ids = '';
 		ids = $('#pixgalleries').val();
 
