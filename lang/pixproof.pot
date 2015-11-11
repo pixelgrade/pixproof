@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PixProof package.
 msgid ""
 msgstr ""
-"Project-Id-Version: PixProof 1.2.1\n"
+"Project-Id-Version: PixProof 1.2.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pixproof\n"
 "POT-Creation-Date: 2015-11-11 14:32:53+00:00\n"
 "MIME-Version: 1.0\n"
@@ -12,6 +12,7 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
+<<<<<<< HEAD
 #: class-pixproof.php:227 views/pixproof_gallery.php:19
 msgid "Select"
 msgstr ""
@@ -32,7 +33,8 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#. #-#-#-#-#  pixproof.pot (PixProof 1.2.1)  #-#-#-#-#
+#. #-#-#-#-#  pixproof.pot (PixProof 1.2.2)  #-#-#-#-#
+
 #. Plugin Name of the plugin/theme
 #: class-pixproof.php:241
 msgid "PixProof"
@@ -372,9 +374,9 @@ msgstr ""
 msgid "Images"
 msgstr ""
 
-#. #-#-#-#-#  pixproof.pot (PixProof 1.2.1)  #-#-#-#-#
+#. #-#-#-#-#  pixproof.pot (PixProof 1.2.2)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  pixproof.pot (PixProof 1.2.1)  #-#-#-#-#
+#. #-#-#-#-#  pixproof.pot (PixProof 1.2.2)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://pixelgrade.com"
 msgstr ""
