@@ -68,7 +68,7 @@ return array
 
 		'errors' => array
 			(
-				'not_empty' => __('Invalid Value.', pixproof::textdomain()),
+				'not_empty' => esc_html__('Invalid Value.', 'pixproof'),
 			),
 
 		'callbacks' => array

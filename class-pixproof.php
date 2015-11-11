@@ -20,7 +20,7 @@ class PixProofPlugin {
 	 * @since   1.0.0
 	 * @const   string
 	 */
-	protected $version = '1.2.1';
+	protected $version = '1.2.3';
 	/**
 	 * Unique identifier for your plugin.
 	 * Use this value (not the variable name) as the text domain when internationalizing strings of text. It should
@@ -222,6 +222,13 @@ class PixProofPlugin {
 			'ajaxurl' => admin_url( 'admin-ajax.php' ),
 			'pixproof_settings' => array(
 				'zip_archive_generation' => $zip_archive_generation
+			),
+			'l10n' => array(
+				'select' => esc_html__('Select', 'pixproof'),
+				'deselect' => esc_html__('Deselect', 'pixproof'),
+				'ofCounter' => esc_html__('of', 'pixproof'),
+				'next' => esc_html__('Next', 'pixproof'),
+				'previous' => esc_html__('Previous', 'pixproof')
 			)
 		) );
 	}

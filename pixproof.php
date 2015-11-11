@@ -14,7 +14,7 @@ Version: 1.2.1
 Author: PixelGrade
 Author URI: http://pixelgrade.com
 Author Email: contact@pixelgrade.com
-Text Domain: proof
+Text Domain: pixproof
 License:     GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.txt
 Domain Path: /lang

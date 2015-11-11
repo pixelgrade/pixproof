@@ -14,7 +14,7 @@
 			-->
 		<div class="grid__item  one-half  lap-and-up-one-quarter  push-half--bottom">
 			<div class="entry__meta-box">
-				<span class="meta-box__title"><?php _e('Client','proof');?></span>
+				<span class="meta-box__title"><?php esc_attr_e('Client','pixproof');?></span>
 				<span><?php echo $client_name; ?></span>
 			</div>
 		</div>
@@ -26,7 +26,7 @@
 		-->
 		<div class="grid__item  one-half  lap-and-up-one-quarter  push-half--bottom">
 			<div class="entry__meta-box">
-				<span class="meta-box__title"><?php _e('Event date','proof');?></span>
+				<span class="meta-box__title"><?php esc_html_e('Event date','pixproof');?></span>
 				<span><?php echo $event_date; ?></span>
 			</div>
 		</div>
@@ -38,7 +38,7 @@
 		-->
 		<div class="grid__item  one-half  lap-and-up-one-quarter">
 			<div class="entry__meta-box">
-				<span class="meta-box__title"><?php _e('Images','proof');?></span>
+				<span class="meta-box__title"><?php esc_html_e('Images','pixproof');?></span>
 				<span><?php echo $number_of_images; ?></span>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 			-->
 		<div class="grid__item  one-half  lap-and-up-one-quarter">
 			<div class="entry__meta-box">
-				<button class="button-download  js-download" onclick="window.open('<?php echo $file; ?>')"><?php _e('Download','proof');?>
+				<button class="button-download  js-download" onclick="window.open('<?php echo $file; ?>')"><?php esc_html_e('Download','pixsproof');?>
 				</button>
 			</div>
 		</div>

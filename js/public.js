@@ -20,11 +20,11 @@
 				attachment_id = $(photo).data('attachment_id');
 
 			if( selected ){
-				jQuery(this).find('.button-text').html('Deselect');
-				photo.find('.select-action  .button-text').html('Deselect');
+				jQuery(this).find('.button-text').html(pixproof.l10n.deselect);
+				photo.find('.select-action  .button-text').html(pixproof.l10n.deselect);
 			} else {
-				jQuery(this).find('.button-text').html('Select');
-				photo.find('.select-action .button-text').html('Select');
+				jQuery(this).find('.button-text').html(pixproof.l10n.select);
+				photo.find('.select-action .button-text').html(pixproof.l10n.select);
 			}
 
 			$.ajax({ type: "post",url: pixproof.ajaxurl,data: {
@@ -61,15 +61,19 @@
 				mainClass: 'mfp-fade',
 				image:{
 					titleSrc: function(item) {
-						var text = $('#' + item.el.data('photoid')).hasClass('selected') == true ? 'Deselect' : 'Select';
+						var text = $('#' + item.el.data('photoid')).hasClass('selected') == true ? pixproof.l10n.deselect : pixproof.l10n.select;
 
 						return '<a class="meta__action  meta__action--popup  select-action"  id="popup-selector" href="#" data-photoid="' + item.el.data('photoid') + '"><span class="button-text">' + text + '</span></a>';
 					}
 				},
 				gallery:{
 				    enabled:true,
-				    navigateByImgClick: true
-				}
+				    navigateByImgClick: true,
+					tPrev: pixproof.l10n.previous, // title for left button
+					tNext: pixproof.l10n.next, // title for right button
+					tCounter: '<span class="mfp-counter">%curr% ' + pixproof.l10n.ofCounter + '%total%</span>' // markup of counter
+				},
+
 			});
 		});
 
