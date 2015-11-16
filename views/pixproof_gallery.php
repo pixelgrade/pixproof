@@ -65,7 +65,7 @@
 							<ul class="actions-nav  nav  nav--stacked">
 								<li>
 									<a class="meta__action  zoom-action" href="<?php echo $image_full[0]; ?>" data-photoid="<?php echo $image_id_tag; ?>">
-										<span class="button-text"><?php _e( 'Zoom', 'proof' ); ?></span>
+										<span class="button-text"><?php esc_html_e( 'Zoom', 'pixproof' ); ?></span>
 									</a>
 								</li>
 								<li>
