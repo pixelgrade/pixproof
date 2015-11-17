@@ -34,6 +34,8 @@
 
 						if ( gallery.attributes._orderbyRandom ) {
 							$('#pixgalleries_random').val('true');
+						} else {
+							$('#pixgalleries_random').val('false');
 						}
 
 						if ( gallery.attributes.columns ) {
@@ -46,7 +48,6 @@
 
 						// update the galllery_preview
 						proof_pixgallery_ajax_preview();
-
 						return false;
 					});
 
@@ -69,8 +70,10 @@
 					defaultPostId = wp.media.gallery.defaults.id,
 					attachments, selection;
 
-				if (random_order) {
+				if (random_order === 'true' ) {
 					random_order = ' orderby="rand"';
+				} else {
+					random_order = ' orderby="title"';
 				}
 
 				if (columns) {
@@ -79,6 +82,8 @@
 				if (size) {
 					size = ' size="'+size+'"';
 				}
+
+				console.log('[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']' );
 
 				var shortcode = wp.shortcode.next( 'gallery', '[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']' );
 				// Bail if we didn't match the shortcode or all of the content.

@@ -322,7 +322,7 @@ class PixProofPlugin {
 		}
 
 		$order = 'post__in';
-		if ( isset( $gallery_data[ 'random' ] ) && ! empty( $gallery_data[ 'random' ] ) ) {
+		if ( isset( $gallery_data[ 'random' ] ) && ( $gallery_data[ 'random' ] === 'true' ) ) {
 			$order = 'rand';
 		}
 
