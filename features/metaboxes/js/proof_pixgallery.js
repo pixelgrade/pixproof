@@ -83,8 +83,6 @@
 					size = ' size="'+size+'"';
 				}
 
-				console.log('[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']' );
-
 				var shortcode = wp.shortcode.next( 'gallery', '[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']' );
 				// Bail if we didn't match the shortcode or all of the content.
 				if ( ! shortcode )
