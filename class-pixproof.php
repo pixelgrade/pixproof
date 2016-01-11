@@ -528,17 +528,25 @@ class PixProofPlugin {
 			return 'no gallery';
 		}
 
+		global $post;
 		$gallery_id = $_REQUEST[ 'gallery_id' ];
+
+		$post = get_post( $gallery_id );
+
+		if ( post_password_required( $post ) ) {
+			wp_send_json_error( esc_html__('The gallery password is required', 'pixproof') );
+		}
+
 		// get this gallery's metadata
 		$gallery_data = get_post_meta( $gallery_id, '_pixproof_main_gallery', true );
 		// quit if there is no gallery data
 		if ( empty( $gallery_data ) || ! isset( $gallery_data[ 'gallery' ] ) ) {
-			return false;
+			wp_send_json_error( esc_html__('No gallery data', 'pixproof') );
 		}
 
 		$gallery_ids = explode( ',', $gallery_data[ 'gallery' ] );
 		if ( empty( $gallery_ids ) ) {
-			return false;
+			wp_send_json_error( esc_html__('Empty gallery', 'pixproof') );
 		}
 
 		// get attachments
