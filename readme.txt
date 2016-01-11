@@ -39,6 +39,8 @@ You can choose from two options:
 == Changelog ==
 
 = 1.2.3 =
+* Improved strings translation.
+* Fixed random order for images in gallery
 * Fixed free access for archives created automatically(security fix)
 * Fixed small warnings
 
