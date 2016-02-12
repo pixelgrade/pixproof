@@ -93,6 +93,9 @@ class PixProofPlugin {
 		// a little hook into the_content
 		add_filter( 'the_content', array( $this, 'hook_into_the_content' ), 10, 1 );
 
+//		add_filter( 'pixproof_filter_gallery_title', array( $this, 'prepare_the_gallery_name' ), 10, 4 );
+		add_filter( 'pixproof_filter_gallery_title', array( $this, 'myprepare_the_gallery_name' ), 11, 4 );
+
 		// parse comments to find referances for images
 		add_filter( 'comment_text', array( $this, 'parse_comments' ) );
 
@@ -601,10 +604,13 @@ class PixProofPlugin {
 		}
 		unset( $zip );
 
+		$uniqness = date( 'd_m_Y' );
+		$file_name = apply_filters( 'pixproof_filter_gallery_title', 'gallery_', $post->post_name, $uniqness, '.zip' );
+
 		// create the output of the archive
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: application/zip' );
-		header( 'Content-Disposition: attachment; filename=gallery_' . get_the_title( $gallery_id ) . "_" . date( 'd_m_Y' ) . '.zip' );
+		header( 'Content-Disposition: attachment; filename=' . $file_name  );
 		header( 'Content-Transfer-Encoding: binary' );
 		header( 'Expires: 0' );
 		header( 'Cache-Control: must-revalidate' );
@@ -630,7 +636,21 @@ class PixProofPlugin {
 		exit;
 	}
 
+	/**
+	 * This filter must return the gallery's zip filename
+	 *
+	 * @param $file_name_prefix
+	 * @param $post_slug
+	 * @param $unique
+	 * @param $extension
+	 *
+	 * @return string
+	 */
+	function prepare_the_gallery_name( $file_name_prefix, $post_slug, $unique, $extension ) {
+		return $file_name_prefix . $post_slug . '_' . $unique . $extension;
+	}
 }
+
 
 function pixproof_comments_match_callback( $matches ) {
 	$the_id = substr( trim( $matches[ 0 ] ), 1 );
