@@ -20,7 +20,7 @@ class PixProofPlugin {
 	 * @since   1.0.0
 	 * @const   string
 	 */
-	protected $version = '1.2.3';
+	protected $version = '1.2.4';
 	/**
 	 * Unique identifier for your plugin.
 	 * Use this value (not the variable name) as the text domain when internationalizing strings of text. It should
@@ -93,8 +93,7 @@ class PixProofPlugin {
 		// a little hook into the_content
 		add_filter( 'the_content', array( $this, 'hook_into_the_content' ), 10, 1 );
 
-//		add_filter( 'pixproof_filter_gallery_title', array( $this, 'prepare_the_gallery_name' ), 10, 4 );
-		add_filter( 'pixproof_filter_gallery_title', array( $this, 'myprepare_the_gallery_name' ), 11, 4 );
+		add_filter( 'pixproof_filter_gallery_filename', array( $this, 'prepare_the_gallery_name' ), 10, 4 );
 
 		// parse comments to find referances for images
 		add_filter( 'comment_text', array( $this, 'parse_comments' ) );
@@ -605,7 +604,7 @@ class PixProofPlugin {
 		unset( $zip );
 
 		$uniqness = date( 'd_m_Y' );
-		$file_name = apply_filters( 'pixproof_filter_gallery_title', 'gallery_', $post->post_name, $uniqness, '.zip' );
+		$file_name = apply_filters( 'pixproof_filter_gallery_filename', 'gallery_', $post->post_name, $uniqness, '.zip' );
 
 		// create the output of the archive
 		header( 'Content-Description: File Transfer' );
