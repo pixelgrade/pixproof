@@ -93,10 +93,16 @@ class PixProofPlugin {
 		// a little hook into the_content
 		add_filter( 'the_content', array( $this, 'hook_into_the_content' ), 10, 1 );
 
+		add_shortcode( 'proof_gallery', array( $this, 'add_pixproof_gallery_shortcode' ) );
+
+		add_filter( 'pixproof_gallery_output', array( $this, 'output_gallery' ), 10, 3 );
+
 		add_filter( 'pixproof_filter_gallery_filename', array( $this, 'prepare_the_gallery_name' ), 10, 4 );
 
 		// parse comments to find referances for images
 		add_filter( 'comment_text', array( $this, 'parse_comments' ) );
+
+		add_filter( 'body_class', array( $this, 'add_body_class' ) );
 
 		/**
 		 * Ajax Callbacks
@@ -105,6 +111,17 @@ class PixProofPlugin {
 		add_action( 'wp_ajax_nopriv_pixproof_image_click', array( &$this, 'ajax_click_on_photo' ) );
 		add_action( 'wp_ajax_pixproof_zip_file_url', array( &$this, 'generate_photos_zip_file' ) );
 		add_action( 'wp_ajax_nopriv_pixproof_zip_file_url', array( &$this, 'generate_photos_zip_file' ) );
+	}
+
+	function add_body_class( $classes ) {
+
+		global $post;
+
+		if ( $post->post_type === 'proof_gallery' || has_shortcode( $post->post_content, 'proof_gallery' ) ) {
+			$classes[] = 'proof_gallery';
+		}
+
+		return $classes;
 	}
 
 	/**
@@ -203,13 +220,23 @@ class PixProofPlugin {
 	 * @since    1.0.0
 	 */
 	function enqueue_styles() {
+		if ( self::$plugin_settings['disable_pixproof_style'] !== '1' || ! apply_filters( 'pixproof_disable_style', false ) ) {
 
-		if ( ! wp_style_is( 'wpgrade-main-style' ) && self::$plugin_settings['disable_pixproof_style'] !== '1' ) {
-			wp_enqueue_style( 'pixproof_inuit', plugins_url( 'css/inuit.css', __FILE__ ), array(), $this->version );
-			wp_enqueue_style( 'pixproof_magnific-popup', plugins_url( 'css/mangnific-popup.css', __FILE__ ), array(), $this->version );
+			$deps = array();
+			if ( ! wp_style_is( 'wpgrade-main-style' ) ) {
+				wp_register_style( 'pixproof_inuit', plugins_url( 'css/inuit.css', __FILE__ ), array(), $this->version );
+				wp_register_style( 'pixproof_magnific-popup', plugins_url( 'css/mangnific-popup.css', __FILE__ ), array(), $this->version );
+
+				$deps[] = 'pixproof_inuit';
+				$deps[] = 'pixproof_magnific-popup';
+			}
+
+			global $post;
+			if ( $post->post_type === 'proof_gallery' || has_shortcode( $post->post_content, 'proof_gallery' ) ) {
+				wp_enqueue_style( 'pixproof_style', plugins_url( 'css/public.css', __FILE__ ), $deps, $this->version );
+			}
 		}
 
-		//		wp_enqueue_style( $this->plugin_slug . '-plugin-styles', plugins_url( 'css/public.css', __FILE__ ), array('wpgrade-main-style'), $this->version );
 	}
 
 	/**
@@ -217,22 +244,26 @@ class PixProofPlugin {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
-		$zip_archive_generation = self::$plugin_settings['zip_archive_generation'];
+		global $post;
+		if ( $post->post_type === 'proof_gallery' || has_shortcode( $post->post_content, 'proof_gallery' ) ) {
 
-		wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'js/public.js', __FILE__ ), array( 'jquery' ), $this->version, true );
-		wp_localize_script( $this->plugin_slug . '-plugin-script', 'pixproof', array(
-			'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			'pixproof_settings' => array(
-				'zip_archive_generation' => $zip_archive_generation
-			),
-			'l10n' => array(
-				'select' => esc_html__('Select', 'pixproof'),
-				'deselect' => esc_html__('Deselect', 'pixproof'),
-				'ofCounter' => esc_html__('of', 'pixproof'),
-				'next' => esc_html__('Next', 'pixproof'),
-				'previous' => esc_html__('Previous', 'pixproof')
-			)
-		) );
+			$zip_archive_generation = self::$plugin_settings['zip_archive_generation'];
+
+			wp_enqueue_script( $this->plugin_slug . '-plugin-script', plugins_url( 'js/public.js', __FILE__ ), array( 'jquery' ), $this->version, true );
+			wp_localize_script( $this->plugin_slug . '-plugin-script', 'pixproof', array(
+				'ajaxurl'           => admin_url( 'admin-ajax.php' ),
+				'pixproof_settings' => array(
+					'zip_archive_generation' => $zip_archive_generation
+				),
+				'l10n'              => array(
+					'select'    => esc_html__( 'Select', 'pixproof' ),
+					'deselect'  => esc_html__( 'Deselect', 'pixproof' ),
+					'ofCounter' => esc_html__( 'of', 'pixproof' ),
+					'next'      => esc_html__( 'Next', 'pixproof' ),
+					'previous'  => esc_html__( 'Previous', 'pixproof' )
+				)
+			) );
+		}
 	}
 
 	/**
@@ -273,25 +304,12 @@ class PixProofPlugin {
 		if ( get_post_type() !== 'proof_gallery' || post_password_required() ) {
 			return $content;
 		}
-		$style = '';
-		// == This order is important ==
-		$pixproof_path = self::get_base_path();
-
-		if ( self::$plugin_settings['disable_pixproof_style'] !== '1' && file_exists( $pixproof_path . 'css/public.css' ) ) {
-			ob_start();
-			echo '<style>';
-			include( $pixproof_path . 'css/public.css' );
-			echo '</style>';
-			$style = ob_get_clean();
-		}
-
-		$gallery  = self::get_gallery();
-		$metadata = self::get_metadata();
 
 		if ( isset( self::$plugin_settings['gallery_position_in_content'] ) && ! empty( self::$plugin_settings['gallery_position_in_content'] ) ) {
 			// == This order is important ==
-			$pixproof_output = $style . $metadata . $gallery;
+			$pixproof_output  = '[proof_gallery]';
 			$gallery_position = self::$plugin_settings['gallery_position_in_content'];
+
 			if ( $gallery_position === 'before' ) {
 				return $pixproof_output . $content;
 			} else {
@@ -302,45 +320,72 @@ class PixProofPlugin {
 		return $content;
 	}
 
-	static function get_gallery( $post_id = null ) {
-		// get the global $post variable or a specific post
-		if ( $post_id == null ) {
-			$post = get_post( $post_id );
-		} else {
+	function add_pixproof_gallery_shortcode( $atts, $content ) {
+		extract( shortcode_atts( array(
+			'id' => '',
+		), $atts ) );
+
+		if ( empty( $id ) || ! is_numeric( $id ) ) {
 			global $post;
+		} else {
+			$post = get_post( $id );
 		}
 
-		//		$attachments = get_children( array( 'post_parent' => $post->post_parent, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'menu_order ID' ) );
+		if ( empty( $post ) || is_wp_error( $post ) ) {
+			return esc_attr__( 'Gallery id not provided. Use `id` attribute if this is not a `proof_gallery` template' );
+		}
+
+		$metadata = self::get_metadata( $post->ID );
+
+		$gallery = self::get_gallery( $post->ID );
+
+		$output = apply_filters( 'pixproof_gallery_output', $gallery, $metadata, true );
+
+		echo $output;
+	}
+
+	function output_gallery( $gallery, $metadata, $wrapper ) {
+		if ( $wrapper ) {
+			return '<div class="proof_gallery_wrapper">' . $metadata . $gallery . '</div>';
+		}
+		return $metadata . $gallery;
+	}
+
+	static function get_gallery( $post_id = null ) {
+
+		$post = get_post( $post_id );
+
 		// get this gallery's metadata
-		$gallery_data = get_post_meta( get_the_ID(), '_pixproof_main_gallery', true );
+		$gallery_data = get_post_meta( $post->ID, '_pixproof_main_gallery', true );
+
 		// quit if there is no gallery data
-		if ( empty( $gallery_data ) || ! isset( $gallery_data[ 'gallery' ] ) ) {
+		if ( empty( $gallery_data ) || ! isset( $gallery_data['gallery'] ) ) {
 			return false;
 		}
 
-		$gallery_ids = explode( ',', $gallery_data[ 'gallery' ] );
+		$gallery_ids = explode( ',', $gallery_data['gallery'] );
 		if ( empty( $gallery_ids ) ) {
 			return false;
 		}
 
 		$order = 'post__in';
-		if ( isset( $gallery_data[ 'random' ] ) && ( $gallery_data[ 'random' ] === 'true' ) ) {
+		if ( isset( $gallery_data['random'] ) && ( $gallery_data['random'] === 'true' ) ) {
 			$order = 'rand';
 		}
 
 		$columns = 3;
-		if ( isset( $gallery_data[ 'columns' ] ) && ! empty( $gallery_data[ 'columns' ] ) ) {
-			$columns = $gallery_data[ 'columns' ];
+		if ( isset( $gallery_data['columns'] ) && ! empty( $gallery_data['columns'] ) ) {
+			$columns = $gallery_data['columns'];
 		}
 
-		if ( isset( $gallery_data[ 'size' ] ) && ! empty( $gallery_data[ 'size' ] ) ) {
-			$thumbnails_size = $gallery_data[ 'size' ];
+		if ( isset( $gallery_data['size'] ) && ! empty( $gallery_data['size'] ) ) {
+			$thumbnails_size = $gallery_data['size'];
 		}
 
 
 		if ( self::has_global_style() ) {
 			$thumbnails_size = self::get_thumbnails_size();
-			$columns = self::get_gallery_grid_size();
+			$columns         = self::get_gallery_grid_size();
 		}
 
 		// get attachments
@@ -354,7 +399,9 @@ class PixProofPlugin {
 		if ( is_wp_error( $attachments ) || empty( $attachments ) ) {
 			return false;
 		}
-		$number_of_images = self::set_number_of_images( count( $attachments ) );
+
+		$number_of_images = count( $attachments );
+
 		$template_name    = 'pixproof_gallery' . EXT;
 		$_located         = locate_template( "templates/" . $template_name, false, false );
 
@@ -364,7 +411,7 @@ class PixProofPlugin {
 		}
 
 		//get the settings so they are available in the template
-		$photo_display_name = get_post_meta( get_the_ID(), '_pixproof_photo_display_name', true );
+		$photo_display_name = get_post_meta( $post->ID, '_pixproof_photo_display_name', true );
 
 		ob_start();
 		require $_located;
@@ -372,13 +419,16 @@ class PixProofPlugin {
 		return ob_get_clean();
 	}
 
-	static function get_metadata( $post_id = null ) {
+	/**
+	 * Outputs the gallery header
+	 *
+	 * @param null $post_id
+	 *
+	 * @return string
+	 */
+	static function get_metadata( $post_id = null, $client_name = null ) {
 
-		if ( $post_id == null ) {
-			$post = get_post( $post_id );
-		} else {
-			global $post;
-		}
+		$post = get_post( $post_id );
 
 		$template_name = 'pixproof_metadata' . EXT;
 		$_located      = locate_template( "templates/" . $template_name, false, false );
@@ -388,7 +438,9 @@ class PixProofPlugin {
 			$_located = dirname( __FILE__ ) . '/views/' . $template_name;
 		}
 
-		$client_name = get_post_meta( get_the_ID(), '_pixproof_client_name', true );
+		if ( $client_name === null ) {
+			$client_name = get_post_meta( $post->ID, '_pixproof_client_name', true );
+		}
 
 		$attachments = get_children( array(
 			'post_parent'    => $post->post_parent,
@@ -398,26 +450,34 @@ class PixProofPlugin {
 			'order'          => 'ASC',
 			'orderby'        => 'menu_order ID'
 		) );
-		$event_date  = get_post_meta( get_the_ID(), '_pixproof_event_date', true );
-		$download_is_disabled  = get_post_meta( get_the_ID(), '_pixproof_disable_archive_download', true );
 
-		if ( self::$plugin_settings[ 'enable_archive_zip_download' ] && $download_is_disabled !== 'on' ) {
+		$event_date = get_post_meta( $post->ID, '_pixproof_event_date', true );
+
+		$download_is_disabled = get_post_meta( $post->ID, '_pixproof_disable_archive_download', true );
+
+		if ( self::$plugin_settings['enable_archive_zip_download'] && $download_is_disabled !== 'on' ) {
 
 			// this must be here
-			if (!class_exists('PclZip')) {
+			if ( ! class_exists( 'PclZip' ) ) {
 				require ABSPATH . 'wp-admin/includes/class-pclzip.php';
 			}
 
 			// if the user wants a download link, now we qenerate it
-			if ( ! isset( self::$plugin_settings[ 'zip_archive_generation' ] ) || self::$plugin_settings[ 'zip_archive_generation' ] == 'manual' ) {
-				$file = get_post_meta( get_the_ID(), '_pixproof_file', true );
+			if ( ! isset( self::$plugin_settings['zip_archive_generation'] ) || self::$plugin_settings['zip_archive_generation'] == 'manual' ) {
+				$file = get_post_meta( $post->ID, '_pixproof_file', true );
 			} elseif ( class_exists( 'PclZip' ) ) {
 				$file = new PclZip( 'photos' );
-				$file = PixProofPlugin::get_zip_file_url( get_the_ID() );
+				$file = PixProofPlugin::get_zip_file_url( $post->ID );
 			}
 		}
 
-		$number_of_images = self::get_number_of_images();
+		$number_of_images = count( $attachments );
+
+		$gallery_data = get_post_meta( $post->ID, '_pixproof_main_gallery', true );
+		$gallery_ids = explode( ',', $gallery_data['gallery'] );
+		if ( ! empty( $gallery_ids ) ) {
+			$number_of_images = count( $gallery_ids );
+		}
 
 		ob_start();
 		require $_located;
@@ -430,7 +490,7 @@ class PixProofPlugin {
 
 		$data = wp_get_attachment_metadata( $attachment->ID );
 
-		if ( isset( $data[ 'selected' ] ) && ! empty( $data[ 'selected' ] ) && $data[ 'selected' ] == 'true' ) {
+		if ( isset( $data['selected'] ) && ! empty( $data['selected'] ) && $data['selected'] == 'true' ) {
 			return 'selected';
 		} else {
 			return '';
@@ -463,6 +523,7 @@ class PixProofPlugin {
 		if ( isset( self::$plugin_settings['gallery_thumbnail_sizes'] ) ) {
 			return self::$plugin_settings['gallery_thumbnail_sizes'];
 		}
+
 		// 'thumbnail' is the default
 		return 'thumbnail';
 	}
@@ -471,6 +532,7 @@ class PixProofPlugin {
 		if ( isset( self::$plugin_settings['gallery_grid_sizes'] ) ) {
 			return self::$plugin_settings['gallery_grid_sizes'];
 		}
+
 		// '3' is the default
 		return 3;
 	}
@@ -482,18 +544,19 @@ class PixProofPlugin {
 
 		return false;
 	}
+
 	function ajax_click_on_photo() {
 
 		ob_start();
 
-		if ( ! isset( $_POST[ 'attachment_id' ] ) || ! isset( $_POST[ 'selected' ] ) ) {
+		if ( ! isset( $_POST['attachment_id'] ) || ! isset( $_POST['selected'] ) ) {
 			return false;
 		}
-		$attachment_id = $_POST[ 'attachment_id' ];
-		$selected      = $_POST[ 'selected' ];
+		$attachment_id = $_POST['attachment_id'];
+		$selected      = $_POST['selected'];
 
-		$data               = wp_get_attachment_metadata( $attachment_id );
-		$data[ 'selected' ] = $selected;
+		$data             = wp_get_attachment_metadata( $attachment_id );
+		$data['selected'] = $selected;
 
 		wp_update_attachment_metadata( $attachment_id, $data );
 
@@ -504,10 +567,10 @@ class PixProofPlugin {
 	function parse_comments( $comment = '' ) {
 
 		global $post;
-		if ( 'proof_gallery' !== $post->post_type ) {
-			return $comment;
+
+		if ( 'proof_gallery' == $post->post_type || has_shortcode( $post->post_content, 'proof_gallery' ) ) {
+			$comment = preg_replace_callback( "=(^| )+#[\w\-]+=", 'pixproof_comments_match_callback', $comment );
 		}
-		$comment = preg_replace_callback( "=(^| )+#[\w\-]+=", 'pixproof_comments_match_callback', $comment );
 
 		return $comment;
 	}
@@ -526,29 +589,29 @@ class PixProofPlugin {
 
 	public function generate_photos_zip_file() {
 
-		if ( ! isset ( $_REQUEST[ 'gallery_id' ] ) ) {
+		if ( ! isset ( $_REQUEST['gallery_id'] ) ) {
 			return 'no gallery';
 		}
 
 		global $post;
-		$gallery_id = $_REQUEST[ 'gallery_id' ];
+		$gallery_id = $_REQUEST['gallery_id'];
 
 		$post = get_post( $gallery_id );
 
 		if ( post_password_required( $post ) ) {
-			wp_send_json_error( esc_html__('The gallery password is required', 'pixproof') );
+			wp_send_json_error( esc_html__( 'The gallery password is required', 'pixproof' ) );
 		}
 
 		// get this gallery's metadata
 		$gallery_data = get_post_meta( $gallery_id, '_pixproof_main_gallery', true );
 		// quit if there is no gallery data
-		if ( empty( $gallery_data ) || ! isset( $gallery_data[ 'gallery' ] ) ) {
-			wp_send_json_error( esc_html__('No gallery data', 'pixproof') );
+		if ( empty( $gallery_data ) || ! isset( $gallery_data['gallery'] ) ) {
+			wp_send_json_error( esc_html__( 'No gallery data', 'pixproof' ) );
 		}
 
-		$gallery_ids = explode( ',', $gallery_data[ 'gallery' ] );
+		$gallery_ids = explode( ',', $gallery_data['gallery'] );
 		if ( empty( $gallery_ids ) ) {
-			wp_send_json_error( esc_html__('Empty gallery', 'pixproof') );
+			wp_send_json_error( esc_html__( 'Empty gallery', 'pixproof' ) );
 		}
 
 		// get attachments
@@ -591,8 +654,8 @@ class PixProofPlugin {
 			$metadata = wp_get_attachment_metadata( $attachment->ID );
 
 			// only those selected
-			if ( isset( $metadata[ 'selected' ] ) && $metadata[ 'selected' ] == 'true' ) {
-				$images[ ] = get_attached_file( $attachment->ID );
+			if ( isset( $metadata['selected'] ) && $metadata['selected'] == 'true' ) {
+				$images[] = get_attached_file( $attachment->ID );
 			}
 		}
 
@@ -603,13 +666,13 @@ class PixProofPlugin {
 		}
 		unset( $zip );
 
-		$uniqness = date( 'd_m_Y' );
+		$uniqness  = date( 'd_m_Y' );
 		$file_name = apply_filters( 'pixproof_filter_gallery_filename', 'gallery_', $post->post_name, $uniqness, '.zip' );
 
 		// create the output of the archive
 		header( 'Content-Description: File Transfer' );
 		header( 'Content-Type: application/zip' );
-		header( 'Content-Disposition: attachment; filename=' . $file_name  );
+		header( 'Content-Disposition: attachment; filename=' . $file_name );
 		header( 'Content-Transfer-Encoding: binary' );
 		header( 'Expires: 0' );
 		header( 'Cache-Control: must-revalidate' );
@@ -652,10 +715,10 @@ class PixProofPlugin {
 
 
 function pixproof_comments_match_callback( $matches ) {
-	$the_id = substr( trim( $matches[ 0 ] ), 1 );
+	$the_id = substr( trim( $matches[0] ), 1 );
 
-	$matches[ 0 ] = '<span class="pixproof_photo_ref" data-href="#item-' . $the_id . '">#' . $the_id . '</span>';
+	$matches[0] = '<span class="pixproof_photo_ref" data-href="#item-' . $the_id . '">#' . $the_id . '</span>';
 
-	return $matches[ 0 ];
+	return $matches[0];
 
 }

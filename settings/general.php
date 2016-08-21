@@ -11,6 +11,7 @@ return array(
 			'options' => array(
 						'before'    => esc_html__( 'Before the content', 'pixproof' ),
 						'after' => esc_html__( 'After the content', 'pixproof' ),
+						'shortcode' => esc_html__( 'Use the `[pixproof_gallery]` shortcode to manually position the gallery', 'pixproof' ),
 					),
 		),
 

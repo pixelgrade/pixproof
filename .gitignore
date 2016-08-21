@@ -9,3 +9,6 @@ codekit-config.json
 node_modules
 build
 *-ck.js
+*.map
+css/*.map
+*.log

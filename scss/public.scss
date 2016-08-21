@@ -14,19 +14,25 @@
 	margin-bottom: $_u;
 }
 
-	.meta-box__title{
-		display: block;
-		font-weight: bold;
+.meta-box__title{
+	display: block;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 899px){
+	.button-download{
+		position: absolute;
+		right: 0;
 	}
+}
 
-	@media screen and (min-width: 899px){
-		.button-download{
-			position: absolute;
-			right: 0;
-		}
-	}
-
-
+.count_photo_selected:empty {
+	display: none;
+}
+.count_photo_selected:after {
+	content: "/";
+	margin-left: 4px;
+}
 
 .proof-photo{
     padding-bottom: 0;

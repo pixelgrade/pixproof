@@ -11,8 +11,16 @@
 			ev.preventDefault();
 			ev.stopPropagation();
 
-			//var photo = $('#' + $(this).data('photoid'));
-			var photo = $('[id=' + $(this).data('photoid') + ']');
+			var self = this,
+				gallery = $(self).parents('.js-pixproof-gallery'),
+				photo = $('[id=' + $(this).data('photoid') + ']');
+
+			var count_photo_selected = $(gallery).data('count_selected');
+
+			if ( typeof count_photo_selected === "undefined" ) {
+				count_photo_selected = 0;
+			}
+
 			$(photo).toggleClass('selected');
 			$(photo).addClass('selecting');
 
@@ -22,9 +30,13 @@
 			if( selected ){
 				jQuery(this).find('.button-text').html(pixproof.l10n.deselect);
 				photo.find('.select-action  .button-text').html(pixproof.l10n.deselect);
+
+				$(gallery).data('count_selected', parseInt( count_photo_selected ) + 1);
 			} else {
 				jQuery(this).find('.button-text').html(pixproof.l10n.select);
 				photo.find('.select-action .button-text').html(pixproof.l10n.select);
+
+				$(gallery).data('count_selected', parseInt( count_photo_selected ) - 1);
 			}
 
 			$.ajax({ type: "post",url: pixproof.ajaxurl,data: {
@@ -32,19 +44,16 @@
 					attachment_id: attachment_id,
 					selected: selected
 				},
-				beforeSend: function() {
-					//
-				}, //show loading just when link is clicked
 				complete: function() {
 					setTimeout(function(){
 						$(photo).removeClass('selecting');
 					}, 600);
 				}, //stop showing loading when the process is complete
-
 				success:function(response){
-						// console.log(response);
-						// var result = JSON.parse(response);
-						// console.log(result);
+					// console.log(response);
+					// var result = JSON.parse(response);
+					// console.log(result);
+					count_selected_images( $(self).parents('.proof_gallery_wrapper') )
 				}
 			});
 
@@ -72,13 +81,27 @@
 					tPrev: pixproof.l10n.previous, // title for left button
 					tNext: pixproof.l10n.next, // title for right button
 					tCounter: '<span class="mfp-counter">%curr% ' + pixproof.l10n.ofCounter + '%total%</span>' // markup of counter
-				},
-
+				}
 			});
+			
+			var selected = $(this).find('.selected').length;
+			$(this).data('count_selected', selected);
+
+			count_selected_images( $(this).parent('.proof_gallery_wrapper') );
 		});
 
 		bound_reference_links();
 	});
+
+	var count_selected_images = function( wrapper ) {
+		var count_element = $(wrapper).find('.count_photo_selected'),
+			count_value = $(wrapper).find('.js-pixproof-gallery').data('count_selected');
+
+		if ( count_value == 0 ) {
+			count_value = '';
+		}
+		$(count_element).text(count_value);
+	};
 
 	// check if the download button needs to be disabled
 	var prepare_download_button = function () {
@@ -93,7 +116,7 @@
 				download_button.removeAttr('disabled');
 			}
 		});
-	}
+	};
 
 	var bound_reference_links = function(){
 
@@ -126,9 +149,7 @@
 					}
 				//}
 			});
-
 		}
-
 	};
 
 }(jQuery));

@@ -56,36 +56,35 @@
 		} ?>
 		<div class="proof-photo  js-proof-photo  gallery-item <?php self::attachment_class( $attachment ); ?>" <?php self::attachment_data( $attachment ); ?>  id="<?php echo $image_id_tag; ?>">
 			<div class="proof-photo__bg">
-			<div class="proof-photo__container">
-				<img src="<?php echo $thumb_img[0]; ?>" alt="<?php echo $attachment->post_title; ?>"/>
-
-				<div class="proof-photo__meta">
-					<div class="flexbox">
-						<div class="flexbox__item">
-							<ul class="actions-nav  nav  nav--stacked">
-								<li>
-									<a class="meta__action  zoom-action" href="<?php echo $image_full[0]; ?>" data-photoid="<?php echo $image_id_tag; ?>">
-										<span class="button-text"><?php esc_html_e( 'Zoom', 'pixproof' ); ?></span>
-									</a>
-								</li>
-								<li>
-									<hr class="separator"/>
-								</li>
-								<li>
-									<a class="meta__action  select-action" href="#" data-photoid="<?php echo $image_id_tag; ?>">
-										<span class="button-text"><?php echo $select_label; ?></span>
-									</a>
-								</li>
-							</ul>
+				<div class="proof-photo__container">
+					<img src="<?php echo $thumb_img[0]; ?>" alt="<?php echo $attachment->post_title; ?>"/>
+					<div class="proof-photo__meta">
+						<div class="flexbox">
+							<div class="flexbox__item">
+								<ul class="actions-nav  nav  nav--stacked">
+									<li>
+										<a class="meta__action  zoom-action" href="<?php echo $image_full[0]; ?>" data-photoid="<?php echo $image_id_tag; ?>">
+											<span class="button-text"><?php esc_html_e( 'Zoom', 'pixproof' ); ?></span>
+										</a>
+									</li>
+									<li>
+										<hr class="separator"/>
+									</li>
+									<li>
+										<a class="meta__action  select-action" href="#" data-photoid="<?php echo $image_id_tag; ?>">
+											<span class="button-text"><?php echo $select_label; ?></span>
+										</a>
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="proof-photo__status">
-					<span class="ticker">&check;</span>
-					<span class="spinner"></span>
-				</div>
-			</div>
-			<span class="proof-photo__id"><?php echo $image_name; ?></span>
+					<div class="proof-photo__status">
+						<span class="ticker">&check;</span>
+						<span class="spinner"></span>
+					</div>
+					</div>
+				<span class="proof-photo__id"><?php echo $image_name; ?></span>
 			</div>
 		</div>
 		<?php
