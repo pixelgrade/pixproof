@@ -52,8 +52,7 @@
 				success:function(response){
 					// console.log(response);
 					// var result = JSON.parse(response);
-					// console.log(result);
-					count_selected_images( $(self).parents('.proof_gallery_wrapper') )
+					count_selected_images( $(self).parents('.js-pixproof-gallery') )
 				}
 			});
 
@@ -87,15 +86,31 @@
 			var selected = $(this).find('.selected').length;
 			$(this).data('count_selected', selected);
 
-			count_selected_images( $(this).parent('.proof_gallery_wrapper') );
+			count_selected_images( this );
 		});
 
 		bound_reference_links();
 	});
 
-	var count_selected_images = function( wrapper ) {
-		var count_element = $(wrapper).find('.count_photo_selected'),
-			count_value = $(wrapper).find('.js-pixproof-gallery').data('count_selected');
+	var count_selected_images = function( gallery_element ) {
+
+		var id = $( gallery_element ).attr('id');
+
+		if ( typeof id === "undefined" ) {
+			return false;
+		}
+
+		id = id.replace( 'pixproof_gallery_', '');
+
+		if ( typeof id === "undefined" ) {
+			return false;
+		}
+
+		var gallery = $('#pixproof_gallery_' + id ),
+			metadata = $('#pixproof_data_' + id );
+
+		var count_element = $(metadata).find('.count_photo_selected'),
+			count_value = $(gallery).data('count_selected');
 
 		if ( count_value == 0 ) {
 			count_value = '';

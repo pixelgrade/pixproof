@@ -339,12 +339,12 @@ class PixProofPlugin {
 
 		$gallery = self::get_gallery( $post->ID );
 
-		$output = apply_filters( 'pixproof_gallery_output', $gallery, $metadata, true );
+		$output = apply_filters( 'pixproof_gallery_output', $gallery, $metadata, false );
 
 		echo $output;
 	}
 
-	function output_gallery( $gallery, $metadata, $wrapper ) {
+	function output_gallery( $gallery, $metadata, $wrapper = false ) {
 		if ( $wrapper ) {
 			return '<div class="proof_gallery_wrapper">' . $metadata . $gallery . '</div>';
 		}
@@ -352,7 +352,7 @@ class PixProofPlugin {
 	}
 
 	static function get_gallery( $post_id = null ) {
-
+		global $post;
 		$post = get_post( $post_id );
 
 		// get this gallery's metadata
@@ -427,7 +427,7 @@ class PixProofPlugin {
 	 * @return string
 	 */
 	static function get_metadata( $post_id = null, $client_name = null ) {
-
+		global $post;
 		$post = get_post( $post_id );
 
 		$template_name = 'pixproof_metadata' . EXT;
@@ -481,7 +481,6 @@ class PixProofPlugin {
 
 		ob_start();
 		require $_located;
-
 		return ob_get_clean();
 
 	}
@@ -658,6 +657,7 @@ class PixProofPlugin {
 				$images[] = get_attached_file( $attachment->ID );
 			}
 		}
+
 
 		$debug = $zip->create( $images, PCLZIP_OPT_REMOVE_ALL_PATH, PCLZIP_OPT_NO_COMPRESSION );
 

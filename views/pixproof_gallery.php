@@ -8,8 +8,9 @@
  * string       $columns            Number of columns
  * string       $thumbnails_size    The size of the thumbnail
  */
+global $post;
 ?>
-<div id="pixproof_gallery" class="gallery  gallery-columns-<?php echo $columns; ?>  cf  js-pixproof-gallery">
+<div id="pixproof_gallery_<?php echo $post->ID; ?>" class="gallery  gallery-columns-<?php echo $columns; ?>  cf  js-pixproof-gallery">
 	<?php
 	$idx = 1;
 	foreach ( $attachments as $attachment ) {
