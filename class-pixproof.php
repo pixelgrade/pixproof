@@ -118,7 +118,7 @@ class PixProofPlugin {
 		global $post;
 
 		if ( $post->post_type === 'proof_gallery' || has_shortcode( $post->post_content, 'proof_gallery' ) ) {
-			$classes[] = 'proof_gallery';
+			$classes[] = 'has-proof-gallery';
 		}
 
 		return $classes;
@@ -312,7 +312,7 @@ class PixProofPlugin {
 
 			if ( $gallery_position === 'before' ) {
 				return $pixproof_output . $content;
-			} else {
+			} elseif( $gallery_position === 'before' ) {
 				return $content . $pixproof_output;
 			}
 		}
