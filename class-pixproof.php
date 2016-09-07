@@ -341,7 +341,7 @@ class PixProofPlugin {
 
 		$output = apply_filters( 'pixproof_gallery_output', $gallery, $metadata, false );
 
-		echo $output;
+		return $output;
 	}
 
 	function output_gallery( $gallery, $metadata, $wrapper = false ) {
