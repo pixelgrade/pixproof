@@ -1,0 +1,391 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PixProof\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pixproof\n"
+"POT-Creation-Date: 2015-11-10 22:38+0100\n"
+"PO-Revision-Date: 2015-11-10 22:45+0100\n"
+"Last-Translator: David <david@closemarketing.es>\n"
+"Language-Team: David <david@closemarketing.es>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: pixproof.php\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+#: class-pixproof.php:234
+msgid "PixProof"
+msgstr "PixProof"
+
+#: class-pixproof.php:252
+msgid "Settings"
+msgstr "Ajustes"
+
+#: core/defaults.php:30
+msgid "Numberic value required."
+msgstr "Se necesita valor numérico."
+
+#: core/defaults.php:31
+msgid "Field is required."
+msgstr "Es un campo obligatorio."
+
+#: features/custom_post_types.php:7
+msgctxt "Post Type Singular Name"
+msgid "Proof Gallery"
+msgstr "Galería Privada"
+
+#: features/custom_post_types.php:12
+msgctxt "Post Type General Name"
+msgid "Proof Galleries"
+msgstr "Galerías Proof"
+
+#: features/custom_post_types.php:13 plugin-defaults.php:14
+#: settings/post_types.php:56
+msgid "Proof Galleries"
+msgstr "Galerías Proof"
+
+#: features/custom_post_types.php:29
+msgid "Parent Item:"
+msgstr "Elemento Superior:"
+
+#: features/custom_post_types.php:30
+msgid "All Items"
+msgstr "Todos los elementos"
+
+#: features/custom_post_types.php:31
+msgid "View Item"
+msgstr "Ver Elemento"
+
+#: features/custom_post_types.php:32
+msgid "Add New Proof Gallery"
+msgstr "Añadir Nueva Galería Privada"
+
+#: features/custom_post_types.php:33
+msgid "Add New"
+msgstr "Añadir nueva"
+
+#: features/custom_post_types.php:34
+msgid "Edit Proof Gallery"
+msgstr "Editar Galería Privada"
+
+#: features/custom_post_types.php:35
+msgid "Update Proof Gallery"
+msgstr "Actualizar Galería Privada"
+
+#: features/custom_post_types.php:36
+msgid "Search Proof Galelry"
+msgstr "Buscar Galería Privada"
+
+#: features/custom_post_types.php:37
+msgid "Not found"
+msgstr "No encontrada"
+
+#: features/custom_post_types.php:38
+msgid "Not found in Trash"
+msgstr "No se encontró en la papelera"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_ajax.php:47
+msgid "Please Try Again"
+msgstr "Por favor, intenta de nuevo"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_ajax.php:131
+msgid "Remove Embed"
+msgstr "Eliminar incrustado"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_ajax.php:134
+msgid "No oEmbed Results Found for %s. View more info at"
+msgstr ""
+"No hay resultados encontrados para el Incrustado%s. Ver más información en"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:150
+msgid "Add Row"
+msgstr "Añadir Fila"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:178
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:553
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:596
+msgid "Remove"
+msgstr "Quitar"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:529
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:569
+msgid "Add or Upload File"
+msgstr "Agregar o Subir archivo"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:542
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:588
+msgid "Remove Image"
+msgstr "Eliminar imagen"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:553
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:596
+msgid "File:"
+msgstr "Archivo:"
+
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:553
+#: features/metaboxes/helpers/pixproof_Meta_Box_types.php:596
+#: views/pixproof_metadata.php:52
+msgid "Download"
+msgstr "Descargar"
+
+#: features/metaboxes/init.php:243
+msgid "Clear"
+msgstr "Limpiar"
+
+#: features/metaboxes/init.php:244
+msgid "Default"
+msgstr "Predeterminado"
+
+#: features/metaboxes/init.php:245
+msgid "Select Color"
+msgstr "Seleccionar el color"
+
+#: features/metaboxes/init.php:246
+msgid "Current Color"
+msgstr "Color actual"
+
+#: features/metaboxes/init.php:1189
+msgid "Save"
+msgstr "Guardar"
+
+#: features/metaboxes/metaboxes.php:27
+msgid "Pixproof Gallery"
+msgstr "Galería Pixproof"
+
+#: features/metaboxes/metaboxes.php:35
+msgid "Gallery"
+msgstr "Galería"
+
+#: features/metaboxes/metaboxes.php:41
+msgid "Client Name"
+msgstr "Nombre del Cliente"
+
+#: features/metaboxes/metaboxes.php:47
+msgid "Date"
+msgstr "Fecha"
+
+#: features/metaboxes/metaboxes.php:52
+msgid "Photos Display Name"
+msgstr "Nombre para mostrar fotos"
+
+#: features/metaboxes/metaboxes.php:53
+msgid "How would you like to identify each photo?"
+msgstr "¿Cómo quieres identificar cada foto?"
+
+#: features/metaboxes/metaboxes.php:58
+msgid "Unique IDs"
+msgstr "IDs únicos"
+
+#: features/metaboxes/metaboxes.php:62
+msgid "Consecutive IDs"
+msgstr "IDs consecutivas"
+
+#: features/metaboxes/metaboxes.php:66
+msgid "File Name"
+msgstr "Nombre de archivo"
+
+#: features/metaboxes/metaboxes.php:70
+msgid "Unique IDs and Photo Title"
+msgstr "IDs Únicos y Título Foto"
+
+#: features/metaboxes/metaboxes.php:74
+msgid "Consecutive IDs and Photo Title"
+msgstr "IDs consecutivas y título de la foto"
+
+#: features/metaboxes/metaboxes.php:86
+msgid "Client .zip archive"
+msgstr "Archivo .zip de cliente"
+
+#: features/metaboxes/metaboxes.php:87
+msgid ""
+"Upload a .zip archive so the client can download it via the Download link. "
+"Leave it empty to hide the link."
+msgstr ""
+"Subir un archivo .zip para que el cliente lo pueda descargar mediante el "
+"enlace de descarga. Dejarlo vacío para ocultar el enlace."
+
+#: features/metaboxes/metaboxes.php:95
+msgid "Disable Archive Download"
+msgstr "Desactivar la descarga de archivo"
+
+#: features/metaboxes/metaboxes.php:96
+msgid "You can remove the ability to download the zip archive for this gallery"
+msgstr ""
+"Puedes quitar la capacidad de descargar el archivo zip para esta galería"
+
+#: plugin-config.php:71
+msgid "Invalid Value."
+msgstr "Valor inválido."
+
+#: plugin-defaults.php:13 settings/post_types.php:50
+msgid "Proof Gallery"
+msgstr "Galería Privada"
+
+#: settings/general.php:10
+msgid "Select the PixProof gallery position in content: "
+msgstr "Selecciona la posición de la galería de PixProof en el contenido:"
+
+#: settings/general.php:12
+msgid "Before the content"
+msgstr "Antes del contenido"
+
+#: settings/general.php:13
+msgid "After the content"
+msgstr "Después del contenido"
+
+#: settings/general.php:18
+msgid "Enable Images Download"
+msgstr "Permitir descarga de imágenes"
+
+#: settings/general.php:30
+msgid "The ZIP archive should be generated:"
+msgstr "Se debe generar el archivo ZIP:"
+
+#: settings/general.php:31
+msgid "How the archive file should be generated?"
+msgstr "¿Cómo se debe generar el archivo?"
+
+#: settings/general.php:35
+msgid "Manually (uploaded by the gallery owner)"
+msgstr "Manualmente (subido por el propietario)"
+
+#: settings/general.php:36
+msgid "Automatically (from the selected images)"
+msgstr "Automáticamente (a partir de las imágenes seleccionadas)"
+
+#: settings/general.php:44
+msgid "Disable Plugin Style"
+msgstr "Desactivar el Estido del Plugin"
+
+#: settings/general.php:45
+msgid ""
+"If you want to style the PixProof galleries yourself you can remove the "
+"plugin style here "
+msgstr ""
+"Si quieres estilo de las galerías de PixProof puedes eliminar el estilo "
+"plugin aquí"
+
+#: settings/post_types.php:31
+msgid "Proof Galleries Settings"
+msgstr "Configuración Galerías Proof"
+
+#: settings/post_types.php:37
+msgid "Enable Pixproof Galleries"
+msgstr "Activar galerías Pixproof"
+
+#: settings/post_types.php:48
+msgid "Single Item Label"
+msgstr "Etiqueta de elemento simple"
+
+#: settings/post_types.php:49
+msgid "Here you can change the singular label.The default is \"Proof Gallery\""
+msgstr ""
+"Aquí puedes cambiar la etiqueta sencilla. Por defecto es \"Proof Gallery\""
+
+#: settings/post_types.php:54
+msgid "Multiple Items Label (plural)"
+msgstr "Etiqueta de artículos varios (plural)"
+
+#: settings/post_types.php:55
+msgid "Here you can change the plural label.The default is \"Proof Galleries\""
+msgstr ""
+"Aquí puede cambiar la etiqueta de plural. El valor predeterminado es “Proof "
+"Galleries”"
+
+#: settings/post_types.php:60
+msgid "Change Gallery Slug"
+msgstr "Cambiar enlace permanente Galería"
+
+#: settings/post_types.php:61
+msgid "Do you want to rewrite the single gallery item slug?"
+msgstr "¿Quieres reescribir el enlace permanente de la pagina galería?"
+
+#: settings/post_types.php:70
+msgid "New Single Item Slug"
+msgstr "Nuevo Item enlace permante único"
+
+#: settings/post_types.php:71
+msgid "Change the single gallery slug as you need it."
+msgstr "Cambia el enlace permanente de la página como necesites."
+
+#: settings/post_types.php:103
+msgid "Change Gallery Global Style"
+msgstr "Cambiar el Estilo Global de la Galería"
+
+#: settings/post_types.php:104
+msgid "Do you want to overwrite the style of all proof galleries?"
+msgstr "¿Deseas sobrescribir el estilo de todas las galerías prueba?"
+
+#: settings/post_types.php:116
+msgid "How big the image thumbnails should be?"
+msgstr "¿Qué tan grande deben ser las miniaturas de imagen?"
+
+#: settings/post_types.php:123
+msgid "How big should be the grid?"
+msgstr "¿Qué tan grande debe ser la red?"
+
+#: views/admin.php:26
+msgid "Pixproof"
+msgstr "PixProof"
+
+#: views/admin.php:33
+msgid "Unable to save settings."
+msgstr "No se puede guardar la configuración."
+
+#: views/admin.php:34
+msgid "Please check the fields for errors and typos."
+msgstr "Por favor verifica los campos con errores y faltas de ortografía."
+
+#: views/admin.php:41
+msgid "Settings have been updated."
+msgstr "Tus ajustes han sido guardados."
+
+#: views/admin.php:54
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: views/pixproof_gallery.php:17
+msgid "Deselect"
+msgstr "Deseleccionar"
+
+#: views/pixproof_gallery.php:19
+msgid "Select"
+msgstr "Seleccionar"
+
+#: views/pixproof_gallery.php:68
+msgid "Zoom"
+msgstr "Zoom"
+
+#: views/pixproof_metadata.php:17
+msgid "Client"
+msgstr "Cliente"
+
+#: views/pixproof_metadata.php:29
+msgid "Event date"
+msgstr "Fecha del evento"
+
+#: views/pixproof_metadata.php:41
+msgid "Images"
+msgstr "Imágenes"
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "http://pixelgrade.com"
+msgstr "http://pixelgrade.com"
+
+#. Description of the plugin/theme
+msgid "WordPress photo gallery proofing plugin."
+msgstr "Plugin Wordpress para galerías privadas."
+
+#. Author of the plugin/theme
+msgid "PixelGrade"
+msgstr "PixelGrade"
