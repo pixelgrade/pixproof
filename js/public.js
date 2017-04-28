@@ -6,6 +6,7 @@
 
 	"use strict";
 	$(document).ready(function () {
+		var count_photo_selected = $('.selected').size();
 
 		$(document).on('click', '.select-action', function(ev){
 			ev.preventDefault();
@@ -22,9 +23,11 @@
 			if( selected ){
 				jQuery(this).find('.button-text').html(pixproof.l10n.deselect);
 				photo.find('.select-action  .button-text').html(pixproof.l10n.deselect);
+				count_photo_selected+=1;
 			} else {
 				jQuery(this).find('.button-text').html(pixproof.l10n.select);
 				photo.find('.select-action .button-text').html(pixproof.l10n.select);
+				count_photo_selected-=1;
 			}
 
 			$.ajax({ type: "post",url: pixproof.ajaxurl,data: {
@@ -45,6 +48,7 @@
 						// console.log(response);
 						// var result = JSON.parse(response);
 						// console.log(result);
+						$('#count_photo_selected').html(count_photo_selected);
 				}
 			});
 

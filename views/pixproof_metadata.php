@@ -42,6 +42,13 @@
 				<span><?php echo $number_of_images; ?></span>
 			</div>
 		</div>
+
+		<div class="grid__item">
+			<div class="entry__meta-box">
+				<span class="meta-box__title"><?php esc_html_e('Images selected','pixproof');?></span>
+				<span id="count_photo_selected"></span>
+			</div>
+		</div>
 		<!--
 		<?php
 		}
