@@ -1,24 +1,18 @@
 <?php
-/*
-* @package   PixProof
-* @author    PixelGrade <contact@pixelgrade.com>
-* @license   GPL-2.0+
-* @link      http://pixelgrade.com
-* @copyright 2014 PixelGrade
-*
-* @wordpress-plugin
-Plugin Name: PixProof
-Plugin URI:  http://pixelgrade.com
-Description: WordPress photo gallery proofing plugin.
-Version: 1.2.4
-Author: PixelGrade
-Author URI: http://pixelgrade.com
-Author Email: contact@pixelgrade.com
-Text Domain: pixproof
-License:     GPL-2.0+
-License URI: http://www.gnu.org/licenses/gpl-2.0.txt
-Domain Path: /lang
-*/
+/**
+ * @wordpress-plugin
+ * Plugin Name: PixProof
+ * Plugin URI:  https://pixelgrade.com
+ * Description: WordPress photo gallery proofing plugin.
+ * Version: 1.2.4
+ * Author: Pixelgrade
+ * Author URI: https://pixelgrade.com
+ * Author Email: contact@pixelgrade.com
+ * Text Domain: pixproof
+ * License:     GPL-2.0+
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
+ * Domain Path: /lang
+ */
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
