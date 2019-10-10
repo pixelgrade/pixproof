@@ -2,12 +2,12 @@
 
 global $_wp_additional_image_sizes;
 
-$sizes = get_intermediate_image_sizes();
+$sizes        = get_intermediate_image_sizes();
 $size_options = array(
-	'thumbnail' => 'Thumbnail ( ' .get_option('thumbnail_size_w') . ' x ' .get_option('thumbnail_size_h') . ' cropped )',
-	'medium' => 'Medium ( ' .get_option('medium_size_w') . ' x ' .get_option('medium_size_h') . ' )',
-	'large' => 'Large ( ' .get_option('large_size_w') . ' x ' .get_option('large_size_h') . ' )',
-	'full' => 'Full size'
+	'thumbnail' => 'Thumbnail ( ' . get_option( 'thumbnail_size_w' ) . ' x ' . get_option( 'thumbnail_size_h' ) . ' cropped )',
+	'medium'    => 'Medium ( ' . get_option( 'medium_size_w' ) . ' x ' . get_option( 'medium_size_h' ) . ' )',
+	'large'     => 'Large ( ' . get_option( 'large_size_w' ) . ' x ' . get_option( 'large_size_h' ) . ' )',
+	'full'      => 'Full size',
 
 );
 
@@ -15,9 +15,9 @@ if ( is_array( $_wp_additional_image_sizes ) ) {
 	foreach ( $_wp_additional_image_sizes as $key => $size ) {
 		$size_options[ $key ] = ucfirst( $key );
 		if ( isset( $size['width'] ) && isset( $size['height'] ) ) {
-			$size_options[ $key ] .= ' ( ' .$size['width']. ' x ' . $size['height'];
+			$size_options[ $key ] .= ' ( ' . $size['width'] . ' x ' . $size['height'];
 
-			if ( isset( $size['crop'] ) && $size['crop']) {
+			if ( isset( $size['crop'] ) && $size['crop'] ) {
 				$size_options[ $key ] .= ' cropped';
 			}
 
@@ -27,18 +27,18 @@ if ( is_array( $_wp_additional_image_sizes ) ) {
 }
 
 return array(
-	'type'    => 'postbox',
-	'label'   => esc_html__( 'Proof Galleries Settings', 'pixproof' ),
+	'type'  => 'postbox',
+	'label' => esc_html__( 'Proof Galleries Settings', 'pixproof' ),
 	// Custom field settings
 	// ---------------------
 
 	'options' => array(
-		'enable_pixproof_gallery'       => array(
+		'enable_pixproof_gallery' => array(
 			'label'          => esc_html__( 'Enable Pixproof Galleries', 'pixproof' ),
 			'default'        => true,
 			'type'           => 'switch',
 			'show_group'     => 'enable_pixproof_gallery_group',
-			'display_option' => ''
+			'display_option' => '',
 		), /* ALL THESE PREFIXED WITH PORTFOLIO SHOULD BE KIDS!! **/
 
 		'enable_pixproof_gallery_group' => array(
@@ -99,7 +99,7 @@ return array(
 			),
 		),
 
-		'enable_pixproof_gallery_global_style'       => array(
+		'enable_pixproof_gallery_global_style' => array(
 			'label'      => esc_html__( 'Change Gallery Global Style', 'pixproof' ),
 			'desc'       => esc_html__( 'Do you want to overwrite the style of all proof galleries?', 'pixproof' ),
 			'default'    => false,
@@ -118,23 +118,23 @@ return array(
 					'type'    => 'select',
 					'options' => $size_options,
 				),
-				'gallery_grid_sizes' => array(
+				'gallery_grid_sizes'      => array(
 					'name'    => 'gallery_grid_sizes',
 					'label'   => esc_html__( 'How big should be the grid?', 'pixproof' ),
 					'default' => '3',
 					'type'    => 'select',
 					'options' => array(
 						'99999999' => 'Auto',
-						'1' => 'One Column',
-						'2' => 'Two Columns',
-						'3' => 'Three Columns',
-						'4' => 'Four Columns',
-						'5' => 'Five Columns',
-						'6' => 'Six Columns',
+						'1'        => 'One Column',
+						'2'        => 'Two Columns',
+						'3'        => 'Three Columns',
+						'4'        => 'Four Columns',
+						'5'        => 'Five Columns',
+						'6'        => 'Six Columns',
 					),
-				)
+				),
 
-			)
-		)
-	)
+			),
+		),
+	),
 ); # config

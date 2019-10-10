@@ -5,7 +5,7 @@
  * @author    Pixelgrade <contact@pixelgrade.com>
  * @license   GPL-2.0+
  * @link      http://pixelgrade.com
- * @copyright 2014 Pixelgrade
+ * @copyright 2014-2019 Pixelgrade
  */
 
 /**
@@ -51,6 +51,21 @@ class PixProofPlugin {
 	 */
 	protected $plugin_basepath = null;
 
+	/**
+	 * Main file of the plugin.
+	 * @since    1.0.0
+	 * @var      string
+	 */
+	protected $file = null;
+
+	/**
+	 * The plugin's base URL.
+	 * @var null|string
+	 * @access public
+	 * @since 1.0.0
+	 */
+	public $plugin_baseuri = null;
+
 	public $display_admin_menu = false;
 
 	protected $config;
@@ -65,6 +80,8 @@ class PixProofPlugin {
 	 */
 	protected function __construct() {
 
+		$this->file = __FILE__;
+		$this->plugin_baseuri  = plugin_dir_url( __FILE__ );
 		$this->plugin_basepath = plugin_dir_path( __FILE__ );
 		$this->config          = self::config();
 		self::$plugin_settings = get_option( 'pixproof_settings' );
@@ -110,7 +127,7 @@ class PixProofPlugin {
 	/**
 	 * Return an instance of this class.
 	 * @since     1.0.0
-	 * @return    object    A single instance of this class.
+	 * @return    PixProofPlugin    A single instance of this class.
 	 */
 	public static function get_instance() {
 
@@ -134,7 +151,7 @@ class PixProofPlugin {
 	 * @param    boolean $network_wide True if WPMU superadmin uses "Network Activate" action, false if WPMU is disabled or plugin is activated on an individual blog.
 	 */
 	public static function activate( $network_wide ) {
-
+		// TODO: Define activation functionality here
 	}
 
 	/**
@@ -266,7 +283,7 @@ class PixProofPlugin {
 	}
 
 	function register_metaboxes() {
-		require_once( $this->plugin_basepath . 'features/metaboxes/metaboxes.php' );
+		require_once( $this->plugin_basepath . 'features/metaboxes.php' );
 	}
 
 	function hook_into_the_content( $content ) {

@@ -60,11 +60,21 @@ $basepath = dirname(__FILE__).DIRECTORY_SEPARATOR;
 $callbackpath = $basepath.'callbacks'.DIRECTORY_SEPARATOR;
 pixproof::require_all($callbackpath);
 
-require_once( plugin_dir_path( __FILE__ ) . 'class-pixproof.php' );
+/**
+ * Returns the main instance of PixProofPlugin to prevent the need to use globals.
+ *
+ * @since  1.0.0
+ * @return PixProofPlugin PixProofPlugin instance.
+ */
+function PixProofPlugin() {
+	require_once( plugin_dir_path( __FILE__ ) . 'class-pixproof.php' );
+
+	return PixProofPlugin::get_instance();
+}
+
+global $pixproof_plugin;
+$pixproof_plugin = PixProofPlugin();
 
 // Register hooks that are fired when the plugin is activated, deactivated, and uninstalled, respectively.
 register_activation_hook( __FILE__, array( 'PixProofPlugin', 'activate' ) );
 //register_deactivation_hook( __FILE__, array( 'PixTypesPlugin', 'deactivate' ) );
-
-global $pixproof_plugin;
-$pixproof_plugin = PixProofPlugin::get_instance();
