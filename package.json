@@ -1,11 +1,17 @@
 {
-	"devDependencies": {
-		"gulp-zip": "~0.4.0",
-		"gulp": "~3.8.5",
-		"gulp-exec": "~2.0.1",
-		"gulp-clean": "~0.3.1",
-		"gulp-sass": "~0.6.0",
-		"gulp-ruby-sass": "*",
-		"gulp-autoprefixer": "0.0.6"
-	}
+  "name": "pixproof",
+  "devDependencies": {
+    "command-exists": "^1.2.8",
+    "del": "*",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-exec": "^4.0.0",
+    "gulp-load-plugins": "^2.0.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-rsync": "^0.0.8",
+    "gulp-sass": "^4.0.2",
+    "gulp-util": "^3.0.8",
+    "gulp-zip": "^5.0.1"
+  }
 }

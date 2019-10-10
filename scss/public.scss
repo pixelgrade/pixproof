@@ -1,7 +1,6 @@
 @charset "UTF-8";
-@import "compass";
 
-/*------------------------------------*\ 
+/*------------------------------------*\
     $SETUP
 \*------------------------------------*/
 @import "vars";
@@ -30,7 +29,7 @@
 
 .proof-photo{
     padding-bottom: 0;
-    @include transition (all .3s cubic-bezier(0.86, 0, 0.07, 1));
+    transition: all .3s cubic-bezier(0.86, 0, 0.07, 1);
 	text-align: center;
 	&:hover{
 
@@ -39,7 +38,7 @@
 		}
 
 	    .proof-photo__meta{
-	        @include opacity(1);
+	        opacity: 1;
 	        background: rgba(0, 0, 0, 0.5);
 	    }
 
@@ -47,7 +46,7 @@
 	        max-width:80%;
 	        margin-top:$_u2;
 	        margin-bottom:$_u2;
-	    }		
+	    }
 	}
 
 	&.selected {
@@ -72,7 +71,7 @@
 	}
 
 	&.scrooled_from_comments{
-		@include scale(1.2);
+		transform: scale(1.2);
 		z-index: 50;
 	}
 
@@ -137,8 +136,8 @@
 		right: 0;
 		bottom: 0;
 
-		@include opacity(0);
-		@include transition(all .2s linear);
+		opacity: 0;
+		transition: all .2s linear;
 
 		.flexbox{
 			height: 100%;
@@ -151,17 +150,17 @@
 
 			background: white;
 
-            @include transition(all 0.1s linear);
-        }		
+            transition: all 0.1s linear;
+        }
 	}
 .proof-photo__status {
-	@include transition(all .2s linear);
-	
+	transition: all .2s linear;
+
 	span.ticker {
 		display:block;
 
 		font-size: 18px;
-		color: white; 
+		color: white;
 
 		line-height: 32px; // Bottom bar height
 		width:32px;
@@ -169,7 +168,7 @@
 
 		opacity:0;
 
-		@include transition(all .2s linear);
+		transition: all .2s linear;
 	}
 
 	span.spinner {
@@ -184,9 +183,9 @@
 
 		@extend %spinner;
 
-		@include transition(all .2s linear);
-	} 
-		
+		transition: all .2s linear;
+	}
+
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -389,7 +388,7 @@ button[disabled], btn.disabled {
 	display: block;
 
 	outline: none;
-	@include transform(translateY(-50%));
+	transform: translateY(-50%);
 
 	&:hover, &:active, &:focus{
 		background-color: transparent;
@@ -406,14 +405,14 @@ button[disabled], btn.disabled {
 
 	&:hover, &:active, &:focus{
 		background-color: transparent;
-	}	
+	}
 }
 
 .mfp-arrow-left{
 	left: 2%;
 
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-top: 30px solid transparent;
 	border-bottom: 30px solid transparent;
 	border-left: 30px solid transparent;
@@ -425,8 +424,8 @@ button[disabled], btn.disabled {
 .mfp-arrow-right{
 	right: 2%;
 
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-top: 30px solid transparent;
 	border-bottom: 30px solid transparent;
 	border-right: 30px solid transparent;

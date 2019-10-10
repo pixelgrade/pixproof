@@ -65,7 +65,7 @@ $caption-title-color:             #F3F3F3 !default;
 $caption-subtitle-color:          #BDBDBD !default;
 
 // A11y
-$use-visuallyhidden:              false !default; // Hide content from browsers, but make it available for screen readers 
+$use-visuallyhidden:              false !default; // Hide content from browsers, but make it available for screen readers
 
 
 
@@ -84,7 +84,7 @@ $use-visuallyhidden:              false !default; // Hide content from browsers,
   position: fixed;
 
   background: $overlay-color;
-  @include opacity($overlay-opacity);
+  opacity: $overlay-opacity;
   @if $IE7support {
     filter: alpha(opacity=$overlay-opacity*100);
   }
@@ -576,43 +576,43 @@ button::-moz-focus-inner {
     $ANIMATIONS / $TRANSITIONS
 \*----------------------------------------*/
 .mfp-zoom-in {
-  
+
   /* start state */
   .mfp-with-anim {
     opacity: 0;
-    transition: all 0.2s ease-in-out; 
-    transform: scale(0.8); 
+    transition: all 0.2s ease-in-out;
+    transform: scale(0.8);
   }
-  
+
   &.mfp-bg {
     opacity: 0;
     transition: all 0.3s ease-out;
   }
-  
+
   /* animate in */
   &.mfp-ready {
     .mfp-with-anim {
       opacity: 1;
-      transform: scale(1); 
+      transform: scale(1);
     }
     &.mfp-bg {
       opacity: 0.8;
     }
   }
-  
+
   /* animate out */
   &.mfp-removing {
-    
+
     .mfp-with-anim {
-      transform: scale(0.8); 
+      transform: scale(0.8);
       opacity: 0;
     }
     &.mfp-bg {
       opacity: 0;
     }
-    
+
   }
-  
+
 }
 
 /* overlay at start */
@@ -627,34 +627,34 @@ button::-moz-focus-inner {
 
 /* overlay animate in */
 .mfp-fade.mfp-bg.mfp-ready {
-    @include opacity(.8);
+    opacity: .8;
 }
 /* overlay animate out */
 .mfp-fade.mfp-bg.mfp-removing {
-    @include transition(all .2s .1s ease-in-out);
-    @include opacity(0);
+   transition: all .2s .1s ease-in-out;
+   opacity: 0;
 }
 
 /* content at start */
 .mfp-fade.mfp-wrap .mfp-content {
-    @include transform(translate3d(0,0,0));
-    @include backface-visibility(hidden);
-    @include perspective(1000px);
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 
     // @include scale(.75);
-    @include opacity(0);
-    @include transition(all .2s .1s ease-in-out);
+    opacity: 0;
+    transition: all .2s .1s ease-in-out;
 }
 
 /* content animate it */
 .mfp-fade.mfp-wrap.mfp-ready .mfp-content {
     // @include scale(1);
-    @include opacity(1);
+    opacity: 1;
 }
 
 /* content animate out */
 .mfp-fade.mfp-wrap.mfp-removing .mfp-content {
-    @include transition(all .2s ease-in-out);
+    transition: all .2s ease-in-out;
     // @include scale(.75);
-    @include opacity(0);
+    opacity: 0;
 }
