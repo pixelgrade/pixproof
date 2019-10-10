@@ -30,11 +30,10 @@ function pixproof_metaboxes() {
 	) );
 
 	$gallery_metabox->add_field( array(
-		'name'         => esc_html__( 'Gallery', 'pixproof' ),
+		'name'         => esc_html__( 'Photo Gallery', 'pixproof' ),
 		'id'           => $prefix . 'main_gallery',
 		'type'         => 'pixproof_gallery',
-		'preview_size' => array( 100, 100 ), // Default: array( 50, 50 )
-		'query_args'   => array( 'type' => 'image' ), // Only images attachment
+		'desc'          => esc_html__( 'Some description', 'pixproof'),
 	) );
 
 //	$gallery_metabox->add_field( array(
@@ -95,6 +94,7 @@ function pixproof_metaboxes() {
 		'name' => esc_html__( 'Date', 'pixproof' ),
 		'id'   => $prefix . 'event_date',
 		'type' => 'text_date',
+		'desc' => esc_html__( 'Add the date when these photos were taken, if you wish.', 'pixproof' ),
 	) );
 
 	$gallery_metabox->add_field( array(

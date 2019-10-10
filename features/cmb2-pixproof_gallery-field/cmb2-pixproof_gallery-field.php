@@ -22,6 +22,14 @@ class Pixproof_CMB2_Field_Pixproof_Gallery {
 
 	/**
 	 * Render field.
+	 *
+	 * @param array $field The passed in `CMB2_Field` object
+	 * @param mixed $field_escaped_value The value of this field escaped.
+	 * @param int $field_object_id The ID of the current object
+	 * @param string $field_object_type The type of object you are working with.
+	 *                                   Most commonly, `post` (this applies to all post-types),
+	 *                                   but could also be `comment`, `user` or `options-page`.
+	 * @param CMB2_Types $field_type_object
 	 */
 	public function render_pixproof_gallery( $field, $field_escaped_value, $field_object_id, $field_object_type, $field_type_object ) {
 
@@ -42,7 +50,7 @@ class Pixproof_CMB2_Field_Pixproof_Gallery {
 				<i class="icon dashicons dashicons-images-alt"></i>
 			</a>
 		</div>
-		<?php
+		<?php $field_type_object->_desc( true, true );
 	}
 
 	/**
