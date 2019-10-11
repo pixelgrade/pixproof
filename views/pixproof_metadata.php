@@ -1,11 +1,11 @@
 <?php
 /**
  * Template used to display the pixproof gallery
- * Available vars:
- * string       $client_name
- * string       $event_date
- * int          $number_of_images
- * string       $file
+ *
+ * @global string       $client_name
+ * @global string       $event_date
+ * @global int          $number_of_images
+ * @global string       $file
  */
 ?>
 <div id="pixproof_data" class="pixproof-data">

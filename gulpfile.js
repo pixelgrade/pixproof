@@ -14,16 +14,16 @@ var u = plugins.util,
 
 
 gulp.task( 'styles', function() {
-	return gulp.src( 'scss/**/*.scss' )
+	return gulp.src( 'assets/scss/**/*.scss' )
 		.pipe(plugins.sass( {sourcemap: false, style: 'nested'} ) )
 		.pipe(plugins.autoprefixer() )
     .pipe(plugins.replace(/^@charset \"UTF-8\";\n/gm, ''))
     .pipe(cleanCSS())
-		.pipe( gulp.dest( './css/' ) );
+		.pipe( gulp.dest( './assets/css/' ) );
 } );
 
 gulp.task( 'styles-watch', function() {
-	return gulp.watch( 'scss/**/*.scss', ['styles'] );
+	return gulp.watch( 'assets/scss/**/*.scss', ['styles'] );
 } );
 
 /**
@@ -101,14 +101,6 @@ gulp.task( 'remove-files', function() {
     'config.rb',
     'gulpfile.js',
     'package.json',
-    'wpgrade-core/vendor/redux2',
-    'wpgrade-core/features',
-    'wpgrade-core/tests',
-    'wpgrade-core/**/*.less',
-    'wpgrade-core/**/*.scss',
-    'wpgrade-core/**/*.rb',
-    'wpgrade-core/**/sass',
-    'wpgrade-core/**/scss',
     'pxg.json',
     'build',
     '.idea',
@@ -121,7 +113,8 @@ gulp.task( 'remove-files', function() {
     '**/.DS_Store',
     '__MACOSX',
     '**/__MACOSX',
-    '.labels'
+    '.labels',
+    'assets/scss',
   ];
 
   files_to_remove.forEach( function( e, k ) {
