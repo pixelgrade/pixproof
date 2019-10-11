@@ -120,7 +120,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 			'add_new'            => esc_html__( 'Add New', 'pixproof' ),
 			'edit_item'          => esc_html__( 'Edit Proof Gallery', 'pixproof' ),
 			'update_item'        => esc_html__( 'Update Proof Gallery', 'pixproof' ),
-			'search_items'       => esc_html__( 'Search Proof Galelry', 'pixproof' ),
+			'search_items'       => esc_html__( 'Search Proof Galleries', 'pixproof' ),
 			'not_found'          => esc_html__( 'Not found', 'pixproof' ),
 			'not_found_in_trash' => esc_html__( 'Not found in Trash', 'pixproof' ),
 		) );
