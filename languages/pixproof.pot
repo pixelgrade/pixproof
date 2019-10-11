@@ -1,0 +1,405 @@
+# Copyright (C) 2019 Pixelgrade
+# This file is distributed under the same license as the PixProof plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: PixProof 2.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/pixproof\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-10-11T14:04:40+03:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.3.0\n"
+"X-Domain: pixproof\n"
+
+#. Plugin Name of the plugin
+#: includes/class-Pixproof_Settings.php:101
+msgid "PixProof"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+msgid "https://pixelgrade.com"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress photo gallery proofing plugin."
+msgstr ""
+
+#. Author of the plugin
+msgid "Pixelgrade"
+msgstr ""
+
+#: includes/class-Pixproof.php:113
+#: includes/class-Pixproof.php:115
+#: includes/class-Pixproof.php:130
+#: includes/class-Pixproof_Settings.php:312
+msgid "Proof Galleries"
+msgstr ""
+
+#: includes/class-Pixproof.php:114
+#: includes/class-Pixproof.php:129
+#: includes/class-Pixproof_Settings.php:299
+msgctxt "Post Type Single Item Name"
+msgid "Proof Gallery"
+msgstr ""
+
+#: includes/class-Pixproof.php:116
+msgid "Parent Item:"
+msgstr ""
+
+#: includes/class-Pixproof.php:117
+msgid "All Items"
+msgstr ""
+
+#: includes/class-Pixproof.php:118
+msgid "View Item"
+msgstr ""
+
+#: includes/class-Pixproof.php:119
+msgid "Add New Proof Gallery"
+msgstr ""
+
+#: includes/class-Pixproof.php:120
+msgid "Add New"
+msgstr ""
+
+#: includes/class-Pixproof.php:121
+msgid "Edit Proof Gallery"
+msgstr ""
+
+#: includes/class-Pixproof.php:122
+msgid "Update Proof Gallery"
+msgstr ""
+
+#: includes/class-Pixproof.php:123
+msgid "Search Proof Galelry"
+msgstr ""
+
+#: includes/class-Pixproof.php:124
+msgid "Not found"
+msgstr ""
+
+#: includes/class-Pixproof.php:125
+msgid "Not found in Trash"
+msgstr ""
+
+#: includes/class-Pixproof.php:180
+msgid "Some description"
+msgstr ""
+
+#: includes/class-Pixproof.php:184
+msgid "Client Details"
+msgstr ""
+
+#: includes/class-Pixproof.php:190
+msgid "Name"
+msgstr ""
+
+#: includes/class-Pixproof.php:196
+msgid "Date"
+msgstr ""
+
+#: includes/class-Pixproof.php:199
+msgid "Add the date when these photos were taken, if you wish."
+msgstr ""
+
+#: includes/class-Pixproof.php:203
+msgid "Photos Display Name"
+msgstr ""
+
+#: includes/class-Pixproof.php:204
+msgid "How would you like to identify each photo?"
+msgstr ""
+
+#: includes/class-Pixproof.php:209
+msgid "Unique IDs"
+msgstr ""
+
+#: includes/class-Pixproof.php:210
+msgid "Consecutive IDs"
+msgstr ""
+
+#: includes/class-Pixproof.php:211
+msgid "File Name"
+msgstr ""
+
+#: includes/class-Pixproof.php:212
+msgid "Unique IDs and Photo Title"
+msgstr ""
+
+#: includes/class-Pixproof.php:213
+msgid "Consecutive IDs and Photo Title"
+msgstr ""
+
+#: includes/class-Pixproof.php:220
+msgid "Client .zip archive"
+msgstr ""
+
+#: includes/class-Pixproof.php:221
+msgid "Upload a .zip archive so the client can download it via the Download link. Leave it empty to hide the link."
+msgstr ""
+
+#: includes/class-Pixproof.php:229
+msgid "Disable Archive Download"
+msgstr ""
+
+#: includes/class-Pixproof.php:230
+msgid "You can remove the ability to download the zip archive for this gallery"
+msgstr ""
+
+#: includes/class-Pixproof.php:285
+#: views/pixproof_gallery.php:19
+msgid "Select"
+msgstr ""
+
+#: includes/class-Pixproof.php:286
+#: views/pixproof_gallery.php:17
+msgid "Deselect"
+msgstr ""
+
+#: includes/class-Pixproof.php:287
+msgid "of"
+msgstr ""
+
+#: includes/class-Pixproof.php:288
+msgid "Next"
+msgstr ""
+
+#: includes/class-Pixproof.php:289
+msgid "Previous"
+msgstr ""
+
+#: includes/class-Pixproof.php:540
+msgid "The gallery password is required"
+msgstr ""
+
+#: includes/class-Pixproof.php:547
+msgid "No gallery data"
+msgstr ""
+
+#: includes/class-Pixproof.php:552
+msgid "Empty gallery"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:53
+msgid "PixProof Setup"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:122
+msgid "General Settings"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:123
+msgid "Setup how things will behave in general."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:129
+msgid "Position"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:130
+msgid "Where should the photo proofing gallery should pe displayed in relation to the content."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:135
+msgid "Before the content"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:136
+msgid "After the content"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:141
+msgid "Enable Images Download"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:142
+msgid "Allow your customer to download a .zip archive of the photos you have attached to a certain post."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:149
+msgid "The ZIP archive should be generated:"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:150
+msgid "How the archive file should be generated?"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:155
+msgid "Manually (uploaded by the gallery owner)"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:156
+msgid "Automatically (from the selected images)"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:165
+msgid "Disable Plugin Style"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:166
+msgid "If you want to style the PixProof galleries yourself you can remove the plugin style here"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:177
+msgid "Proof Galleries Global Styles"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:178
+msgid "Customize the global style options applied."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:184
+msgid "Change Global Styles"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:185
+msgid "Do you want to overwrite the style of all proof galleries?"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:214
+msgid "Thumbnails Size"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:215
+msgid "How big the image thumbnails should be?"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:227
+msgid "Grid Size"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:228
+msgid "How big should the grid be?"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:233
+msgid "Auto"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:234
+msgid "One Column"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:235
+msgid "Two Columns"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:236
+msgid "Three Columns"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:237
+msgid "Four Columns"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:238
+msgid "Five Columns"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:239
+msgid "Six Columns"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:252
+msgid "Advanced Settings"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:253
+msgid "If you really know your way around, dive in."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:259
+msgid "Custom CSS"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:260
+msgid "Add here the custom CSS you want to output on the frontend of your site. It's OK to leave it empty if you have the CSS elsewhere."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:287
+msgid "Enable Pixproof Galleries"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:288
+msgid "Enable this to register a new custom post type so you can manage Proof Galleries."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:295
+msgid "Single Item Label"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:296
+msgid "Here you can change the singular label."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:308
+msgid "Multiple Items Label"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:309
+msgid "Here you can change the plural label."
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:321
+msgid "Change Single Slug"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:322
+msgid "Do you want to rewrite the single gallery item slug?"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:333
+msgid "New Single Item Slug"
+msgstr ""
+
+#: includes/class-Pixproof_Settings.php:334
+msgid "Change the single gallery slug as you need it."
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Plugin_Init.php:81
+msgid "Error: plugin \"%s\" requires a newer version of PHP to be running."
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Plugin_Init.php:82
+msgid "Minimal version of PHP required: %s"
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Plugin_Init.php:83
+msgid "Your server's PHP version: %s"
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Plugin_Init.php:154
+msgid "The <strong>%s</strong> plugin has been updated to version %s. Enjoy!"
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Singleton_Registry.php:56
+msgid "Trying to get instance of nonexistent class."
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Singleton_Registry.php:121
+msgid "Cloning is forbidden."
+msgstr ""
+
+#: includes/lib/abstracts/class-Pixproof_Singleton_Registry.php:130
+msgid "Unserializing instances of this class is forbidden."
+msgstr ""
+
+#: views/pixproof_gallery.php:68
+msgid "Zoom"
+msgstr ""
+
+#: views/pixproof_metadata.php:17
+msgid "Client"
+msgstr ""
+
+#: views/pixproof_metadata.php:29
+msgid "Event date"
+msgstr ""
+
+#: views/pixproof_metadata.php:41
+msgid "Images"
+msgstr ""

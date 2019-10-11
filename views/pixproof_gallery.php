@@ -1,19 +1,19 @@
 <?php
 /**
  * Template used to display the pixproof gallery
- * Available vars:
- * array        $gallery_ids        An array with all attachments ids
- * object       $attachments        An object with all the attachments
- * string       $number_of_images   Count attachments
- * string       $columns            Number of columns
- * string       $thumbnails_size    The size of the thumbnail
+ *
+ * @global array        $gallery_ids        An array with all attachments ids
+ * @global array        $attachments        An object with all the attachments
+ * @global string       $number_of_images   Count attachments
+ * @global string       $columns            Number of columns
+ * @global string       $thumbnails_size    The size of the thumbnail
  */
 ?>
 <div id="pixproof_gallery" class="gallery  gallery-columns-<?php echo $columns; ?>  cf  js-pixproof-gallery">
 	<?php
 	$idx = 1;
 	foreach ( $attachments as $attachment ) {
-		if ( 'selected' == self::get_attachment_class( $attachment ) ) {
+		if ( 'selected' == Pixproof::get_attachment_class( $attachment ) ) {
 			$select_label = esc_html__( 'Deselect', 'pixproof' );
 		} else {
 			$select_label = esc_html__( 'Select', 'pixproof' );
@@ -54,7 +54,7 @@
 			$image_name   = '#' . $attachment->ID;
 			$image_id_tag = 'item-' . $attachment->ID;
 		} ?>
-		<div class="proof-photo  js-proof-photo  gallery-item <?php self::attachment_class( $attachment ); ?>" <?php self::attachment_data( $attachment ); ?>  id="<?php echo $image_id_tag; ?>">
+		<div class="proof-photo  js-proof-photo  gallery-item <?php Pixproof::attachment_class( $attachment ); ?>" <?php Pixproof::attachment_data( $attachment ); ?>  id="<?php echo $image_id_tag; ?>">
 			<div class="proof-photo__bg">
 			<div class="proof-photo__container">
 				<img src="<?php echo $thumb_img[0]; ?>" alt="<?php echo $attachment->post_title; ?>"/>
