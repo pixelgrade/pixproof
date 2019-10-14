@@ -40,7 +40,7 @@
 		if ( ! empty( $file ) ) { ?>
 		<div class="grid__item  one-half  lap-and-up-one-quarter">
 			<div class="entry__meta-box">
-				<button class="button-download  js-download" onclick="window.open('<?php echo $file; ?>')"><?php esc_html_e( 'Download','pixproof' ); ?></button>
+				<button class="button-download  js-download" onclick="window.open('<?php echo $file; ?>')"><?php esc_html_e( 'Download selected','pixproof' ); ?></button>
 			</div>
 		</div>
 		<?php } ?>

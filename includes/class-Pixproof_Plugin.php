@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see         https://pixelgrade.com
  * @author      Pixelgrade
- * @since       1.0.0
+ * @since       2.0.0
  */
 final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 
@@ -24,7 +24,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * The plugin's base path.
 	 * @var null|string
 	 * @access public
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public $plugin_basepath = null;
 
@@ -32,7 +32,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * The plugin's base URL.
 	 * @var null|string
 	 * @access public
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public $plugin_baseuri = null;
 
@@ -40,7 +40,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * Unique identifier for your plugin.
 	 * Use this value (not the variable name) as the text domain when internationalizing strings of text. It should
 	 * match the Text Domain file header in the main plugin file.
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 * @var      string
 	 */
 	protected $plugin_slug = 'pixproof';
@@ -49,7 +49,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * The site's base URL.
 	 * @var null|string
 	 * @access protected
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	protected $base_url = null;
 
@@ -57,7 +57,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * Metaboxes class object.
 	 * @var Pixproof_Metaboxes
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 */
 	public $metaboxes = null;
 
@@ -65,7 +65,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * Plugin settings class object.
 	 * @var Pixproof_Settings
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 */
 	public $settings = null;
 
@@ -73,7 +73,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * Options class object
 	 * @var     Pixproof_Options
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 */
 	public $options = null;
 
@@ -81,7 +81,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * Main class class object.
 	 * @var Pixproof
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 */
 	public $pixproof = null;
 
@@ -90,7 +90,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * The main plugin file.
 	 * @var     string
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 */
 	protected $file;
 
@@ -98,11 +98,11 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	 * Minimal Required PHP Version.
 	 * @var string
 	 * @access  private
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 */
 	protected $minimalRequiredPhpVersion = '5.4.0';
 
-	protected function __construct( $file, $version = '1.0.0' ) {
+	protected function __construct( $file, $version = '2.0.0' ) {
 		// The main plugin file (the one that loads all this).
 		$this->file = $file;
 		// The current plugin version.
@@ -290,7 +290,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 	/**
 	 * Load plugin localisation
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 * @return  void
 	 */
 	public function load_localisation() {
@@ -299,7 +299,7 @@ final class Pixproof_Plugin extends Pixproof_Plugin_Init {
 
 	/**
 	 * Registers the plugin's text domain path
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 */
 	public function load_textdomain() {
 		$loaded = load_plugin_textdomain( 'pixproof', false, dirname( $this->get_basepath() ) . '/languages/' );

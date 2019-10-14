@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see         https://pixelgrade.com
  * @author      Pixelgrade
- * @since       1.0.0
+ * @since       2.0.0
  */
 class Pixproof_Metaboxes extends Pixproof_Singleton_Registry {
 
@@ -27,7 +27,7 @@ class Pixproof_Metaboxes extends Pixproof_Singleton_Registry {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @param string $prefix
 	 */
@@ -42,7 +42,7 @@ class Pixproof_Metaboxes extends Pixproof_Singleton_Registry {
 	/**
 	 * Initiate our hooks.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function add_hooks() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ), 9, 1 );
@@ -52,7 +52,7 @@ class Pixproof_Metaboxes extends Pixproof_Singleton_Registry {
 	 * Fire up CMB2.
 	 *
 	 * @access  public
-	 * @since   1.0.0
+	 * @since   2.0.0
 	 * @return  void
 	 */
 	public function load_cmb2() {

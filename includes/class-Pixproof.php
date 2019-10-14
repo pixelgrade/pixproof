@@ -16,7 +16,7 @@ if ( ! class_exists( 'Pixproof' ) ) :
  *
  * @see         https://pixelgrade.com
  * @author      Pixelgrade
- * @since       1.0.0
+ * @since       2.0.0
  */
 class Pixproof extends Pixproof_Singleton_Registry {
 
@@ -25,7 +25,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @param $parent
 	 */
@@ -37,7 +37,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 	/**
 	 * Initialize this module.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function init() {
 
@@ -84,7 +84,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 	/**
 	 * Initiate our hooks
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function add_hooks() {
 
@@ -290,7 +290,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 	/**
 	 * Register and enqueue public-facing style sheet.
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	function enqueue_styles() {
 
@@ -302,7 +302,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 	/**
 	 * Register and enqueues public-facing JavaScript files.
-	 * @since    1.0.0
+	 * @since    2.0.0
 	 */
 	public function enqueue_scripts() {
 
@@ -333,10 +333,21 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 		if ( pixproof_get_setting( 'disable_pixproof_style', 'off' ) !== 'on' && file_exists( $pixproof_path . 'assets/css/public.css' ) ) {
 			ob_start();
-			echo '<style>';
 			include( $pixproof_path . 'assets/css/public.css' );
-			echo '</style>';
-			$style = ob_get_clean();
+			$public_css = trim( strip_tags( ob_get_clean() ) );
+
+			if ( ! empty( $public_css ) ) {
+				$style .= $public_css;
+			}
+		}
+
+		$frontend_custom_css = trim( strip_tags( pixproof_get_setting( pixproof_prefix( 'frontend_custom_css' ), '' ) ) );
+		if ( ! empty( $frontend_custom_css ) ) {
+			$style .= "\n" . $frontend_custom_css;
+		}
+
+		if ( ! empty( $style ) ) {
+			$style = '<style>' . $style . "\n" . '</style>' . "\n";
 		}
 
 		$gallery  = self::get_gallery();
@@ -438,11 +449,6 @@ class Pixproof extends Pixproof_Singleton_Registry {
 		$download_is_disabled  = get_post_meta( get_the_ID(), '_pixproof_disable_archive_download', true );
 
 		if ( pixproof_get_setting( 'enable_archive_zip_download', 'on' ) === 'on' && $download_is_disabled !== 'on' ) {
-
-			// This must be here
-			if (! class_exists('PclZip')) {
-				require ABSPATH . 'wp-admin/includes/class-pclzip.php';
-			}
 
 			// If the user wants a download link, now we qenerate it
 			if ( pixproof_get_setting( 'zip_archive_generation', 'manual' ) === 'manual' ) {

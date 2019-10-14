@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see         https://pixelgrade.com
  * @author      Pixelgrade
- * @since       1.0.0
+ * @since       2.0.0
  */
 class Pixproof_Settings extends Pixproof_Singleton_Registry {
 
@@ -28,7 +28,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 	 * Settings Page title
 	 * @var string
 	 * @access protected
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	protected $title = '';
 
@@ -36,14 +36,14 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 	 * Settings Page hook
 	 * @var string
 	 * @access protected
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	protected $options_page = '';
 
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	protected function __construct() {
 
@@ -58,7 +58,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 	/**
 	 * Initiate our hooks
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 */
 	public function add_hooks() {
 		add_action( 'init', array( $this, 'init' ) );
@@ -77,7 +77,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 	/**
 	 * Do general things on the `init` hook.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 */
 	public function init() {
 
@@ -86,7 +86,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 	/**
 	 * Register the fields, tabs, etc for our settings page.
 	 *
-	 * @since  1.0.0
+	 * @since  2.0.0
 	 */
 	public function cmb2_init() {
 		// If we are in a multisite context and the plugin is network activated (rather than on individual blogs in the network),
@@ -139,15 +139,15 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 
 		$cmb->add_field( array(
 			'name' => esc_html__( 'Enable Images Download', 'pixproof' ),
-			'desc' => esc_html__( 'Allow your customer to download a .zip archive of the photos you have attached to a certain post.', 'pixproof' ),
+			'desc' => esc_html__( 'Allow your customer to download a .zip archive of the photos you have attached to a certain gallery.', 'pixproof' ),
 			'id'   => 'enable_archive_zip_download',
 			'type' => 'checkbox',
 			'default' => 'on',
 		) );
 
 		$cmb->add_field( array(
-			'name' => esc_html__( 'The ZIP archive should be generated:', 'pixproof' ),
-			'desc' => esc_html__( 'How the archive file should be generated?', 'pixproof' ),
+			'name' => esc_html__( 'ZIP archive generation method', 'pixproof' ),
+			'desc' => esc_html__( 'Select "Manually" if you want to upload a .zip archive of your own making with all the photos you wish to share. Chose "Automatically" if you wish to leave the .zip generation to each client, allowing them to only include the selected photos.', 'pixproof' ),
 			'id'   => 'zip_archive_generation',
 			'type' => 'select',
 			'default' => 'manual',
@@ -162,8 +162,8 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 		) );
 
 		$cmb->add_field( array(
-			'name' => esc_html__( 'Disable Plugin Style', 'pixproof' ),
-			'desc' => esc_html__( 'If you want to style the PixProof galleries yourself you can remove the plugin style here', 'pixproof' ),
+			'name' => esc_html__( 'Disable Plugin CSS Style', 'pixproof' ),
+			'desc' => esc_html__( 'Check this if you want the plugin to stop including its own CSS file. This assumes you want more control over the galleries styling and you will add it somewhere else (like in the theme).', 'pixproof' ),
 			'id'   => 'disable_pixproof_style',
 			'type' => 'checkbox',
 			'default' => 'off',
@@ -175,7 +175,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 
 		$cmb->add_field( array(
 			'name' => esc_html__( 'Proof Galleries Global Styles', 'pixproof' ),
-			'desc' => esc_html__( 'Customize the global style options applied.', 'pixproof' ),
+			'desc' => esc_html__( 'Customize the global style options applied to galleries.', 'pixproof' ),
 			'id'   => $this->prefix( 'galleries_global_styles_title' ),
 			'type' => 'title',
 		) );
@@ -214,7 +214,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 
 		$cmb->add_field( array(
 			'name' => esc_html__( 'Thumbnails Size', 'pixproof' ),
-			'desc' => esc_html__( 'How big the image thumbnails should be?', 'pixproof' ),
+			'desc' => esc_html__( 'How big should the image thumbnails be?', 'pixproof' ),
 			'id'   => 'gallery_thumbnail_sizes',
 			'type' => 'select',
 			'default' => 'medium',
@@ -227,7 +227,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 
 		$cmb->add_field( array(
 			'name' => esc_html__( 'Grid Size', 'pixproof' ),
-			'desc' => esc_html__( 'How big should the grid be?', 'pixproof' ),
+			'desc' => esc_html__( 'How many columns should the grid have?', 'pixproof' ),
 			'id'   => 'gallery_grid_sizes',
 			'type' => 'select',
 			'default' => '3',
@@ -394,7 +394,7 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 	/**
 	 * Retrieves an option, even before the CMB2 has loaded.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 *
 	 * @param string $id The settings identifier, including prefixing if that is the case.
 	 * @param mixed $default Optional. The default value in case the option wasn't saved.
