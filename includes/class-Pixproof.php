@@ -328,12 +328,11 @@ class Pixproof extends Pixproof_Singleton_Registry {
 		}
 
 		$style = '';
-		// == This order is important ==
-		$pixproof_path = trailingslashit( Pixproof_Plugin()->get_basepath() );
 
-		if ( pixproof_get_setting( 'disable_pixproof_style', 'off' ) !== 'on' && file_exists( $pixproof_path . 'assets/css/public.css' ) ) {
+		$public_css_path = trailingslashit( Pixproof_Plugin()->get_basepath() ) . 'assets/css/public.css';
+		if ( pixproof_get_setting( 'disable_pixproof_style', 'off' ) !== 'on' && file_exists( $public_css_path ) ) {
 			ob_start();
-			include( $pixproof_path . 'assets/css/public.css' );
+			include( $public_css_path );
 			$public_css = trim( strip_tags( ob_get_clean() ) );
 
 			if ( ! empty( $public_css ) ) {
@@ -355,12 +354,12 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 		// == This order is important ==
 		$pixproof_output = $style . $metadata . $gallery;
-		$gallery_position = pixproof_get_setting( 'gallery_position_in_content', 'before' );
-		if ( $gallery_position === 'before' ) {
+
+		if ( pixproof_get_setting( 'gallery_position_in_content', 'before' ) === 'before' ) {
 			return $pixproof_output . $content;
-		} else {
-			return $content . $pixproof_output;
 		}
+
+		return $content . $pixproof_output;
 	}
 
 	static function get_gallery() {
