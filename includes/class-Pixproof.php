@@ -50,6 +50,38 @@ class Pixproof extends Pixproof_Singleton_Registry {
 	}
 
 	/**
+	 * Check if everything needed for the core plugin logic is in place.
+	 *
+	 * @return bool
+	 */
+	public static function check_setup() {
+		global $pagenow;
+
+		$all_good = true;
+
+		// Check if we can create zip archives, but only in the admin settings.
+		if ( $pagenow === 'options-general.php' ) {
+			$zip_test_filename = trailingslashit( get_temp_dir() ) . 'pixprooftest.zip';
+			if ( ! file_exists( $zip_test_filename ) ) {
+				try {
+					$zip_archive = new Pixproof_Create_Archive( $zip_test_filename );
+					// We will add this file so the archive holds something.
+					$zip_archive->add_file( __FILE__, 'test.php' );
+				} catch ( Exception $exception ) {
+					Pixproof_Plugin::add_admin_notice( 'Pixproof::zip_cap_error_notice' );
+					$all_good = false;
+				}
+
+				$zip_archive->close();
+
+				unset( $zip_archive );
+			}
+		}
+
+		return $all_good;
+	}
+
+	/**
 	 * Initiate our hooks
 	 *
 	 * @since 1.0.0
@@ -86,15 +118,14 @@ class Pixproof extends Pixproof_Singleton_Registry {
 	}
 
 	/**
-	 * Check if everything needed for the core plugin logic is in place.
-	 *
-	 * @return bool
+	 * Display an admin error notice if we can't create zip archives.
 	 */
-	public static function check_setup() {
-
-		$all_good = true;
-
-		return $all_good;
+	public static function zip_cap_error_notice() {
+		?>
+		<div class="error notice">
+			<p><?php esc_html_e( 'Something is wrong! Pixproof is not able to create .zip archives. Please contact your host and ask them to make sure that your WP installation can create zip archives via PHP.', 'pixproof' ); ?></p>
+		</div>
+		<?php
 	}
 
 	public function register_post_types() {
@@ -177,7 +208,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 			'name'         => '',
 			'id'           => $this->prefix( 'main_gallery', true ),
 			'type'         => 'pixproof_gallery',
-			'desc'          => esc_html__( 'Some description', 'pixproof'),
+			'desc'          => esc_html__( 'Manage the photos you wish to share with your client.', 'pixproof'),
 		) );
 
 		$gallery_metabox->add_field( array(
@@ -201,7 +232,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 		$gallery_metabox->add_field( array(
 			'name'    => esc_html__( 'Photos Display Name', 'pixproof' ),
-			'desc'    => esc_html__( 'How would you like to identify each photo?', 'pixproof' ),
+			'desc'    => wp_kses_post( __( 'How would you like to identify each photo?<br>Each photo numeric ID can be used in comments to automatically link to photos in the gallery for easy navigation and clearer conversations.<br>For example, the comment: "I really like the #123 and #276 photos" will have the IDs automatically linked to those photos.<br><strong>Unique IDs</strong> means any photo will be uniquely identified across all your site.<br><strong>Consecutive IDs</strong> means photos in this gallery will be identified with #1, #2, #3, and so on.', 'pixproof' ) ),
 			'id'      => $this->prefix( 'photo_display_name', true ),
 			'type'    => 'select',
 			'show_option_none' => false,
@@ -212,7 +243,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 				'unique_ids_photo_title'  => esc_html__( 'Unique IDs and Photo Title', 'pixproof' ),
 				'consecutive_ids_photo_title'  => esc_html__( 'Consecutive IDs and Photo Title', 'pixproof' ),
 			),
-			'default'     => 'fullwidth',
+			'default'     => 'unique_ids',
 		) );
 
 		if ( ( pixproof_get_setting( 'enable_archive_zip_download' ) === 'on' && pixproof_get_setting( 'zip_archive_generation' ) === 'manual' ) ) {
@@ -416,9 +447,8 @@ class Pixproof extends Pixproof_Singleton_Registry {
 			// If the user wants a download link, now we qenerate it
 			if ( pixproof_get_setting( 'zip_archive_generation', 'manual' ) === 'manual' ) {
 				$file = get_post_meta( get_the_ID(), '_pixproof_file', true );
-			} elseif ( class_exists( 'PclZip' ) ) {
-				$file = new PclZip( 'photos' );
-				$file = PixProofPlugin::get_zip_file_url( get_the_ID() );
+			} else {
+				$file = Pixproof::get_zip_file_url( get_the_ID() );
 			}
 		}
 
@@ -444,9 +474,9 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 		if ( isset( $data[ 'selected' ] ) && ! empty( $data[ 'selected' ] ) && $data[ 'selected' ] == 'true' ) {
 			return 'selected';
-		} else {
-			return '';
 		}
+
+		return '';
 	}
 
 	static function attachment_class( $attachment ) {
@@ -455,10 +485,11 @@ class Pixproof extends Pixproof_Singleton_Registry {
 
 	static function attachment_data( $attachment ) {
 
-		$data   = wp_get_attachment_metadata( $attachment->ID );
-		$output = '';
+		if ( empty( $attachment->ID ) ) {
+			return;
+		}
 
-		$output .= ' data-attachment_id="' . $attachment->ID . '"';
+		$output = ' data-attachment_id="' . esc_attr( $attachment->ID ) . '"';
 
 		echo $output;
 	}
@@ -528,7 +559,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 	public function generate_photos_zip_file() {
 
 		if ( ! isset ( $_REQUEST[ 'gallery_id' ] ) ) {
-			return 'no gallery';
+			wp_send_json_error( esc_html__('No gallery ID provided.', 'pixproof') );
 		}
 
 		global $post;
@@ -537,19 +568,19 @@ class Pixproof extends Pixproof_Singleton_Registry {
 		$post = get_post( $gallery_id );
 
 		if ( post_password_required( $post ) ) {
-			wp_send_json_error( esc_html__('The gallery password is required', 'pixproof') );
+			wp_send_json_error( esc_html__('The gallery password is required.', 'pixproof') );
 		}
 
-		// get this gallery's metadata
+		// Get this gallery's metadata.
 		$gallery_data = get_post_meta( $gallery_id, '_pixproof_main_gallery', true );
-		// quit if there is no gallery data
+		// Quit if there is no gallery data.
 		if ( empty( $gallery_data ) || ! isset( $gallery_data[ 'gallery' ] ) ) {
-			wp_send_json_error( esc_html__('No gallery data', 'pixproof') );
+			wp_send_json_error( esc_html__('No gallery data.', 'pixproof') );
 		}
 
 		$gallery_ids = explode( ',', $gallery_data[ 'gallery' ] );
 		if ( empty( $gallery_ids ) ) {
-			wp_send_json_error( esc_html__('Empty gallery', 'pixproof') );
+			wp_send_json_error( esc_html__('Empty gallery.', 'pixproof') );
 		}
 
 		// get attachments
@@ -559,53 +590,66 @@ class Pixproof extends Pixproof_Singleton_Registry {
 			'post__in'       => $gallery_ids,
 			'orderby'        => 'post__in',
 			'posts_per_page' => '-1',
-			//			'meta_query'  => array( // this doesn't work :(
-			//				array(
-			//					'key'     => 'selected',
-			//					'value'   => 'true',
-			//					'compare' => '=',
-			//				)
-			//			)
 		) );
 
 		if ( is_wp_error( $attachments ) || empty( $attachments ) ) {
-			return false;
+			wp_send_json_error( esc_html__('Could not get attachments.', 'pixproof') );
 		}
 
-		// turn off compression on the server
-		if ( function_exists( 'apache_setenv' ) ) {
-			@apache_setenv( 'no-gzip', 1 );
-		}
-		@ini_set( 'zlib.output_compression', 'Off' );
-
+		@set_time_limit(0);
 
 		// create the archive
 		if ( ! class_exists( 'PclZip' ) ) {
 			require ABSPATH . 'wp-admin/includes/class-pclzip.php';
 		}
 
-		$filename = tempnam( get_temp_dir(), 'zip' );
-		$zip      = new PclZip( $filename );
-		$images   = array();
+		$filename = tempnam( get_temp_dir(), 'zip' ) . '.zip';
+		try {
+			$zip_archive = new Pixproof_Create_Archive( $filename );
+		} catch ( Exception $exception ) {
+			wp_send_json_error( $exception->getMessage() );
+		}
 
+		$with_errors = false;
+		$errors = array();
+		$zipped_images = 0;
 		foreach ( $attachments as $key => $attachment ) {
 			$metadata = wp_get_attachment_metadata( $attachment->ID );
 
-			// only those selected
+			// Only those selected by the client.
 			if ( isset( $metadata[ 'selected' ] ) && $metadata[ 'selected' ] == 'true' ) {
-				$images[ ] = get_attached_file( $attachment->ID );
+				$file = get_attached_file( $attachment->ID );
+				if ( empty( $file ) ) {
+					$with_errors = true;
+					$errors[] = sprintf( esc_html__( 'Could not find the attached file for attachment #%s.', 'pixproof' ), $attachment->ID );
+					continue;
+				}
+
+				try {
+					if ( $zip_archive->add_file( $file, basename( $file ) ) ) {
+						$zipped_images ++;
+					} else {
+						$zip_archive->close();
+						$errors[] = sprintf( esc_html__( 'Could not add %s to the zip archive.', 'pixproof' ), $file );
+						$with_errors = true;
+						break;
+					}
+				} catch ( Exception $exception ) {
+					$with_errors = true;
+					$errors[] = $exception->getMessage();
+				}
 			}
 		}
 
-		$debug = $zip->create( $images, PCLZIP_OPT_REMOVE_ALL_PATH, PCLZIP_OPT_NO_COMPRESSION );
-
-		if ( ! is_array( $debug ) ) {
-			die( $zip->errorInfo( true ) );
+		if ( $with_errors ) {
+			unset( $zip_archive );
+			wp_send_json_error( $errors );
 		}
-		unset( $zip );
 
-		$uniqness = date( 'd_m_Y' );
-		$file_name = apply_filters( 'pixproof_filter_gallery_filename', 'gallery_', $post->post_name, $uniqness, '.zip' );
+		$zip_archive->close();
+
+		$uniqueness = date( 'd_m_Y' );
+		$file_name = apply_filters( 'pixproof_filter_gallery_filename', 'gallery_', $post->post_name, $uniqueness, '.zip' );
 
 		// create the output of the archive
 		header( 'Content-Description: File Transfer' );
@@ -624,11 +668,6 @@ class Pixproof extends Pixproof_Singleton_Registry {
 			flush();
 		}
 		fclose( $file );
-
-		// check for bug in some old PHP versions, close a second time!
-		if ( is_resource( $file ) ) {
-			@fclose( $file );
-		}
 
 		// delete the temporary file
 		@unlink( $filename );

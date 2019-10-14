@@ -22,6 +22,7 @@ if ( ! defined( 'WPINC' ) ) {
 require_once( plugin_dir_path( __FILE__ ) . 'includes/lib/abstracts/class-Pixproof_Singleton_Registry.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/lib/abstracts/class-Pixproof_Plugin_Init.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/lib/class-Pixproof_Array.php' );
+require_once( plugin_dir_path( __FILE__ ) . 'includes/lib/class-Pixproof_Create_Archive.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'extras.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/deprecated.php' );
 

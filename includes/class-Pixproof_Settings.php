@@ -188,25 +188,27 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 			'default' => 'off',
 		) );
 
-
 		$size_options = array(
-			'thumbnail' => 'Thumbnail ( ' . get_option( 'thumbnail_size_w' ) . ' x ' . get_option( 'thumbnail_size_h' ) . ' cropped )',
-			'medium'    => 'Medium ( ' . get_option( 'medium_size_w' ) . ' x ' . get_option( 'medium_size_h' ) . ' )',
-			'large'     => 'Large ( ' . get_option( 'large_size_w' ) . ' x ' . get_option( 'large_size_h' ) . ' )',
-			'full'      => 'Full size',
+			/* translators: 1: The width of the thumbnail, 2: The height of the thumbnail.  */
+			'thumbnail' => sprintf( esc_html__( 'Thumbnail (%1$s x %2$s cropped)', 'pixproof' ), get_option( 'thumbnail_size_w' ), get_option( 'thumbnail_size_h' ) ),
+			/* translators: 1: The width of the thumbnail, 2: The height of the thumbnail.  */
+			'medium'    => sprintf( esc_html__( 'Medium (%1$s x %2$s)', 'pixproof' ), get_option( 'medium_size_w' ), get_option( 'medium_size_h' ) ),
+			/* translators: 1: The width of the thumbnail, 2: The height of the thumbnail.  */
+			'large'     => sprintf( esc_html__( 'Large ( %1$s x %2$s)', 'pixproof' ), get_option( 'large_size_w' ), get_option( 'large_size_h' ) ),
+			'full'      => esc_html__( 'Full size', 'pixproof' ),
 
 		);
 		$additional_sizes = wp_get_additional_image_sizes();
 		foreach ( $additional_sizes as $key => $size ) {
 			$size_options[ $key ] = ucfirst( $key );
 			if ( isset( $size['width'] ) && isset( $size['height'] ) ) {
-				$size_options[ $key ] .= ' ( ' . $size['width'] . ' x ' . $size['height'];
+				$size_options[ $key ] .= ' (' . $size['width'] . ' x ' . $size['height'];
 
 				if ( isset( $size['crop'] ) && $size['crop'] ) {
-					$size_options[ $key ] .= ' cropped';
+					$size_options[ $key ] .= esc_html__( ' cropped', 'pixproof' );
 				}
 
-				$size_options[ $key ] .= ' )';
+				$size_options[ $key ] .= ')';
 			}
 		}
 
