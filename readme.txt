@@ -2,8 +2,8 @@
 Contributors: pixelgrade, vlad.olaru, babbardel
 Tags: gallery, proofing, images, photography, proof, thumbnails, image, photos, picture, media, clients, photo album
 Requires at least: 4.9.9
-Tested up to: 5.2.3
-Stable tag: 1.2.4
+Tested up to: 5.2.4
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -79,7 +79,7 @@ Yes! PixProof's core features are free to use.
 = 2.0.0 =
 * This update is a rewrite of the plugin to make it easier to maintain and understand, also improved performance and future-proofing compatibility.
 * This update is **fully backward compatible** with previous versions.
-* Tested with the latest WordPress version (5.2.3).
+* Tested with the latest WordPress version (5.2.4).
 * Fixed minor issues.
 
 = 1.2.4 =
