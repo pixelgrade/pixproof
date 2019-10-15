@@ -1,131 +1,65 @@
 (function($){
 	$(window).load(function(){
 
-		wp.media.EditPixGallery = {
+    $('#proof_pixgallery').each(function() {
+      var instance = this;
 
-			frame: function() {
-				if ( this._frame )
-					return this._frame;
-				var selection = this.select();
-				// create our own media iframe
-				this._frame = wp.media({
-					displaySettings:    false,
-					id:                 'proof_pixgallery-frame',
-					title:              'PixGallery',
-					filterable:         'uploaded',
-					frame:              'post',
-					state:              'gallery-edit',
-					library:            { type : 'image' },
-					multiple:           true,  // Set to true to allow multiple files to be selected
-					editing:            true,
-					selection:          selection
-				});
+      $('.open_proof_pixgallery', instance).on('click',function(e){
+        var galleries_ids = $('#pixgalleries').val(),
+          random_order =  $('#pixgalleries_random').val(),
+          columns =  $('#pixgalleries_columns').val(),
+          size =  $('#pixgalleries_size').val(),
+          defaultPostId = wp.media.gallery.defaults.id,
+          attachments, selection;
 
-				// on update send our attachments ids into a post meta field
-				this._frame.on( 'update',
-					function() {
-						var controller = wp.media.EditPixGallery._frame.states.get('gallery-edit');
-						var library = controller.get('library');
-						// Need to get all the attachment ids for gallery
-						var ids = library.pluck('id'),
-							gallery = library.gallery;
+        if (random_order === 'true' ) {
+          random_order = ' orderby="rand"';
+        } else {
+          random_order = ' orderby="title"';
+        }
 
-						$('#pixgalleries').val( ids.join(',') );
+        if (columns) {
+          columns = ' columns="'+columns+'"';
+        }
+        if (size) {
+          size = ' size="'+size+'"';
+        }
 
-						if ( gallery.attributes._orderbyRandom ) {
-							$('#pixgalleries_random').val('true');
-						} else {
-							$('#pixgalleries_random').val('false');
-						}
+        var gallerysc = '[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']';
 
-						if ( gallery.attributes.columns ) {
-							$('#pixgalleries_columns').val(gallery.attributes.columns);
-						}
+        wp.media.gallery.edit(gallerysc).on('update', function(g) {
+          var id_array = [];
+          $.each(g.models, function(id, img) { id_array.push(img.id); });
+          $('#pixgalleries').val( id_array.join(',') );
 
-						if ( gallery.attributes.size ) {
-							$('#pixgalleries_size').val(gallery.attributes.size);
-						}
+          if ( g.gallery.attributes._orderbyRandom ) {
+            $('#pixgalleries_random').val('true');
+          } else {
+            $('#pixgalleries_random').val('false');
+          }
 
-						// update the galllery_preview
-						proof_pixgallery_ajax_preview();
-						return false;
-					});
+          if ( g.gallery.attributes.columns ) {
+            $('#pixgalleries_columns').val(g.gallery.attributes.columns);
+          }
 
-				return this._frame;
-			},
+          if ( g.gallery.attributes.size ) {
+            $('#pixgalleries_size').val(g.gallery.attributes.size);
+          }
 
-			init: function() {
-
-				$('#proof_pixgallery').on('click', '.open_proof_pixgallery', function(e){
-					e.preventDefault();
-					wp.media.EditPixGallery.frame().open();
-				});
-			},
-
-			select: function(){
-				var galleries_ids = $('#pixgalleries').val(),
-					random_order =  $('#pixgalleries_random').val(),
-					columns =  $('#pixgalleries_columns').val(),
-					size =  $('#pixgalleries_size').val(),
-					defaultPostId = wp.media.gallery.defaults.id,
-					attachments, selection;
-
-				if (random_order === 'true' ) {
-					random_order = ' orderby="rand"';
-				} else {
-					random_order = ' orderby="title"';
-				}
-
-				if (columns) {
-					columns = ' columns="'+columns+'"';
-				}
-				if (size) {
-					size = ' size="'+size+'"';
-				}
-
-				var shortcode = wp.shortcode.next( 'gallery', '[gallery'+columns+''+size+' ids="'+ galleries_ids +'"'+ random_order +']' );
-				// Bail if we didn't match the shortcode or all of the content.
-				if ( ! shortcode )
-					return;
-
-				// Ignore the rest of the match object.
-				shortcode = shortcode.shortcode;
-
-				if ( _.isUndefined( shortcode.get('id') ) && ! _.isUndefined( defaultPostId ) )
-					shortcode.set( 'id', defaultPostId );
-
-				attachments = wp.media.gallery.attachments( shortcode );
-				selection = new wp.media.model.Selection( attachments.models, {
-					props:    attachments.props.toJSON(),
-					multiple: true
-				});
-
-				selection.gallery = attachments.gallery;
-
-				// Fetch the query's attachments, and then break ties from the
-				// query to allow for sorting.
-				selection.more().done( function() {
-					// Break ties with the query.
-					selection.props.set({ query: false });
-					selection.unmirror();
-					selection.props.unset('orderby');
-				});
-
-				return selection;
-			}
-		};
+          // update the gallery_preview
+          proof_pixgallery_ajax_preview();
+          return false;
+        });
+      });
+    });
 
 		proof_pixgallery_ajax_preview();
-		$( wp.media.EditPixGallery.init );
 
 	});
 
 	var proof_pixgallery_ajax_preview = function(){
-		var ids = '';
-		ids = $('#pixgalleries').val();
-
 		$.ajax({
-			type: "post",url: locals.ajax_url,data: { action: 'ajax_proof_pixgallery_preview', attachments_ids: ids },
+			type: "post",url: locals.ajax_url,data: { action: 'ajax_proof_pixgallery_preview', attachments_ids: $('#pixgalleries').val() },
 			beforeSend: function() {
 				$('.open_proof_pixgallery i').removeClass('dashicons-images-alt');
 				$('.open_proof_pixgallery i').addClass('dashicons-update');
@@ -142,36 +76,5 @@
 			}
 		});
 	};
-
-	//init
-	if ($("[id$='_post_slider_visiblenearby']").val() == 1) {
-		//we need to hide the transition because it will not be used
-		$("[id$='_post_slider_transition']").closest('tr').hide();
-	}
-
-	$("[id$='_post_slider_visiblenearby']").on('change', function() {
-		if ($(this).val() == 1) {
-			//we need to hide the transition because it will not be used
-			$("[id$='_post_slider_transition']").closest('tr').fadeOut();
-		} else {
-			$("[id$='_post_slider_transition']").closest('tr').fadeIn();
-		}
-	});
-
-	//for the autoplay
-	//init
-	if ($("[id$='_post_slider_autoplay']").val() != 1) {
-		//we need to hide the delay because it will not be used
-		$("[id$='_post_slider_delay']").closest('tr').hide();
-	}
-
-	$("[id$='_post_slider_autoplay']").on('change', function() {
-		if ($(this).val() == 1) {
-			//we need to hide the delay because it will not be used
-			$("[id$='_post_slider_delay']").closest('tr').fadeIn();
-		} else {
-			$("[id$='_post_slider_delay']").closest('tr').fadeOut();
-		}
-	});
 
 })(jQuery);
