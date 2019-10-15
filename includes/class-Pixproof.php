@@ -231,6 +231,12 @@ class Pixproof extends Pixproof_Singleton_Registry {
 		) );
 
 		$gallery_metabox->add_field( array(
+			'name'         => esc_html__( 'Advanced', 'pixproof' ),
+			'id'           => $this->prefix( 'main_gallery_advanced_title', true ),
+			'type'         => 'title',
+		) );
+
+		$gallery_metabox->add_field( array(
 			'name'    => esc_html__( 'Photos Display Name', 'pixproof' ),
 			'desc'    => wp_kses_post( __( 'How would you like to identify each photo?<br>Each photo numeric ID can be used in comments to automatically link to photos in the gallery for easy navigation and clearer conversations.<br>For example, the comment: "I really like the #123 and #276 photos" will have the IDs automatically linked to those photos.<br><strong>Unique IDs</strong> means any photo will be uniquely identified across all your site.<br><strong>Consecutive IDs</strong> means photos in this gallery will be identified with #1, #2, #3, and so on.', 'pixproof' ) ),
 			'id'      => $this->prefix( 'photo_display_name', true ),
@@ -258,7 +264,7 @@ class Pixproof extends Pixproof_Singleton_Registry {
 		if ( pixproof_get_setting( 'enable_archive_zip_download' ) === 'on' && pixproof_get_setting( 'zip_archive_generation' ) !== 'manual' ) {
 			$gallery_metabox->add_field( array(
 				'name' => esc_html__( 'Disable Archive Download', 'pixproof' ),
-				'desc' => esc_html__( 'You can remove the ability to download the zip archive for this gallery', 'pixproof' ),
+				'desc' => esc_html__( 'Check this to remove the ability to download the zip archive for this gallery', 'pixproof' ),
 				'id'   => $this->prefix( 'disable_archive_download', true ),
 				'type' => 'checkbox',
 			) );

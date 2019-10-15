@@ -407,6 +407,13 @@ class Pixproof_Settings extends Pixproof_Singleton_Registry {
 			$options = get_option( self::$key );
 		}
 		if ( isset( $options[ $id ] ) ) {
+			// We need to do a little cleaning for checkboxes - standardize the values.
+			if ( in_array( $id, array( 'enable_archive_zip_download', 'disable_pixproof_style', 'enable_pixproof_gallery_global_style', 'enable_pixproof_gallery', $this->prefix( 'change_single_item_slug' ), ) ) ) {
+				if ( in_array( $options[ $id ], array( 1, '1', 'true', true ) ) ) {
+					$options[ $id ] = 'on';
+				}
+			}
+
 			return $options[ $id ];
 		}
 		return $default;
