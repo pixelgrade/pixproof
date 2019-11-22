@@ -118,7 +118,7 @@ abstract class Pixproof_Plugin_Init extends Pixproof_Singleton_Registry {
 		if ( $this->is_version_less_than( $savedVersion, $newVersion ) ) {
 			$new_versions[] = $newVersion;
 
-			define( 'BACKSTAGE_DOING_UPGRADE', true );
+			define( 'PIXPROOF_DOING_UPGRADE', true );
 			$upgrade_routines = new Pixproof_Upgrade_Routines( $savedVersion, $newVersion, trailingslashit( Pixproof_Plugin()->get_basepath() ) . 'includes/migrations');
 			$upgrade_routines->run();
 		}
