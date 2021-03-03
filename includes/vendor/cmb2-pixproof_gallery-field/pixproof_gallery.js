@@ -1,5 +1,5 @@
 (function($){
-	$(window).load(function(){
+	$(window).on('load', function(){
 
     $('#proof_pixgallery').each(function() {
       var instance = this;
